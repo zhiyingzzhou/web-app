@@ -1,0 +1,85 @@
+div.recommend-job {
+    width: px2rem(721px);
+    background-color: #FFF;
+    margin: px2rem(15px) auto 0;
+    padding: px2rem(16px) px2rem(19px) px2rem(17px) px2rem(15px);
+    box-sizing: border-box;
+    box-shadow: 3px 3px 10px $border-color;
+    p.title {
+        font-weight: bold;
+        color: $theme-color;
+        .icon {
+            width: px2rem(22px);
+            height: px2rem(28px);
+            margin-right: px2rem(10px);
+        }
+    }
+    // 列表
+    ul {
+        margin-top: px2rem(13px);
+        box-sizing: border-box;
+    }
+    .item {
+        display: flex;
+        border-top: 1px solid $border-color;
+        padding: px2rem(22px) 0px px2rem(18px) 0px;
+        &:last-child {
+            border-bottom: 1px solid $border-color;
+        }
+    }
+    .title {
+        width: px2rem(639px);
+    }
+    .top {
+        font-weight: bold;
+        color: $standar-color;
+    }
+    .bottom {
+        color: $assist-color;
+        margin-top: px2rem(12px);
+    }
+    .after {
+        img {
+            margin-top: px2rem(22px);
+            width: px2rem(21px);
+            height: px2rem(39px);
+        }
+    }
+    .more {
+        color: $theme-color;
+        text-align: center;
+        margin-top: px2rem(12px);
+        display: block;
+    }
+}
+
+[data-dpr="1"] .recommend-job {
+    p.title,.top ,.more {
+        font-size: 16px;
+        line-height: 16px;
+    }
+    .bottom {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+[data-dpr="2"] .recommend-job {
+    p.title,.top,.more {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    .bottom {
+        font-size: 26px;
+        line-height: 29px;
+    }
+}
+[data-dpr="3"] .recommend-job {
+    p.title,.top,.more {
+        font-size: 46px;
+        line-height: 46px;
+    }
+    .bottom {
+        font-size: 38px;
+        line-height: 41px;
+    }
+}

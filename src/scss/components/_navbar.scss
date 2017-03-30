@@ -1,0 +1,23 @@
+.navbar {
+    background-image: url(/www/images/header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    .left {
+        img {
+            width: px2rem(43px);
+            height: px2rem(35px);
+        }
+    }
+    .center {
+        img {
+            width: px2rem(220px);
+            height: px2rem(68px);
+        }
+    }
+    .right {
+        img {
+            width: px2rem(44px);
+            height: px2rem(44px);
+        }
+    }
+}

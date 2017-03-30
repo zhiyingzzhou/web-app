@@ -1,0 +1,71 @@
+div.feature {
+    width: px2rem(721px);
+    height: px2rem(291px);
+    margin: px2rem(18px) auto 0;
+    background: #FFF;
+    box-sizing: border-box;
+    // border: 1px solid $border-color;
+    padding: px2rem(17px) px2rem(18px) px2rem(35px);
+    box-shadow: 3px 3px 10px $border-color;
+    p.title {
+        color: $assist-color;
+        span {
+            color: $theme-color;
+            font-weight: bold;
+        }
+    }
+    // 功能列表 
+    ul {
+        display: flex;
+        justify-content: center;
+        margin-top: px2rem(13px);
+        box-sizing: border-box;
+        border-top: 1px solid $border-color;
+        padding-top: px2rem(41px);
+    }
+    li {
+        float: left;
+        font-size: 0px;
+        img {
+            width: px2rem(104px);
+        }
+        p {
+            margin: px2rem(18px) 0 0;
+            text-align: center;
+            color: #a9a9a9;
+        }
+        &:nth-child(2),&:nth-child(3),&:nth-child(4) {
+            margin-left: px2rem(71px);
+        }
+    }
+}
+[data-dpr="1"] .feature {
+    p.title {
+        font-size: 16px;
+        line-height: 16px;
+    }
+    li p {
+        font-size: 14px;
+        line-height: 13px;
+    }
+}
+[data-dpr="2"] .feature {
+    p.title {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    li p {
+        font-size: 26px;
+        line-height: 25px;
+    }
+}
+[data-dpr="3"] .feature {
+    p.title {
+        font-size: 46px;
+        line-height: 46px;
+    }
+    li p {
+        font-size: 38px;
+        line-height: 37px;
+    }
+}

@@ -1,0 +1,14 @@
+
+.panel {
+    width: $panel-width;
+    background: $panel-background-color;
+}
+
+.panel-overlay {
+    margin-left: $panel-width !important;
+    opacity: 0;
+}
+
+body.with-panel-left-reveal .views {
+    transform: translate3d($panel-width,0,0);
+}

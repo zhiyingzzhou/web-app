@@ -1,0 +1,17 @@
+// color
+.page {
+    background: $page-background-color;
+}
+
+// navbar
+.navbar {
+    height: $navbar-height;
+}
+.navbar-inner {
+    padding: 0 px2rem(20px) !important;
+}
+
+// page-content
+.page-content {
+    padding-top: $navbar-height !important;
+}
