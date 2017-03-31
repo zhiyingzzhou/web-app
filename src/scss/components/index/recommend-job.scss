@@ -1,24 +1,5 @@
 div.recommend-job {
-    width: px2rem(721px);
-    background-color: #FFF;
-    margin: px2rem(15px) auto 0;
     padding: px2rem(16px) px2rem(19px) px2rem(17px) px2rem(15px);
-    box-sizing: border-box;
-    box-shadow: 3px 3px 10px $border-color;
-    p.title {
-        font-weight: bold;
-        color: $theme-color;
-        .icon {
-            width: px2rem(22px);
-            height: px2rem(28px);
-            margin-right: px2rem(10px);
-        }
-    }
-    // 列表
-    ul {
-        margin-top: px2rem(13px);
-        box-sizing: border-box;
-    }
     .item {
         display: flex;
         border-top: 1px solid $border-color;
@@ -32,7 +13,7 @@ div.recommend-job {
     }
     .top {
         font-weight: bold;
-        color: $standar-color;
+        color: $standard-color;
     }
     .bottom {
         color: $assist-color;

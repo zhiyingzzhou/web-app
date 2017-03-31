@@ -1,0 +1,114 @@
+[data-page="login"], [data-page="register"] {
+    background: #FFF !important;
+    // 除去边框
+    ul {
+        &:before {
+            height: 0px;
+        }
+        &:after {
+            height: 0px;
+        }
+    }
+    .item-title {
+        font-weight: bold;
+        color: $standard-color;
+        width: px2rem(150px);
+        // line-height: px2rem(30px);
+    }
+    .item-input {
+        margin: 0px;
+        input {
+            height: px2rem(43px);
+            line-height: px2rem(43px);
+        }
+    }
+
+    //登陆按钮
+    .button,.forget-passwd {
+        width: px2rem(681px);
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    a.button {
+        background-color: $theme-color;
+        height: px2rem(95px);
+        line-height: px2rem(95px);
+        border: 0;
+        color: #FFF;
+        border-radius: 0px;
+    }
+
+    // 提示
+    .tips {
+        text-align: center;
+        color: $assist-color;
+        line-height: px2rem(29px);
+        margin-top: px2rem(38px);
+        a {
+            color: $theme-color;
+        }
+    }
+}
+
+[data-dpr="1"] {
+    [data-page="login"],[data-page='register'] {
+        .list-block,input,.forget-passwd a {
+            font-size: 14px;
+        }
+        .button {
+            font-size: 30px;
+        }
+        .tips,.get-code {
+            font-size: 14px;
+        }
+        // 注册中的协议
+        .protocal {
+            font-size: 14px;
+            a {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+[data-dpr="2"] {
+    [data-page="login"],[data-page='register'] {
+        .list-block,input,.forget-passwd a {
+            font-size: 30px;
+        }
+        .button {
+            font-size: 42px;
+        }
+        .tips,.get-code {
+            font-size: 26px;
+        }
+        // 注册中的协议
+        .protocal {
+            font-size: 30px;
+            a {
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+[data-dpr="3"] {
+    [data-page="login"],[data-page='register'] {
+        .list-block,input,.forget-passwd a {
+            font-size: 46px;
+        }
+        .button {
+            font-size: 54px;
+        }
+        .tips,.get-code {
+            font-size: 38px;
+        }
+        // 注册中的协议
+        .protocal {
+            font-size: 46px;
+            a {
+                font-size: 46px;
+            }
+        }
+    }
+}

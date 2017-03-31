@@ -1,0 +1,21 @@
+div.recommend-job,div.hot-job {
+    width: px2rem(721px);
+    background-color: #FFF;
+    margin: px2rem(15px) auto 0;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 10px $border-color;
+    p.title {
+        font-weight: bold;
+        color: $theme-color;
+        .icon {
+            width: px2rem(22px);
+            height: px2rem(28px);
+            margin-right: px2rem(10px);
+        }
+    }
+    // 列表
+    ul {
+        margin-top: px2rem(13px);
+        box-sizing: border-box;
+    }
+}

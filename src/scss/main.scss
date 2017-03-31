@@ -6,6 +6,12 @@
 @import 'common';
 
 @import 'reset';
+
+// pages
+@import 'pages/login';
+@import 'pages/register';
+@import 'pages/login-and-register';
+
 // components
 @import 'components/navbar';
 @import 'components/banner';
@@ -14,3 +20,5 @@
 // components/index
 @import 'components/index/feature';
 @import 'components/index/recommend-job';
+@import 'components/index/hot-job';
+@import 'components/index/hot-and-recommend-job';

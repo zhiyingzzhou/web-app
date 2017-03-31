@@ -1,29 +1,26 @@
-import React,{Component} from 'react';
-
-// 图片
-import menuPng from 'images/navbar/menu.png';
-import logoPng from 'images/navbar/logo.png';
-import searchPng from 'images/navbar/search.png';
+import React,{Component,PropTypes} from 'react';
 
 export default class Navbar extends Component {
-    constructor() {
-            super();
+    
+    static propTypes = {
+        left: PropTypes.oneOfType([PropTypes.node,PropTypes.string,PropTypes.element]),
+        center: PropTypes.oneOfType([PropTypes.node,PropTypes.string,PropTypes.element]),
+        right: PropTypes.oneOfType([PropTypes.node,PropTypes.string,PropTypes.element])
     }
 
     render() {
+        const {left='',center='',right=''} = this.props;
         return (
             <div className="navbar">
                 <div className="navbar-inner">
                     <div className="left">
-                        <a href="#" className="open-panel">
-                            <img src={menuPng} alt="菜单"/>
-                        </a>
+                        {left}
                     </div>
                     <div className="center">
-                        <img src={logoPng} alt="51金融圈"/>
+                        {center}
                     </div>
                     <div className="right">
-                        <img src={searchPng} alt="搜索"/>
+                        {right}
                     </div>
                 </div>
             </div>  

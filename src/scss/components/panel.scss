@@ -2,13 +2,81 @@
 .panel {
     width: $panel-width;
     background: $panel-background-color;
+    padding: px2rem(19px) px2rem(9px) 0 px2rem(10px);
+
+    // 头像区域
+    .header {
+        display: flex;
+        align-items: center;
+        img {
+            width: px2rem(56px);
+            height: px2rem(56px);
+        }
+        p {
+            white-space: nowrap;
+            margin-left: px2rem(8px);
+            // width: px2rem(115px);
+            color: #FFF;
+            padding: 0px;
+            border-bottom: 1px solid #FFF;
+            a {
+                color: #FFF;
+                text-decoration: none;
+            }
+        }
+    }
+
+    // 功能列表
+    ul {
+        margin-top: px2rem(9px);
+    }
+    .table {
+        width: 100%;
+        padding-top: px2rem(54px);
+    }
+    .table-cell {
+        text-align: center;
+        font-size: 0px;
+        img {
+            width: px2rem(98px);
+            height: px2rem(98px);
+        }
+        p {
+            color: #FFF;
+            margin-top: px2rem(14px);
+        }
+    }
 }
 
 .panel-overlay {
-    margin-left: $panel-width !important;
-    opacity: 0;
+    transform: translate3d($panel-width, 0, 0) !important;
+    opacity: 1 !important;
 }
 
-body.with-panel-left-reveal .views {
-    transform: translate3d($panel-width,0,0);
+body.with-panel-left-reveal {
+    .views {
+        transform: translate3d($panel-width,0,0);
+    }
+    .panel-overlay {
+        transform: translate3d(0,0,0);
+    }
+}
+
+
+[data-dpr="1"] .panel {
+    p {
+        font-size: 16px;
+    }
+}
+
+[data-dpr="2"] .panel {
+    p {
+        font-size: 28px;
+    }
+}
+
+[data-dpr="3"] .panel {
+    p {
+        font-size: 40px;
+    }
 }

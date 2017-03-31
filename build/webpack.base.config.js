@@ -3,6 +3,7 @@
  */
 const join = require('path').join;
 const pug = require('pug');
+const webpack = require('webpack');
 
 // config
 const config = require('../config');
@@ -10,7 +11,7 @@ const config = require('../config');
 // plugins
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const DashboardPlugin = require('webpack-dashboard/plugin');
+// const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const extractSass = new ExtractTextPlugin({
     filename: "css/style.css",
@@ -38,8 +39,8 @@ module.exports = function(){
                 'views': resolve('src/views'),
                 'images': resolve('src/www/images'),
                 'components': resolve('src/pages/components'),
-                'react': resolve('node_modules/react/dist/react.min.js'),
-                'react-dom': resolve('node_modules/react-dom/dist/react-dom.min.js')
+                // 'react': resolve('node_modules/react/dist/react.min.js'),
+                // 'react-dom': resolve('node_modules/react-dom/dist/react-dom.min.js')
             },
             extensions: ['.js','.jsx','.json','.scss']
         },
@@ -49,7 +50,14 @@ module.exports = function(){
                     test: /\.(js|jsx)$/,
                     loader: 'babel-loader',
                     query: {
-                        presets: ['react','es2015','stage-3']
+                        // @remove-on-eject-begin
+                        babelrc: false,
+                        presets: [require.resolve('babel-preset-react-app')],
+                        // @remove-on-eject-end
+                        // This is a feature of `babel-loader` for webpack (not Babel itself).
+                        // It enables caching results in ./node_modules/.cache/babel-loader/
+                        // directory for faster rebuilds.
+                        cacheDirectory: true
                     }
                 },
                 {
@@ -94,7 +102,7 @@ module.exports = function(){
         },
         plugins: [
             extractSass,
-            new DashboardPlugin(),
+            // new DashboardPlugin(),
             new HtmlWebpackPlugin({
                 inject: false,
                 templateContent: function(templateParams, compilation, callback) {
@@ -103,7 +111,20 @@ module.exports = function(){
                     const compiledFunction = pug.compileFile(join(process.cwd(),'config/template/tpl.pug'));
                     return compiledFunction({files:files});
                 }
-            })
+            }),
+            // new webpack.optimize.UglifyJsPlugin({
+            //     compress: {
+            //         screw_ie8: true, // React doesn't support IE8
+            //         warnings: false
+            //     },
+            //     mangle: {
+            //         screw_ie8: true
+            //     },
+            //     output: {
+            //         comments: false,
+            //         screw_ie8: true
+            //     }
+            // })
         ]
     }
 }
