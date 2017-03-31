@@ -9,44 +9,58 @@ import myCollectionPng from 'images/panel/my-collection.png';
 import importResumePng from 'images/panel/import-resume.png';
 
 export default class Panel extends Component {
-    constructor() {
-            super();
-            this.listData = [
-                {
-                    img: personalCenterPng,
-                    text: '个人中心'
-                },
-                {
-                    img: myResumePng,
-                    text: '我的简历'
-                },
-                {
-                    img: applyRecordPng,
-                    text: '申请记录'
-                },
-                {
-                    img: myCollectionPng,
-                    text: '我的收藏'
-                },
-                {
-                    img: importResumePng,
-                    text: '导入简历'
-                },
-            ];
-    }
+
+        state = {
+            recordNumber: 9
+        }
+
+        listData = [
+            {
+                img: personalCenterPng,
+                text: '个人中心'
+            },
+            {
+                img: myResumePng,
+                text: '我的简历'
+            },
+            {
+                img: applyRecordPng,
+                text: '申请记录'
+            },
+            {
+                img: myCollectionPng,
+                text: '我的收藏'
+            },
+            {
+                img: importResumePng,
+                text: '导入简历'
+            },
+        ];
 
     componentDidMount() {
     }
 
+    generateRecordNumber() {
+        // 申请记录个数
+        const {recordNumber = 0} = this.state;
+        if(recordNumber === 0) return null;
+        return (
+            <div className="record-number">
+                {recordNumber}
+            </div>
+        )
+    }
+
     generateFeatureList() {
         const listEle = [];
-        this.listData.forEach( (item,index)=>{
+        this.listData.forEach((item,index)=>{
             listEle.push(
                 <a key={`panel_item_${index}`} href="#">
                     <li className="table" key={`item_${index}`}>
                         <div className="table-cell">
                             <img src={item.img} alt={item.text} />
                             <p>{item.text}</p>
+                            {item.text === '申请记录' ? this.generateRecordNumber() : null}
                         </div>
                     </li>
                 </a>

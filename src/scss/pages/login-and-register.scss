@@ -23,6 +23,21 @@
         }
     }
 
+    .item-inner {
+        &:after {
+            background-color: $border-color !important;
+        }
+    }
+
+    //给最后一个li添加after边框
+    li:last-child {
+        .item-inner {
+            &:after {
+                @include borderAfter;
+            }
+        }
+    }
+
     //登陆按钮
     .button,.forget-passwd {
         width: px2rem(681px);
@@ -53,19 +68,19 @@
 [data-dpr="1"] {
     [data-page="login"],[data-page='register'] {
         .list-block,input,.forget-passwd a {
-            font-size: 14px;
+            font-size: 15px;
         }
         .button {
-            font-size: 30px;
+            font-size: 21px;
         }
         .tips,.get-code {
-            font-size: 14px;
+            font-size: 13px;
         }
         // 注册中的协议
         .protocal {
-            font-size: 14px;
+            font-size: 15px;
             a {
-                font-size: 14px;
+                font-size: 15px;
             }
         }
     }
@@ -95,19 +110,19 @@
 [data-dpr="3"] {
     [data-page="login"],[data-page='register'] {
         .list-block,input,.forget-passwd a {
-            font-size: 46px;
+            font-size: 45px;
         }
         .button {
-            font-size: 54px;
+            font-size: 63px;
         }
         .tips,.get-code {
-            font-size: 38px;
+            font-size: 39px;
         }
         // 注册中的协议
         .protocal {
-            font-size: 46px;
+            font-size: 45px;
             a {
-                font-size: 46px;
+                font-size: 45px;
             }
         }
     }

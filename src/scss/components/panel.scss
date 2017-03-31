@@ -26,6 +26,23 @@
         }
     }
 
+    //申请记录
+    .record-number {
+        width: px2rem(31px);
+        height: px2rem(31px);
+        background: $record-background-color;
+        border-radius: px2rem(31px);
+        position: absolute;
+        top: 0px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transform: translateX(px2rem(42.5px));
+        color: #FFF;
+        line-height: px2rem(31px);
+        text-align: center;
+    }
+
     // 功能列表
     ul {
         margin-top: px2rem(9px);
@@ -37,6 +54,7 @@
     .table-cell {
         text-align: center;
         font-size: 0px;
+        position: relative;
         img {
             width: px2rem(98px);
             height: px2rem(98px);
@@ -65,7 +83,10 @@ body.with-panel-left-reveal {
 
 [data-dpr="1"] .panel {
     p {
-        font-size: 16px;
+        font-size: 14px;
+    }
+    .record-number {
+        font-size: 13px;
     }
 }
 
@@ -73,10 +94,16 @@ body.with-panel-left-reveal {
     p {
         font-size: 28px;
     }
+    .record-number {
+        font-size: 26px;
+    }
 }
 
 [data-dpr="3"] .panel {
     p {
-        font-size: 40px;
+        font-size: 42px;
+    }
+    .record-number {
+        font-size: 39px;
     }
 }

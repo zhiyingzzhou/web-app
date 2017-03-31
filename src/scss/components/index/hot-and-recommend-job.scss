@@ -7,15 +7,38 @@ div.recommend-job,div.hot-job {
     p.title {
         font-weight: bold;
         color: $theme-color;
+        position: relative;
         .icon {
             width: px2rem(22px);
             height: px2rem(28px);
             margin-right: px2rem(10px);
         }
+        padding-bottom: px2rem(13px);
+        &:after {
+            @include borderAfter;
+        }
     }
     // 列表
     ul {
-        margin-top: px2rem(13px);
+        // margin-top: px2rem(13px);
         box-sizing: border-box;
+    }
+}
+[data-dpr="2"] {
+    div.recommend-job,div.hot-job {
+        p.title {
+            &:after {
+                transform: scaleY(.5);
+            }
+        }
+    }
+}
+[data-dpr="3"] {
+    div.recommend-job,div.hot-job {
+        p.title {
+            &:after {
+                transform: scaleY(.33);
+            }
+        }
     }
 }

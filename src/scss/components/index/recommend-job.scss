@@ -2,11 +2,15 @@ div.recommend-job {
     padding: px2rem(16px) px2rem(19px) px2rem(17px) px2rem(15px);
     .item {
         display: flex;
-        border-top: 1px solid $border-color;
+        // border-top: 1px solid $border-color;
         padding: px2rem(22px) 0px px2rem(18px) 0px;
-        &:last-child {
-            border-bottom: 1px solid $border-color;
+        position: relative;
+        &:after {
+            @include borderAfter;
         }
+    }
+    p.title {
+        width: px2rem(680px);
     }
     .title {
         width: px2rem(639px);
@@ -18,6 +22,7 @@ div.recommend-job {
     .bottom {
         color: $assist-color;
         margin-top: px2rem(12px);
+        line-height: px2rem(29px);
     }
     .after {
         img {
@@ -36,12 +41,11 @@ div.recommend-job {
 
 [data-dpr="1"] .recommend-job {
     p.title,.top ,.more {
-        font-size: 16px;
-        line-height: 16px;
+        font-size: 15px;
+        line-height: 15px;
     }
     .bottom {
-        font-size: 14px;
-        line-height: 17px;
+        font-size: 13px;
     }
 }
 [data-dpr="2"] .recommend-job {
@@ -51,16 +55,24 @@ div.recommend-job {
     }
     .bottom {
         font-size: 26px;
-        line-height: 29px;
+    }
+    .item {
+        &:after {
+            transform: scaleY(.5);
+        }
     }
 }
 [data-dpr="3"] .recommend-job {
     p.title,.top,.more {
-        font-size: 46px;
-        line-height: 46px;
+        font-size: 45px;
+        line-height: 45px;
     }
     .bottom {
-        font-size: 38px;
-        line-height: 41px;
+        font-size: 39px;
+    }
+    .item {
+        &:after {
+            transform: scaleY(.33);
+        }
     }
 }

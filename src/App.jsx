@@ -37,6 +37,26 @@ class App extends React.Component {
         myApp.onPageBeforeAnimation('register',function(page){
             myApp.closePanel();
         });
+        $$('#toRegisterPage').on('click',function(){
+            const history = myApp.mainView.history;
+            if(history[history.length - 2] === '#register'){
+                mainView.router.back();
+            }else{
+                mainView.router.load({
+                    pageName: 'register'
+                });
+            }
+        });
+        $$('#toLoginPage').on('click',function(){
+            const history = myApp.mainView.history;
+            if(history[history.length - 2] === '#login'){
+                mainView.router.back();
+            }else{
+                mainView.router.load({
+                    pageName: 'login'
+                });
+            }
+        });
     }
 
     render() {
