@@ -28,9 +28,8 @@ export default class LoginPage extends Component {
         }else if(passWord.length === 0) {
             alert('请输入密码');
         }else{
-            const {actions} = this.props;
-            console.log(this.props);
-            this.props.userLogin({
+            const {userLogin} = this.props.actions;
+            userLogin({
                 userName: userName,
                 passWord: passWord
             });
