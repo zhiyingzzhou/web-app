@@ -13,6 +13,9 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const DashboardPlugin = require('webpack-dashboard/plugin');
 
+// ajax
+const Ajax = require('../config/ajax.js');
+
 const extractSass = new ExtractTextPlugin({
     filename: "css/style.css",
     disable: process.env.NODE_ENV === "development"
@@ -39,6 +42,7 @@ module.exports = function(){
                 'views': resolve('src/views'),
                 'images': resolve('src/www/images'),
                 'components': resolve('src/pages/components'),
+                'config': resolve('config')
                 // 'react': resolve('node_modules/react/dist/react.min.js'),
                 // 'react-dom': resolve('node_modules/react-dom/dist/react-dom.min.js')
             },
@@ -112,6 +116,9 @@ module.exports = function(){
                     return compiledFunction({files:files});
                 }
             }),
+            new webpack.DefinePlugin({
+                'prefixUrl': JSON.stringify(Ajax())
+            })
             // new webpack.optimize.UglifyJsPlugin({
             //     compress: {
             //         screw_ie8: true, // React doesn't support IE8

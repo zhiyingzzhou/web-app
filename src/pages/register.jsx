@@ -27,7 +27,7 @@ export default class RegisterPage extends Component {
     state = {
         isChecked: false, // checkbox 默认没有选中
         phoneNumber: '',
-        code: '',
+        verifycode: '',
         passWord: '',
         codeText: '获取验证码'
     }
@@ -53,7 +53,7 @@ export default class RegisterPage extends Component {
     _inputCode(event){
         //输入验证码
         this.setState({
-            code: event.target.value
+            verifycode: event.target.value
         });
     }
 
@@ -80,7 +80,7 @@ export default class RegisterPage extends Component {
     }
 
     render() {
-        const {isChecked,phoneNumber,code,passWord,codeText} = this.state;
+        const {isChecked,phoneNumber,verifycode,passWord,codeText} = this.state;
 
         return (
             <div className="page navbar-fixed cached" data-page="register">
@@ -100,7 +100,7 @@ export default class RegisterPage extends Component {
                                 title="验证码" 
                                 placeholder="请输入验证码" 
                                 after={<a className="get-code" onClick={this.getCode}>{codeText}</a>} 
-                                value={code} 
+                                value={verifycode} 
                                 onChange={this.inputCode} 
                             />
                             <ListItem 

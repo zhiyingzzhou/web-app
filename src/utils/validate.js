@@ -13,6 +13,7 @@ module.exports = (function() {
 
     //验证注册表单
     validete.prototype.validateRegisterForm = function() {
+        const {userRegisterPost} = this.props;
         const {isChecked,phoneNumber,code,passWord} = this.state;
         if(phoneNumber.length === 0 ){
             alert('手机号码不能为空!');
@@ -25,7 +26,9 @@ module.exports = (function() {
         }else if(!isChecked) {
             alert('51金融圈协议务必同意!');
         }else{
-            alert('注册');
+            userRegisterPost({
+                ...this.state
+            });
         }
     }
 
@@ -38,11 +41,10 @@ module.exports = (function() {
         }else if(passWord.length === 0) {
             alert('请输入密码');
         }else{
-            const {userLogin} = this.props.actions;
-            // userLogin({
-            //     userName: userName,
-            //     passWord: passWord
-            // });
+            const {userLoginPost} = this.props;
+            userLoginPost({
+                ...this.state
+            });
         }
     }
     return new validete();

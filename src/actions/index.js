@@ -1,9 +1,5 @@
-import * as types from '../constants/ActionTypes.js';
+import * as userActions from './user';
 
-export const userLogin = object => ({
-    type: types.USERLOGIN
-});
-
-export const userRegister = text => ({
-    type: types.USERREGISTER
-});
+module.exports =  {
+    userActions
+}

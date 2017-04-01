@@ -12,16 +12,13 @@ import RegisterPage from 'pages/register';
 import Panel from './panel';
 
 class App extends React.Component {
-    constructor() {
-        super();
-    }
     
     componentDidMount() {
-        console.log(this.props);
         // Initialize your app
         var myApp = new Framework7({
-            // animateNavBackIcon:true
-            preroute: (view,options) => {
+            onAjaxComplete: function(xhr) {
+                //ajax complete
+                console.log(xhr);
             }
         });
         // Add main View
@@ -37,6 +34,8 @@ class App extends React.Component {
         myApp.onPageBeforeAnimation('register',function(page){
             myApp.closePanel();
         });
+
+        // login and register preroute router
         $$('#toRegisterPage').on('click',function(){
             const history = myApp.mainView.history;
             if(history[history.length - 2] === '#register'){
@@ -70,7 +69,7 @@ class App extends React.Component {
                     <div className="view view-main">
                         <div className="pages">
                             <IndexPage />
-                            <LoginPage {...this.props} />
+                            <LoginPage {...this.props.actions} />
                             <RegisterPage />
                         </div>
                     </div>
@@ -85,7 +84,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(Actions, dispatch)
+    actions: bindActionCreators(Actions.userActions, dispatch)
 })
 
 export default connect(
