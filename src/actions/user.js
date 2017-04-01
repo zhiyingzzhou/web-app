@@ -11,25 +11,34 @@ const userRegister = () => ({
 export const userLoginPost = userInfo => (dispatch,getState) => {
     const {userName,passWord} = userInfo;
     $$.post(`${prefixUrl}/mobile/api/login`,JSON.stringify({
-            "head": {
-                "transcode": "D0001",
-                "type": "h"
-            },
-            "data": {
-                "username": userName,
-                "passwd": passWord
+        "head": {
+            "transcode": "D0001",
+            "type": "h"
+        },
+        "data": {
+            "username": userName,
+            "passwd": passWord
+        }
+    }))
+    .then((err,text,xhr)=>{
+        if(err) {
+            alert('m(-_-)m  出错了!');
+        }else{
+            const res = JSON.parse(text);
+            if(xhr.status === 200) {
+                if(res.returnCode != 'AAAAAAA') {
+                    alert(res.returnMsg);
+                }
             }
-        }),(res,statusCode)=>{
-            console.log(res);
-            const {returnCode,returnMsg} = JSON.parse(res);
-            if(returnCode != 'AAAAAAA') {
-                alert(returnMsg);
-            }else{
+        }
+            // console.log(res);
+            // const {returnCode,returnMsg} = JSON.parse(res);
+            // if(returnCode != 'AAAAAAA') {
+            //     alert(returnMsg);
+            // }else{
                 
-            }
-        },err=>{
-            console.log(err);
-        });
+            // }
+    });
 }
 
 export const userRegisterPost = registerInfo => (dispatch,getState) => {

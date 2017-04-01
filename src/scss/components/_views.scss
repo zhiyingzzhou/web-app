@@ -1,0 +1,19 @@
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+.views {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.view, .views {
+    position: relative;
+    height: 100%;
+    z-index: 5000;
+}
+
+.view {
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+}

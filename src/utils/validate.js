@@ -41,7 +41,7 @@ module.exports = (function() {
         }else if(passWord.length === 0) {
             alert('请输入密码');
         }else{
-            const {userLoginPost} = this.props;
+            const {userLoginPost} = this.props.actions;
             userLoginPost({
                 ...this.state
             });

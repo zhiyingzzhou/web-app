@@ -7,6 +7,12 @@
 
 @import 'reset';
 
+@import 'components/views';
+@import 'components/pages';
+@import 'components/list-block';
+@import 'components/input';
+@import 'components/button'; 
+
 // pages
 @import 'pages/login';
 @import 'pages/register';

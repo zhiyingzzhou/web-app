@@ -6,8 +6,9 @@ html
         meta(http-equiv="X-UA-Compatible" content="ie=edge")
         title 51金融圈
         script(src="/www/js/flexible.js",type="text/javascript")
-        link(href="/www/styles/framework7.ios.custom.min.css",rel="stylesheet",type="text/css")
-        link(href="/www/styles/framework7.ios.colors.min.css",rel="stylesheet",type="text/css")
+        script(src="/www/js/promise.min.js",type="text/javascript")
+        //- link(href="/www/styles/framework7.ios.custom.min.css",rel="stylesheet",type="text/css")
+        //- link(href="/www/styles/framework7.ios.colors.min.css",rel="stylesheet",type="text/css")
         link(href="/www/styles/normalize.min.css",rel="stylesheet",type="text/css")
         - let css = files.css
             if css.length > 0
@@ -19,6 +20,8 @@ html
         //- script.
         //-     // Export selectors engine
         //-     var $$ = Dom7;
+        script.
+            var $$ = promise;
         - let js = files.js
             if js.length > 0
                 each item in js

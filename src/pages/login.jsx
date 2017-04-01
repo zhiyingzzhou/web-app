@@ -4,8 +4,14 @@ import {Link} from 'react-router-dom';
 import Navbar from 'components/login-and-register/navbar';
 import Tips from 'components/login-and-register/tips';
 import ListItem from 'components/List/ListItem';
+import V from '../utils/validate';
 
-export default class LoginPage extends Component {
+// redux
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import * as Actions from '../actions';
+
+class LoginPage extends Component {
     
     state = {
         userName: '',
@@ -21,7 +27,6 @@ export default class LoginPage extends Component {
     }
 
     _toLogin() {
-        const V = require('../utils/validate');
         // 点击登录按钮
         const validateLoginForm = V.validateLoginForm.bind(this);
         validateLoginForm();
@@ -69,3 +74,16 @@ export default class LoginPage extends Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+  User: state.User
+})
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(Actions.userActions, dispatch)
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(LoginPage);

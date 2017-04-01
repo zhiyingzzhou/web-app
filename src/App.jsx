@@ -1,9 +1,5 @@
 import React from 'react';
 
-import {bindActionCreators} from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from './actions'
-
 // pages
 import IndexPage from 'pages/index';
 import LoginPage from 'pages/login';
@@ -11,7 +7,7 @@ import RegisterPage from 'pages/register';
 // 侧边栏
 import Panel from './panel';
 
-class App extends React.Component {
+export default class App extends React.Component {
     
     state = {
         pages: [
@@ -71,16 +67,3 @@ class App extends React.Component {
         );
     }
 };
-
-const mapStateToProps = state => ({
-  User: state.User
-})
-
-const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(Actions.userActions, dispatch)
-})
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(App);

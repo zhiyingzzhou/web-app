@@ -16,13 +16,16 @@ const webpackDevConfig = require(join(process.cwd(),'build/webpack.dev.config'))
 module.exports = app => {
 
     app.use(compression());
-
     app.use(express.static(join(process.cwd(),'src')));
-    // const compiler = webpack(webpackDevConfig);
-    // compiler.apply(new DashboardPlugin());
-    // // webpack middleware 
-    // app.use(webpackMiddleware(compiler,{
-    //     noInfo: false,
-    //     publicPath: webpackDevConfig.output.publicPath
-    // }));
+    if(process.env.NODE_ENV === 'development'){
+        const compiler = webpack(webpackDevConfig);
+        // compiler.apply(new DashboardPlugin());
+        // webpack middleware 
+        app.use(webpackMiddleware(compiler,{
+            noInfo: false,
+            publicPath: webpackDevConfig.output.publicPath
+        }));
+    };
+
+    
 }

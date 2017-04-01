@@ -1,8 +1,53 @@
 .navbar {
+    position: absolute;
     background-image: url(/www/images/header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    height: $navbar-height;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    z-index: 500;
+    backface-visibility: hidden;
+    transform: translate3d(0,0,0);
+    .navbar-inner {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0 8px;
+        box-sizing: border-box;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .left,.right {
+        -webkit-flex-shrink: 0;
+        -ms-flex: 0 0 auto;
+        flex-shrink: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        -webkit-justify-content: flex-start;
+        justify-content: flex-start;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+    }
     .left {
+        margin-right: 10px;
         //主页
         img.menu {
             width: px2rem(43px);
@@ -16,6 +61,23 @@
     }
     .center {
         line-height: px2rem(56px);
+        text-align: center;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        -webkit-flex-shrink: 10;
+        -ms-flex: 0 10 auto;
+        flex-shrink: 10;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
         // 主页
         img.logo {
             width: px2rem(220px);
@@ -27,6 +89,7 @@
         }
     }
     .right {
+        margin-left: 10px;
         img.search {
             width: px2rem(44px);
             height: px2rem(44px);

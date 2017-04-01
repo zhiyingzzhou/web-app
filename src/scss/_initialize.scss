@@ -1,14 +1,35 @@
+html,body {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+html {
+    line-height: 1.15;
+}
 body {
     padding: 0px;
     max-width: ceil(750rem/75);
     margin: 0 auto;
     font-family: Microsoft yahei;
+    width: 100%;
+    line-height: 1.4;
+    color: #000;
+    overflow: hidden;
 }
 
 ul,li {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a, input, select, textarea {
+    outline: 0;
 }
 
 p {
