@@ -10,6 +10,7 @@ app = express();
 const port = process.env.port || 5000;
 
 require('./config/express')(app);
+require('./config/routes')(app);
 
 app.listen(port,err=>{
     if(err) throw new Error(err);

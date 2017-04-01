@@ -16,9 +16,9 @@
       }
     },
     "build": {
-      "command": "node server.js",
+      "command": "node build/build.js",
       "env": {
-        "NODE_ENV": "producation"
+        "NODE_ENV": "production"
       }
     }
   },
@@ -42,8 +42,9 @@
     "css-loader": "^0.27.3",
     "del": "^2.2.2",
     "express": "^4.15.2",
-    "extract-text-webpack-plugin": "^2.1.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.10.1",
+    "friendly-errors-webpack-plugin": "^1.6.1",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.0.4",
     "gulp-load-plugins": "^1.5.0",
@@ -57,15 +58,17 @@
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
     "react-router": "^4.0.0",
+    "react-router-dom": "^4.0.0",
     "react-thunk": "^1.0.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
-    "webpack": "^2.3.2",
+    "webpack": "^1.14.0",
     "webpack-dashboard": "^0.3.0",
     "webpack-dev-middleware": "^1.10.1",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.2",
+    "webpack-merge": "^4.1.0"
   }
 }

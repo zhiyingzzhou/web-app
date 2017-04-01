@@ -2,7 +2,7 @@
  * index's navbar
  */
 
-import React,{Component,PropTypes} from 'react';
+import React,{Component} from 'react';
 
 // navbar components
 import Navbar from '../navbar';
@@ -32,10 +32,7 @@ export default class NavbarIndex extends Component {
 
     toLink() {
         const {history} = this.props;
-        const {go} = history;
-        this.context.router.push({
-            pathname: '/register'
-        });
+        history.push('/login');
     }
 
     _generateRightEle() {

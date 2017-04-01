@@ -1,13 +1,9 @@
 import React,{Component} from 'react';
-
+import {Link} from 'react-router-dom';
 // navbar components
 import Navbar from 'components/login-and-register/navbar';
 import Tips from 'components/login-and-register/tips';
 import ListItem from 'components/List/ListItem';
-
-// utils
-import U from '../utils';
-import V from '../utils/validate';
 
 export default class LoginPage extends Component {
     
@@ -25,6 +21,7 @@ export default class LoginPage extends Component {
     }
 
     _toLogin() {
+        const V = require('../utils/validate');
         // 点击登录按钮
         const validateLoginForm = V.validateLoginForm.bind(this);
         validateLoginForm();
@@ -47,8 +44,8 @@ export default class LoginPage extends Component {
     render() {
         const {userName,passWord} = this.state;
         return (
-            <div className="page navbar-fixed cached" data-page="login">
-                <Navbar title="登陆51金融圈" right={<a href="javascript:void(0);" id="toRegisterPage">注册</a>} />
+            <div className={`page navbar-fixed`} data-page='login'>
+                <Navbar title="登陆51金融圈" right={<Link to="/register">注册</Link>} />
                 <div className="page-content">
                     {/*表单*/}
                     <div className="list-block">

@@ -5,14 +5,13 @@ import App from './App';
 // redux
 import { createStore , applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 import reducer from './reducer';
 
 // react-router
 import {
-  BrowserRouter as Router,
-  Route,
-  Link
+  HashRouter as Router,
+  Route
 } from 'react-router-dom';
 
 
@@ -25,7 +24,7 @@ import Styles from './scss/main.scss';
 ReactDom.render(
     <Provider store={store}>
         <Router>
-            <App Route={Route} Link={Link} />
+            <App Route={Route} />
         </Router>
     </Provider>
 ,document.getElementById('main-content'));

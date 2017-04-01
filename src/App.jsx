@@ -13,11 +13,48 @@ import Panel from './panel';
 
 class App extends React.Component {
     
+    state = {
+        pages: [
+            {
+                path: '/',
+                component: IndexPage,
+                pageName: 'index',
+                exact: true,
+            },
+            {
+                path: '/login',
+                component: LoginPage,
+                pageName: 'login'
+            },
+            {
+                path: '/register',
+                component: RegisterPage,
+                pageName: 'register'
+            }
+        ]
+    }
+
     componentDidMount() {
     }
 
-    render() {
+    generatePages() {
         const {Route} = this.props;
+        const {pages} = this.state;
+        let routes = [];
+        pages.map( (route , index )=>{
+            routes.push(
+                <Route 
+                    key={`route_${index}`} 
+                    path={route.path} 
+                    exact={route.exact}
+                    component={route.component} 
+                />
+            )
+        })
+        return routes;
+    }
+
+    render() {
         return (
             <div id="content-inner">
                 <div className="close-panel panel-overlay">
@@ -26,9 +63,7 @@ class App extends React.Component {
                  <div className="views">
                     <div className="view view-main">
                         <div className="pages">
-                            <Route path="/" component={IndexPage} />
-                            <Route path="/login" component={LoginPage} />
-                            <Route path="/register" component={RegisterPage} />
+                            {this.generatePages()}
                         </div>
                     </div>
                 </div>    

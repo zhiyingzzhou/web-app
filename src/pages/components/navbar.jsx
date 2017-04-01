@@ -1,12 +1,12 @@
-import React,{Component,PropTypes} from 'react';
+import React,{Component} from 'react';
 
 export default class Navbar extends Component {
     
-    static propTypes = {
-        left: PropTypes.oneOfType([PropTypes.node,PropTypes.string,PropTypes.element]),
-        center: PropTypes.oneOfType([PropTypes.node,PropTypes.string,PropTypes.element]),
-        right: PropTypes.oneOfType([PropTypes.node,PropTypes.string,PropTypes.element])
-    }
+    // static propTypes = {
+    //     left: PropTypes.oneOfType([PropTypes.node,PropTypes.string,PropTypes.element]),
+    //     center: PropTypes.oneOfType([PropTypes.node,PropTypes.string,PropTypes.element]),
+    //     right: PropTypes.oneOfType([PropTypes.node,PropTypes.string,PropTypes.element])
+    // }
 
     render() {
         const {left='',center='',right=''} = this.props;

@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import {Link} from 'react-router-dom';
 // navbar
 import Navbar from 'components/login-and-register/navbar';
 //Tips
@@ -83,8 +83,8 @@ export default class RegisterPage extends Component {
         const {isChecked,phoneNumber,verifycode,passWord,codeText} = this.state;
 
         return (
-            <div className="page navbar-fixed cached" data-page="register">
-                <Navbar title="新用户注册" right={<a href="javascript:void(0);" id="toLoginPage">登录</a>} />
+            <div className="page navbar-fixed" data-page="register">
+                <Navbar title="新用户注册" right={<Link to="/login">登录</Link>} />
                 <div className="page-content">
                     {/*表单*/}
                     <div className="list-block">

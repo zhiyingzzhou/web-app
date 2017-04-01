@@ -1,14 +1,14 @@
-import React,{Component,PropTypes} from 'react';
+import React,{Component} from 'react';
 
 export default class ListItem extends Component {
 
     onChange = this._onChange.bind(this);
 
-    static propTypes = {
-        title: PropTypes.string,
-        placeholder: PropTypes.string,
-        onChange: PropTypes.func
-    }
+    // static propTypes = {
+    //     title: PropTypes.string,
+    //     placeholder: PropTypes.string,
+    //     onChange: PropTypes.func
+    // }
 
     _onChange(event) {
         const {onChange} = this.props;
