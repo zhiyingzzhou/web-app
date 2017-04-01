@@ -4,7 +4,6 @@ const initialState = {
 };
 
 export default function users(state = initialState,actions){
-    console.log(actions);
     switch(actions.type){
         case USER_LOGIN: 
             return {...state,type: 'USER_LOGIN'}

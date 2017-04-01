@@ -2,7 +2,7 @@
  * index's navbar
  */
 
-import React,{Component} from 'react';
+import React,{Component,PropTypes} from 'react';
 
 // navbar components
 import Navbar from '../navbar';
@@ -13,9 +13,6 @@ import logoPng from 'images/navbar/logo.png';
 import searchPng from 'images/navbar/search.png';
 
 export default class NavbarIndex extends Component {
-    constructor() {
-        super();
-    }
 
     _generateLeftEle() {
         //生成主页left dom
@@ -33,10 +30,18 @@ export default class NavbarIndex extends Component {
         );
     }
 
+    toLink() {
+        const {history} = this.props;
+        const {go} = history;
+        this.context.router.push({
+            pathname: '/register'
+        });
+    }
+
     _generateRightEle() {
         //生成主页right dom
         return (
-            <img className="search" src={searchPng} alt="搜索"/>
+            <img className="search" src={searchPng} alt="搜索" onClick={this.toLink.bind(this)}/>
         );
     }
 
