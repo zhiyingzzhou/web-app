@@ -15,10 +15,9 @@ module.exports = merge(baseWebpackConfig,{
     // devtool: 'cheap-module-source-map',
     devtool: 'source-map',
     resolve: {
-        root: 'E:/github/flux-example/src',
         alias: {
-            'react': resolve('react/dist/react.min.js'),
-            'react-dom': resolve('react-dom/dist/react-dom.min.js'),
+            // 'react': resolve('react/dist/react.min.js'),
+            // 'react-dom': resolve('react-dom/dist/react-dom.min.js'),
             'redux': resolve('redux/dist/redux.min.js'),
             'react-redux': resolve('react-redux/dist/react-redux.min.js'),
             'redux-thunk': resolve('redux-thunk/dist/redux-thunk.min.js'),

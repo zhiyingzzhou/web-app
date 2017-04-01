@@ -18,6 +18,11 @@ function resolve(dir) {
     return join(__dirname, '..', dir)
 }
 
+const extractSass = new ExtractTextPlugin({
+    filename: "css/style.css",
+    disable: process.env.NODE_ENV === "development"
+});
+
 // 公共库
 const vendor = [
     'react',
@@ -32,7 +37,7 @@ module.exports = {
     context: config.srcPath, // 指定入口文件所在的目录(必须为绝对路径)
     entry: {
         vendor: vendor,
-        main: '../src/main', //指定入口文件
+        main: './main.js', //指定入口文件
     }, 
     output: {
         pathinfo: true,
@@ -54,50 +59,70 @@ module.exports = {
         extensions: ['.js','.jsx','.json','.scss']
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.(js|jsx)$/,
-                loader: 'babel-loader',
-                query: {
-                    // @remove-on-eject-begin
-                    babelrc: false,
-                    presets: [require.resolve('babel-preset-react-app')],
-                    // @remove-on-eject-end
-                    // This is a feature of `babel-loader` for webpack (not Babel itself).
-                    // It enables caching results in ./node_modules/.cache/babel-loader/
-                    // directory for faster rebuilds.
-                    cacheDirectory: true
+                    test: /\.(js|jsx)$/,
+                    loader: 'babel-loader',
+                    options: {
+                        // @remove-on-eject-begin
+                        babelrc: false,
+                        presets: [require.resolve('babel-preset-react-app')],
+                        // @remove-on-eject-end
+                        // This is a feature of `babel-loader` for webpack (not Babel itself).
+                        // It enables caching results in ./node_modules/.cache/babel-loader/
+                        // directory for faster rebuilds.
+                        cacheDirectory: true
+                    }
+                },
+                {
+                    test: /\.scss$/,
+                    include: [resolve('src')],
+                    use: extractSass.extract({
+                        use: [
+                            {
+                                loader: "css-loader",
+                                options: {
+                                    sourceMap: true
+                                }
+                            }, 
+                            {
+                                loader: "sass-loader",
+                                options: {
+                                    sourceMap: true
+                                }
+                            }
+                        ],
+                        // use style-loader in development
+                        fallback: "style-loader"
+                    })
+                },
+                {
+                    test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                    loader: 'url-loader',
+                    options: {
+                        limit: 10000,
+                        name: 'images/[name].[hash:7].[ext]'
+                    }
                 }
-            },
-            {
-                test: /\.scss$/,
-                include: [resolve('src')],
-                use: ExtractTextPlugin.extract("css-loader", "sass-loader")
-            },
-            {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url-loader',
-                query: {
-                    limit: 10000,
-                    name: 'images/[name].[hash:7].[ext]'
-                }
-            }
-            // {
-            //     test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-            //     loader: 'url-loader',
-            //     options: {
-            //     limit: 10000,
-            //     name: 'www/[name].[hash:7].[ext]'
-            //     }
-            // }
+                // {
+                //     test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                //     loader: 'url-loader',
+                //     options: {
+                //     limit: 10000,
+                //     name: 'www/[name].[hash:7].[ext]'
+                //     }
+                // }
         ]
     },
     plugins: [
-        new ExtractTextPlugin("css/styles.css"),
+        extractSass,
         // new DashboardPlugin(),
         new webpack.DefinePlugin({
             'prefixUrl': JSON.stringify(Ajax()),
-            'NODE_ENV': process.env.NODE_ENV
+            // When deploying React apps to production, make sure to use the production build which skips development warnings and is faster
+            "process.env": { 
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV) 
+            }
         })
     ]
 }
