@@ -12,6 +12,9 @@
     top: 0;
     height: 100%;
     left: 0;
+    &.active {
+        display: block;
+    }
     // 头像区域
     .header {
         display: flex;
@@ -84,13 +87,24 @@
     opacity: 0;
     z-index: 5999;
     display: none;
+    &.active {
+        display: block;
+    }
 }
 
-body.with-panel-left-reveal {
-    .views {
+.views {
+    transition-duration: .4s;
+    transition-property: transform;
+}
+
+#content-inner.with-panel-left-reveal {
+    .views,.panel-overlay {
         transform: translate3d($panel-width,0,0);
     }
-    .panel-overlay {
+}
+
+#content-inner.with-panel-left-reveal-out {
+    .views,.panel-overlay {
         transform: translate3d(0,0,0);
     }
 }

@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import {Link} from 'react-router-dom';
 // 图片png
 import personalPng from 'images/panel/personal.png';
 import personalCenterPng from 'images/panel/personal-center.png';
@@ -77,14 +77,15 @@ export default class Panel extends Component {
     }
 
     render() {
+        const {attr} = this.props;
         return (
-            <div className="panel panel-left panel-reveal">
+            <div className={`panel panel-left panel-reveal ${attr.isPanelOpen ? 'active' : ''}`}>
                 <div className="header">
                     <img src={personalPng} alt=""/>
                     <p>
-                        <a href="#login" className="login">登陆</a>
+                        <Link to="/login">登陆</Link>
                         /
-                        <a href="#register" className="register">注册</a>
+                        <Link to="/register">注册</Link>
                     </p>
                 </div>
                 <ul className="feature-list">
@@ -94,3 +95,4 @@ export default class Panel extends Component {
         );
     }
 }
+

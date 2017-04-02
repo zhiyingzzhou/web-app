@@ -1,4 +1,4 @@
-import * as types from '../constants/ActionTypes.js';
+import * as types from 'constants/ActionTypes.js';
 
 const userLogin = () => ({
     type: types.USER_LOGIN

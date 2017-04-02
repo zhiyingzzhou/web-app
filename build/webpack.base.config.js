@@ -52,7 +52,9 @@ module.exports = {
             'views': resolve('src/views'),
             'images': resolve('src/www/images'),
             'components': resolve('src/pages/components'),
-            'config': resolve('config')
+            'config': resolve('config'),
+            'constants': resolve('src/constants'),
+            'actions': resolve('src/actions')
             // 'react': resolve('node_modules/react/dist/react.min.js'),
             // 'react-dom': resolve('node_modules/react-dom/dist/react-dom.min.js')
         },

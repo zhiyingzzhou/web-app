@@ -1,4 +1,4 @@
-import {USER_LOGIN,USER_REGISTER} from '../constants/ActionTypes';
+import {USER_LOGIN,USER_REGISTER} from 'constants/ActionTypes';
 
 const initialState = {
 };

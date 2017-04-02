@@ -7,8 +7,16 @@ import RegisterPage from 'pages/register';
 // 侧边栏
 import Panel from './panel';
 
-export default class App extends React.Component {
+// redux
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import * as Actions from 'actions';
+
+class App extends React.Component {
     
+    // bind event
+    closePanel = this._closePanel.bind(this);
+
     state = {
         pages: [
             {
@@ -33,6 +41,12 @@ export default class App extends React.Component {
     componentDidMount() {
     }
 
+    _closePanel() {
+        // 关闭侧边栏
+        const {closePanel} = this.props.actions;
+        closePanel();
+    }
+
     generatePages() {
         const {Route} = this.props;
         const {pages} = this.state;
@@ -51,11 +65,12 @@ export default class App extends React.Component {
     }
 
     render() {
+        const {panel} = this.props;
         return (
-            <div id="content-inner">
-                <div className="close-panel panel-overlay">
+            <div id="content-inner" className={`${panel.isPanelOpen ? 'with-panel-left-reveal' : 'with-panel-left-reveal-out'}`}>
+                <div onClick={this.closePanel} className={`panel-overlay ${panel.isPanelOpen ? 'active' : ''}`}>
                 </div>
-                <Panel />
+                <Panel attr={panel} />
                  <div className="views">
                     <div className="view view-main">
                         <div className="pages">
@@ -67,3 +82,16 @@ export default class App extends React.Component {
         );
     }
 };
+
+const mapStateToProps = state => ({
+  panel: state.Panel
+})
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(Actions.panelActions, dispatch)
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
