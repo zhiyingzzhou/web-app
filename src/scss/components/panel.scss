@@ -16,14 +16,16 @@
         display: block;
     }
     // 头像区域
-    .header {
+    .header-with-image {
         display: flex;
         align-items: center;
+        margin-bottom: px2rem(63px);
         img {
             width: px2rem(56px);
             height: px2rem(56px);
+            border-radius: px2rem(56px);
         }
-        p {
+        p.user {
             white-space: nowrap;
             margin-left: px2rem(8px);
             // width: px2rem(115px);
@@ -34,6 +36,15 @@
                 color: #FFF;
                 text-decoration: none;
             }
+        }
+    }
+
+    .header-with-text {
+        padding-left: px2rem(7px);
+        margin-top: px2rem(26px);
+        margin-bottom: px2rem(45px);
+        p {
+            color: #FFF;
         }
     }
 
@@ -55,12 +66,12 @@
     }
 
     // 功能列表
-    ul {
-        margin-top: px2rem(9px);
-    }
     .table {
         width: 100%;
         padding-top: px2rem(54px);
+    }
+    a:first-child .table {
+        padding-top: 0;
     }
     .table-cell {
         text-align: center;
@@ -114,7 +125,7 @@
     p {
         font-size: 14px;
     }
-    .record-number {
+    .record-number,p.user {
         font-size: 13px;
     }
 }
@@ -123,7 +134,7 @@
     p {
         font-size: 28px;
     }
-    .record-number {
+    .record-number,p.login {
         font-size: 26px;
     }
 }
@@ -132,7 +143,7 @@
     p {
         font-size: 42px;
     }
-    .record-number {
+    .record-number,p.login {
         font-size: 39px;
     }
 }

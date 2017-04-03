@@ -99,6 +99,10 @@
             color: #FFF;
         }
     }
+    .empty {
+        color: $theme-color !important;
+        visibility: hidden;
+    }
 }
 
 [data-dpr="1"] .navbar {

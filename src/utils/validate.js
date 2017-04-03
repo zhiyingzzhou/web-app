@@ -49,11 +49,11 @@ module.exports = (function() {
         // 点击登录
         const {userName,passWord} = this.state;
         if(userName.length === 0){
-            Modal.openToast('请输入用户名');
+            Modal.openToast('请输入用户名！');
             return;
         }
         if(passWord.length === 0) {
-            Modal.openToast('请输入密码');
+            Modal.openToast('请输入密码！');
             return;
         }
         const {userLoginPost} = this.props.actions;

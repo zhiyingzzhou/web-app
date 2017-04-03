@@ -58,8 +58,12 @@ class NavbarBack extends Component {
 
     _generateRightEle() {
         const {right} = this.props;
-        //生成right dom
-        return right;
+        if(right){
+            //生成right dom
+            return right;
+        }else{
+            return <a className="empty" href="javascript:void(0);">个</a>;
+        }
     }
 
     render() {

@@ -7,6 +7,6 @@ export const pushHistory = (path) => (dispatch,getState) => {
     dispatch({...PUSH_HISTORY,path:path});
 }
 
-export const popHistory = (path) => (dispatch,getState) => {
+export const popHistory = () => (dispatch,getState) => {
     dispatch(POP_HISTORY);
 }

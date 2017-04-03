@@ -41,7 +41,8 @@ class RegisterPage extends Component {
         phoneNumber: '',
         verifycode: '',
         passWord: '',
-        codeText: '获取验证码'
+        codeText: '获取验证码',
+        getcodeDisabled: false
     }
 
     componentDidMount() {
@@ -89,10 +90,8 @@ class RegisterPage extends Component {
             Modal.openToast('请输入有效的手机号码！');
             return;
         }
-        const {userRegisterPost} = this.props.actions;
-        userRegisterPost({
-            ...this.state
-        });
+        const {userGetVerifyCode} = this.props.actions;
+        userGetVerifyCode(phoneNumber);
         countDown.bind(this)({
             codeText: codeText
         });
@@ -105,7 +104,7 @@ class RegisterPage extends Component {
     } 
 
     render() {
-        const {isChecked,phoneNumber,verifycode,passWord,codeText} = this.state;
+        const {isChecked,phoneNumber,verifycode,passWord,codeText,getcodeDisabled} = this.state;
         return (
             <div className="page" data-page="register">
                 <NavbarBack title="新用户注册" right={<a className="link" onClick={J.jumpToLoginOrRegister.bind(this,'login')}>登录</a>} />
@@ -123,7 +122,7 @@ class RegisterPage extends Component {
                             <ListItem 
                                 title="验证码" 
                                 placeholder="请输入验证码" 
-                                after={<a className="get-code" onClick={this.getCode}>{codeText}</a>} 
+                                after={<a className={`get-code ${getcodeDisabled ? 'disabled' : ''}`} onClick={this.getCode}>{codeText}</a>} 
                                 value={verifycode} 
                                 onChange={this.inputCode} 
                             />

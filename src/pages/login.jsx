@@ -50,6 +50,15 @@ class LoginPage extends Component {
             passWord: event.target.value
         });
     }
+
+    shouldComponentUpdate(nextProps,nextState){
+        const {baseInfo} = nextProps.state.user;
+        if(baseInfo && typeof baseInfo === 'object'){
+            J.jumpByLoginSuccess.bind(this)();
+        }
+        return true;
+    }
+
     render() {
         const {userName,passWord} = this.state;
         return (
@@ -59,8 +68,19 @@ class LoginPage extends Component {
                     {/*表单*/}
                     <div className="list-block">
                         <ul>
-                            <ListItem title="用户名" placeholder="请输入用户名" onChange={this.inputUserName} value={userName} />
-                            <ListItem inputType="password" title="密码" placeholder="请输入密码" onChange={this.inputPassword} value={passWord} />
+                            <ListItem 
+                                title="用户名" 
+                                placeholder="请输入用户名" 
+                                onChange={this.inputUserName} 
+                                value={userName} 
+                            />
+                            <ListItem 
+                                inputType="password" 
+                                title="密码" 
+                                placeholder="请输入密码" 
+                                onChange={this.inputPassword} 
+                                value={passWord} 
+                            />
                         </ul>
                     </div>
                     {/*登录按钮*/}

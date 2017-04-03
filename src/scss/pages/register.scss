@@ -20,6 +20,9 @@
             position: absolute;
             text-align: center;
             right: 0;
+            &.disabled {
+                background-color: $assist-color;
+            }
         }
     }
     .item-inner {

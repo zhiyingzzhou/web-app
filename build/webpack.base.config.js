@@ -3,7 +3,6 @@
  */
 const join = require('path').join;
 const webpack = require('webpack');
-
 // config
 const config = require('../config');
 
@@ -12,7 +11,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // const DashboardPlugin = require('webpack-dashboard/plugin');
 
 // ajax uri config
-const Ajax = require('../config/ajax.js');
+const prefix = require('../config/prefix.js');
 
 function resolve(dir) {
     return join(__dirname, '..', dir)
@@ -47,6 +46,8 @@ module.exports = {
     devtool: 'source-map',
     resolve: {
         alias: {
+            'md5': resolve('node_modules/blueimp-md5/js/md5.min.js'),
+            'store': resolve('node_modules/store/dist/store.legacy.min.js'),
             'pages': resolve('src/pages'),
             'views': resolve('src/views'),
             'images': resolve('src/www/images'),
@@ -69,8 +70,8 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         // @remove-on-eject-begin
-                        babelrc: false,
-                        presets: [require.resolve('babel-preset-react-app')],
+                        // babelrc: false,
+                        // presets: [require.resolve('babel-preset-react-app')],
                         // @remove-on-eject-end
                         // This is a feature of `babel-loader` for webpack (not Babel itself).
                         // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -122,7 +123,7 @@ module.exports = {
         extractSass,
         // new DashboardPlugin(),
         new webpack.DefinePlugin({
-            'prefixUrl': JSON.stringify(Ajax()),
+            'prefixUrl': JSON.stringify(prefix()),
             // When deploying React apps to production, make sure to use the production build which skips development warnings and is faster
             "process.env": { 
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV) 

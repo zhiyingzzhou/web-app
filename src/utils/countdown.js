@@ -12,13 +12,19 @@ module.exports = function(options) {
                 codeText:time
             });
             if(time < 0 ) {
+                // 获取验证码按钮变为主题色
                 this.setState({
-                    codeText: codeText
+                    codeText: codeText,
+                    getcodeDisabled: false
                 });
                 return false;
             }
             countDown();
         }.bind(this),1000);
+        // 获取验证码按钮变为灰色
+        this.setState({
+            getcodeDisabled: true
+        });
     }
     countDown();
 };

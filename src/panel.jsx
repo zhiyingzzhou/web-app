@@ -15,6 +15,8 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from 'actions';
 
+import store from 'store';
+
 import Panel from 'utils/panel';
 
 class PanelComponent extends Component {
@@ -30,25 +32,36 @@ class PanelComponent extends Component {
     listData = [
         {
             img: personalCenterPng,
-            text: '个人中心'
+            text: '个人中心',
+            pathname: 'personal'
         },
         {
             img: myResumePng,
-            text: '我的简历'
+            text: '我的简历',
+            pathname: 'resume'
         },
         {
             img: applyRecordPng,
-            text: '申请记录'
+            text: '申请记录',
+            pathname: 'apply'
         },
         {
             img: myCollectionPng,
-            text: '我的收藏'
+            text: '我的收藏',
+            pathname: 'collection'
         },
         {
             img: importResumePng,
             text: '导入简历'
         },
     ];
+
+    componentDidMount() {
+        const user = store.get('user');
+        if(user){
+            this.props.actions.getUserInfo(user);
+        }
+    }
 
     generateRecordNumber() {
         // 申请记录个数
@@ -65,7 +78,7 @@ class PanelComponent extends Component {
         const listEle = [];
         this.listData.forEach((item,index)=>{
             listEle.push(
-                <a key={`panel_item_${index}`} href="#">
+                <a key={`panel_item_${index}`} href="javascript:void(0);" onClick={this._jumpPage.bind(this,item.pathname)}>
                     <li className="table" key={`item_${index}`}>
                         <div className="table-cell">
                             <img src={item.img} alt={item.text} />
@@ -80,26 +93,35 @@ class PanelComponent extends Component {
     }
 
     shouldComponentUpdate(nextProps,nextState) {
-        return this.props.attr !== nextProps.attr;
+        return this.props.state !== nextProps.state;
     }
 
     _jumpPage(pathname) {
         Panel.closePanel();
-        J.jumpToLoginOrRegister.bind(this,pathname)();
+        J.jumpPage.bind(this,`/user/${pathname}`)();
     }
 
     render() {
-        const {attr} = this.props;
+        const {state} = this.props;
+        const {baseInfo} = state.user;
         return (
             <div className="panel panel-left panel-reveal">
-                <div className="header">
-                    <img src={personalPng} alt=""/>
-                    <p>
-                        <a onClick={this._jumpPage.bind(this,'login')}>登陆</a>
-                        /
-                        <a onClick={this._jumpPage.bind(this,'register')}>注册</a>
-                    </p>
-                </div>
+                {!baseInfo && 
+                    <div className="header-with-image">
+                        <img src={personalPng} alt="用户头像"/>
+                        <p className="user">
+                            <a onClick={this._jumpPage.bind(this,'login')}>登陆</a>
+                            /
+                            <a onClick={this._jumpPage.bind(this,'register')}>注册</a>
+                        </p>
+                    </div>
+                }
+                {baseInfo &&
+                    <div className="header-with-text">
+                        <p className="login">欢迎您，</p>
+                        <p className="login">{baseInfo.username}</p>
+                    </div>
+                }
                 <ul className="feature-list">
                     {this.generateFeatureList()}
                 </ul>
@@ -110,12 +132,13 @@ class PanelComponent extends Component {
 
 const mapStateToProps = state => ({
   state: {
+        user: state.User,
         history:state.History
     }
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(Actions.historyActions, dispatch)
+    actions: bindActionCreators({...Actions.historyActions,...Actions.userActions}, dispatch)
 })
 
 export default connect(
