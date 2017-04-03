@@ -118,3 +118,11 @@
         flex-shrink: 1;
     }
 }
+
+[data-dpr="2"] .item-inner:after {
+    transform: scaleY(.5);
+}
+
+[data-dpr="3"] .item-inner:after {
+    transform: scaleY(.33);
+}

@@ -1,7 +1,7 @@
-import * as panelActions from './panel';
 import * as userActions from './user';
+import * as historyActions from './history';
 
 module.exports =  {
-    panelActions,
-    userActions
+    userActions,
+    historyActions
 }

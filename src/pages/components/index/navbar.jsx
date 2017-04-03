@@ -12,25 +12,15 @@ import menuPng from 'images/navbar/menu.png';
 import logoPng from 'images/navbar/logo.png';
 import searchPng from 'images/navbar/search.png';
 
-// redux
-import {bindActionCreators} from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from 'actions';
 
-class NavbarIndex extends Component {
+import Panel from 'utils/panel';
 
-    // bind event
-    openPanel = this._openPanel.bind(this);
-
-    _openPanel() {
-        const {openPanel} = this.props.actions;
-        openPanel();
-    }
+export default class NavbarIndex extends Component {
 
     _generateLeftEle() {
         //生成主页left dom
         return (
-            <a href="#" className="open-panel" onClick={this.openPanel}>
+            <a href="#" className="open-panel" onClick={this._openPanel}>
                 <img className="menu" src={menuPng} alt="菜单"/>
             </a>
         );
@@ -43,16 +33,15 @@ class NavbarIndex extends Component {
         );
     }
 
-    toLink() {
-        const {history} = this.props;
-        history.push('/login');
-    }
-
     _generateRightEle() {
         //生成主页right dom
         return (
-            <img className="search" src={searchPng} alt="搜索" onClick={this.toLink.bind(this)}/>
+            <img className="search" src={searchPng} alt="搜索"/>
         );
+    }
+
+    _openPanel() {
+        Panel.openPanel()
     }
 
     render() {
@@ -65,16 +54,3 @@ class NavbarIndex extends Component {
         );
     }
 }
-
-const mapStateToProps = state => ({
-  panel: state.Panel
-})
-
-const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(Actions.panelActions, dispatch)
-})
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(NavbarIndex);

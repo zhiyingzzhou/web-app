@@ -1,3 +1,5 @@
+import Modal from 'utils/modal';
+
 module.exports = (function() {
     let validete = function(){};
 
@@ -11,25 +13,35 @@ module.exports = (function() {
         }
     }
 
+    validete.prototype.validatePhoneNumber = validatePhoneNumber;
+
     //验证注册表单
     validete.prototype.validateRegisterForm = function() {
-        const {userRegisterPost} = this.props;
-        const {isChecked,phoneNumber,code,passWord} = this.state;
+        const {userRegisterPost} = this.props.actions;
+        const {isChecked,phoneNumber,verifycode,passWord} = this.state;
         if(phoneNumber.length === 0 ){
-            alert('手机号码不能为空!');
-        }else if (!validatePhoneNumber(phoneNumber)) {
-            alert('请输入有效的手机号码!');
-        }else if(code.length === 0 ) {
-            alert('验证码不能为空!');
-        }else if(passWord.length === 0) {
-            alert('密码不能为空');
-        }else if(!isChecked) {
-            alert('51金融圈协议务必同意!');
-        }else{
-            userRegisterPost({
-                ...this.state
-            });
+            Modal.openToast('请输入您的手机号码！');
+            return;
         }
+        if (!validatePhoneNumber(phoneNumber)) {
+            Modal.openToast('请输入有效的手机号码！');
+            return;
+        }
+        if(verifycode.length === 0 ) {
+            Modal.openToast('验证码不能为空！');
+            return;
+        }
+        if(passWord.length === 0) {
+            Modal.openToast('密码不能为空！');
+            return;
+        }
+        if(!isChecked) {
+            Modal.openToast('51金融圈协议务必同意!');
+            return;
+        }
+        userRegisterPost({
+            ...this.state
+        });
     }
 
     //验证登录表单
@@ -37,15 +49,17 @@ module.exports = (function() {
         // 点击登录
         const {userName,passWord} = this.state;
         if(userName.length === 0){
-            alert('请输入用户名');
-        }else if(passWord.length === 0) {
-            alert('请输入密码');
-        }else{
-            const {userLoginPost} = this.props.actions;
-            userLoginPost({
-                ...this.state
-            });
+            Modal.openToast('请输入用户名');
+            return;
         }
+        if(passWord.length === 0) {
+            Modal.openToast('请输入密码');
+            return;
+        }
+        const {userLoginPost} = this.props.actions;
+        userLoginPost({
+            ...this.state
+        });
     }
     return new validete();
 })();

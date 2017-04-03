@@ -3,7 +3,7 @@
     width: $panel-width;
     background: $panel-background-color;
     padding: px2rem(19px) px2rem(9px) 0 px2rem(10px);
-    z-index: 1000;
+    z-index: $panel-z-index;
     display: none;
     box-sizing: border-box;
     overflow: auto;
@@ -85,7 +85,7 @@
     height: 100%;
     background: rgba(0,0,0,0);
     opacity: 0;
-    z-index: 5999;
+    z-index: $panel-overlay-z-index;
     display: none;
     &.active {
         display: block;

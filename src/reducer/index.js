@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import Panel from './panel';
 import User from './user';
+import History from './history';
 
 const rootReducer = combineReducers({
-  Panel,
-  User
+  User,
+  History
 });
 
 export default rootReducer;

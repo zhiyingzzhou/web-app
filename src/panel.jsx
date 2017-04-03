@@ -1,5 +1,4 @@
-import React,{Component} from 'react';
-import {Link} from 'react-router-dom';
+import React,{Component,PropTypes} from 'react';
 // 图片png
 import personalPng from 'images/panel/personal.png';
 import personalCenterPng from 'images/panel/personal-center.png';
@@ -8,37 +7,48 @@ import applyRecordPng from 'images/panel/apply-record.png';
 import myCollectionPng from 'images/panel/my-collection.png';
 import importResumePng from 'images/panel/import-resume.png';
 
-export default class Panel extends Component {
+//跳转页面
+import J from 'utils/jump';
 
-        state = {
-            recordNumber: 9
-        }
+// redux
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import * as Actions from 'actions';
 
-        listData = [
-            {
-                img: personalCenterPng,
-                text: '个人中心'
-            },
-            {
-                img: myResumePng,
-                text: '我的简历'
-            },
-            {
-                img: applyRecordPng,
-                text: '申请记录'
-            },
-            {
-                img: myCollectionPng,
-                text: '我的收藏'
-            },
-            {
-                img: importResumePng,
-                text: '导入简历'
-            },
-        ];
+import Panel from 'utils/panel';
 
-    componentDidMount() {
+class PanelComponent extends Component {
+
+    static contextTypes = {
+        router: PropTypes.object
+    };
+
+    state = {
+        recordNumber: 9
     }
+
+    listData = [
+        {
+            img: personalCenterPng,
+            text: '个人中心'
+        },
+        {
+            img: myResumePng,
+            text: '我的简历'
+        },
+        {
+            img: applyRecordPng,
+            text: '申请记录'
+        },
+        {
+            img: myCollectionPng,
+            text: '我的收藏'
+        },
+        {
+            img: importResumePng,
+            text: '导入简历'
+        },
+    ];
 
     generateRecordNumber() {
         // 申请记录个数
@@ -69,23 +79,25 @@ export default class Panel extends Component {
         return listEle;
     }
 
-    toLogin() {
-        myApp.closePanel();
-        mainView.router.load({
-            pageName: 'login'
-        });
+    shouldComponentUpdate(nextProps,nextState) {
+        return this.props.attr !== nextProps.attr;
+    }
+
+    _jumpPage(pathname) {
+        Panel.closePanel();
+        J.jumpToLoginOrRegister.bind(this,pathname)();
     }
 
     render() {
         const {attr} = this.props;
         return (
-            <div className={`panel panel-left panel-reveal ${attr.isPanelOpen ? 'active' : ''}`}>
+            <div className="panel panel-left panel-reveal">
                 <div className="header">
                     <img src={personalPng} alt=""/>
                     <p>
-                        <Link to="/login">登陆</Link>
+                        <a onClick={this._jumpPage.bind(this,'login')}>登陆</a>
                         /
-                        <Link to="/register">注册</Link>
+                        <a onClick={this._jumpPage.bind(this,'register')}>注册</a>
                     </p>
                 </div>
                 <ul className="feature-list">
@@ -95,4 +107,19 @@ export default class Panel extends Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+  state: {
+        history:state.History
+    }
+})
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(Actions.historyActions, dispatch)
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(PanelComponent);
 

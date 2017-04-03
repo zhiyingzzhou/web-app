@@ -26,6 +26,9 @@ ul,li {
 
 a {
     text-decoration: none;
+    &.link {
+        cursor: pointer;
+    }
 }
 
 a, input, select, textarea {

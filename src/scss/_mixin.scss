@@ -13,3 +13,18 @@
     -webkit-transform-origin: 50% 100%;
     transform-origin: 50% 100%;
 }
+
+@mixin animation-name($a) {
+    -webkit-animation-name: $a;
+    animation-name: $a;
+}
+
+@mixin animation-duration($a) {
+  -webkit-animation-duration: $a;
+  animation-duration: $a;
+}
+
+@mixin animation-fill-mode($a) {
+  -webkit-animation-fill-mode: $a;
+  animation-fill-mode: $a;
+}

@@ -21,7 +21,7 @@ module.exports = merge(baseWebpackConfig,{
             'redux': resolve('redux/dist/redux.min.js'),
             'react-redux': resolve('react-redux/dist/react-redux.min.js'),
             'redux-thunk': resolve('redux-thunk/dist/redux-thunk.min.js'),
-            'react-router-dom': resolve('react-router-dom/umd/react-router-dom.min.js')
+            'react-router': resolve('react-router/umd/ReactRouter.min.js')
         }
     },
     output: {

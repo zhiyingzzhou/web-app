@@ -10,6 +10,9 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 module.exports = merge(baseWebpackConfig,{
     devtool: '#cheap-module-eval-source-map',
+    output: {
+        chunkFilename: '[name].[chunkhash:5].chunk.js',
+    },
     plugins: [
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.HotModuleReplacementPlugin(),

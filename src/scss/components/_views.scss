@@ -5,11 +5,12 @@
 .views {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    background: #FFFFFF;
 }
 .view, .views {
     position: relative;
     height: 100%;
-    z-index: 5000;
+    z-index: $views-z-index;
 }
 
 .view {

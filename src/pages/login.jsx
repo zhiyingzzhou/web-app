@@ -1,10 +1,14 @@
-import React,{Component} from 'react';
-import {Link} from 'react-router-dom';
+import React,{Component,PropTypes} from 'react';
+
 // navbar components
-import Navbar from 'components/login-and-register/navbar';
+import NavbarBack from 'components/navbar-back';
 import Tips from 'components/login-and-register/tips';
 import ListItem from 'components/List/ListItem';
-import V from '../utils/validate';
+
+// 验证表单
+import V from 'utils/validate';
+//跳转页面
+import J from 'utils/jump';
 
 // redux
 import {bindActionCreators} from 'redux';
@@ -13,6 +17,10 @@ import * as Actions from 'actions';
 
 class LoginPage extends Component {
     
+    static contextTypes = {
+        router: PropTypes.object
+    };
+
     state = {
         userName: '',
         passWord: ''
@@ -22,9 +30,6 @@ class LoginPage extends Component {
     toLogin = this._toLogin.bind(this);
     inputUserName = this._inputUserName.bind(this);
     inputPassword = this._inputPassword.bind(this);
-
-    componentDidMount() {
-    }
 
     _toLogin() {
         // 点击登录按钮
@@ -45,12 +50,11 @@ class LoginPage extends Component {
             passWord: event.target.value
         });
     }
-
     render() {
         const {userName,passWord} = this.state;
         return (
-            <div className={`page navbar-fixed`} data-page='login'>
-                <Navbar title="登陆51金融圈" right={<Link to="/register">注册</Link>} />
+            <div className='page' data-page='login'>
+                <NavbarBack title="登陆51金融圈" right={<a className="link" onClick={J.jumpToLoginOrRegister.bind(this,'register')}>注册</a>} />
                 <div className="page-content">
                     {/*表单*/}
                     <div className="list-block">
@@ -76,11 +80,14 @@ class LoginPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  User: state.User
+  state: {
+        user:state.User,
+        history:state.History
+    }
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(Actions.userActions, dispatch)
+    actions: bindActionCreators({...Actions.userActions,...Actions.historyActions}, dispatch)
 })
 
 export default connect(

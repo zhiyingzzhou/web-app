@@ -3,7 +3,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #000;
+    // background: #000;
 }
 
 .page {
@@ -25,4 +25,178 @@
     height: 100%;
     position: relative;
     z-index: 1;
+}
+
+// Animations
+// -----------------------------------------------------------------------------
+
+// Show From Right
+@keyframes page-sfr-enter {
+  from {
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@-webkit-keyframes page-sfr-enter {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes page-sfr-leave {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0.9;
+    transform: translate3d(-20%, 0, 0);
+  }
+}
+
+@-webkit-keyframes page-sfr-leave {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0.9;
+    transform: translate3d(-20%, 0, 0);
+  }
+}
+
+// REVEAL
+// -----------------------------------------------------------------------------
+
+// Reveal From Right
+@keyframes page-rfr-enter {
+  from {
+    opacity: .9;
+    transform: translate3d(-20%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@-webkit-keyframes page-rfr-enter {
+  from {
+    opacity: .9;
+    -webkit-transform: translate3d(-20%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes page-rfr-leave {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: .9;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@-webkit-keyframes page-rfr-leave {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: .9;
+    -webkit-transform: translate3d(100%, 0, 0);
+  }
+}
+
+
+// Transition: Show
+// sfr: show-from-right
+// sfb: slide-from-bottom
+// -----------------------------------------------------------------------------
+.page-transition-sfr-enter-active,
+.page-transition-sfb-enter-active{
+  pointer-events: none;
+  z-index: 20;
+}
+
+.page-transition-sfr-leave,
+.page-transition-sfb-leave{
+  pointer-events: none;
+  z-index: 10;
+}
+
+// animation common
+.page-transition-sfr-enter-active,
+.page-transition-sfb-enter-active,
+.page-transition-sfr-leave,
+.page-transition-sfb-leave {
+  @include animation-duration(.4s);
+  @include animation-fill-mode(forwards);
+}
+
+.page-transition-sfr-enter-active{
+   @include animation-name(page-sfr-enter);
+}
+
+.page-transition-sfb-enter-active{
+   @include animation-name(page-sfb-enter);
+}
+
+.page-transition-sfr-leave {
+   @include animation-name(page-sfr-leave);
+}
+
+.page-transition-sfb-leave {
+   @include animation-name(page-sfb-leave);
+}
+
+// Transition: Reveal
+// rfr: reveal from right
+// rfl: reveal from left
+// -----------------------------------------------------------------------------
+
+.page-transition-rfr-enter-active,
+.page-transition-rfb-enter-active {
+  pointer-events: none;
+  z-index: 10;
+}
+
+.page-transition-rfr-leave,
+.page-transition-rfb-leave {
+  pointer-events: none;
+  z-index: 20;
+}
+
+// animation common
+.page-transition-rfr-enter-active,
+.page-transition-rfb-enter-active,
+.page-transition-rfr-leave,
+.page-transition-rfb-leave {
+    @include animation-duration(.4s);
+    @include animation-fill-mode(forwards);
+}
+
+.page-transition-rfr-enter-active {
+    @include animation-name(page-rfr-enter);
+}
+
+.page-transition-rfb-enter-active {
+    @include animation-name(page-rfb-enter);
+}
+
+.page-transition-rfr-leave {
+    @include animation-name(page-rfr-leave);
+}
+
+.page-transition-rfb-leave {
+    @include animation-name(page-rfb-leave);
 }

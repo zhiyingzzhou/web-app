@@ -18,8 +18,11 @@ $border-color: #d5d5d5;
 $record-background-color: #d70000;
 
 // z-index设置
-$navbar-z-index: 2;
-$page-content-z-index: 1;
+$navbar-z-index: 500;
+$page-content-z-index: 5000;
+$panel-z-index: 1000;
+$panel-overlay-z-index: 5999;
+$views-z-index: 5000;
 
 // height
 $navbar-height: px2rem(104px);

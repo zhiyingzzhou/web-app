@@ -27,8 +27,8 @@ export default class ListItem extends Component {
                         <div className="item-title">{title}</div>
                         <div className="item-input">
                             <input type={inputType} placeholder={placeholder} value={value} onChange={this.onChange} />
-                            {after && after}
                         </div>
+                        {after && after}
                     </div>
                 </div>
             </li>

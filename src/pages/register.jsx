@@ -1,7 +1,6 @@
-import React,{Component} from 'react';
-import {Link} from 'react-router-dom';
+import React,{Component , PropTypes} from 'react';
 // navbar
-import Navbar from 'components/login-and-register/navbar';
+import NavbarBack from 'components/navbar-back';
 //Tips
 import Tips from 'components/login-and-register/tips';
 //ListItem
@@ -11,11 +10,24 @@ import ListItem from 'components/List/ListItem';
 import rightPng from 'images/right.png';
 
 // utils
-import U from '../utils';
-import V from '../utils/validate';
-import countDown from '../utils/countdown';
+import U from 'utils';
+// 验证表单
+import V from 'utils/validate';
+//跳转页面
+import J from 'utils/jump';
+import countDown from 'utils/countdown';
+import Modal from 'utils/modal';
 
-export default class RegisterPage extends Component {
+// redux
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import * as Actions from 'actions';
+
+class RegisterPage extends Component {
+
+    static contextTypes = {
+        router: PropTypes.object
+    };
 
     //bind event
     inputPhoneNumber = this._inputPhoneNumber.bind(this);
@@ -66,8 +78,21 @@ export default class RegisterPage extends Component {
 
     _getCode() {
         // 获取验证码
-        const {codeText} = this.state;
+        const {codeText,phoneNumber} = this.state;
+        // 判断是否为数字,如果为数字说明倒计时直接return false
         if(U.isNum(codeText)) return false;
+        if(phoneNumber.length === 0 ){
+            Modal.openToast('请输入您的手机号码！');
+            return;
+        }
+        if(!V.validatePhoneNumber(phoneNumber)){
+            Modal.openToast('请输入有效的手机号码！');
+            return;
+        }
+        const {userRegisterPost} = this.props.actions;
+        userRegisterPost({
+            ...this.state
+        });
         countDown.bind(this)({
             codeText: codeText
         });
@@ -77,14 +102,13 @@ export default class RegisterPage extends Component {
         //点击注册按钮
         const validateRegisterForm = V.validateRegisterForm.bind(this);
         validateRegisterForm();
-    }
+    } 
 
     render() {
         const {isChecked,phoneNumber,verifycode,passWord,codeText} = this.state;
-
         return (
-            <div className="page navbar-fixed" data-page="register">
-                <Navbar title="新用户注册" right={<Link to="/login">登录</Link>} />
+            <div className="page" data-page="register">
+                <NavbarBack title="新用户注册" right={<a className="link" onClick={J.jumpToLoginOrRegister.bind(this,'login')}>登录</a>} />
                 <div className="page-content">
                     {/*表单*/}
                     <div className="list-block">
@@ -135,3 +159,19 @@ export default class RegisterPage extends Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+  state: {
+        user:state.User,
+        history:state.History
+    }
+})
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators({...Actions.userActions,...Actions.historyActions}, dispatch)
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(RegisterPage);
