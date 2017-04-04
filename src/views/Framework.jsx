@@ -1,7 +1,4 @@
 import React from 'react';
-// 侧边栏
-import PanelComponent from '../panel';
-
 import TransitionPages from 'app/components/TransitionPages';
 
 import Panel from 'utils/panel';
@@ -47,9 +44,8 @@ export default class Framework extends React.Component {
         const {location} = this.props;
         return (
             <div id="content-inner">
-                <div onClick={this._closePanel} className="panel-overlay">
-                </div>
-                <PanelComponent location={location} />
+                {/*<div onClick={this._closePanel} className="panel-overlay">
+                </div>*/}
                 <div className="views">
                     <div className="view">
                         <TransitionPages location={location}>

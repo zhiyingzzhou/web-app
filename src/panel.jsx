@@ -61,6 +61,7 @@ class PanelComponent extends Component {
         if(user){
             this.props.actions.getUserInfo(user);
         }
+        console.log('componentDidMount');
     }
 
     generateRecordNumber() {
@@ -93,11 +94,10 @@ class PanelComponent extends Component {
     }
 
     shouldComponentUpdate(nextProps,nextState) {
-        return this.props.state !== nextProps.state;
+        return nextProps.location.pathname === '/';
     }
 
     _jumpPage(pathname) {
-        Panel.closePanel();
         J.jumpPage.bind(this,`/user/${pathname}`)();
     }
 

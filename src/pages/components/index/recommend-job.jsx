@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 
 // 图片
 import iconPng from 'images/homepage/icon.png';
-import arrowRightPng from 'images/homepage/arrow-right.png';
+import arrowRightPng from 'images/arrow-right.png';
 
 export default class IndexPage extends Component {
     constructor() {

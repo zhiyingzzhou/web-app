@@ -6,6 +6,9 @@ import Tips from 'components/login-and-register/tips';
 //ListItem
 import ListItem from 'components/List/ListItem';
 
+// footer component
+import FooterComponent from 'components/footer';
+
 // right png
 import rightPng from 'images/right.png';
 
@@ -153,6 +156,7 @@ class RegisterPage extends Component {
                     </a>
                     {/*提示*/}
                     <Tips />
+                    <FooterComponent />
                 </div>
             </div>
         );

@@ -11,7 +11,7 @@ export const ajaxPost = (url,data,callback) => {
     .done((response)=>{
         const {returnCode,returnMsg} = JSON.parse(response);
         if(returnCode === 'AAAAAAA'){
-            callback(JSON.parse(response));
+            callback($.parseJSON(response));
         }
     })
 };

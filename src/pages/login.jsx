@@ -5,6 +5,9 @@ import NavbarBack from 'components/navbar-back';
 import Tips from 'components/login-and-register/tips';
 import ListItem from 'components/List/ListItem';
 
+// footer component
+import FooterComponent from 'components/footer';
+
 // 验证表单
 import V from 'utils/validate';
 //跳转页面
@@ -93,6 +96,7 @@ class LoginPage extends Component {
                     </div>
                     {/*提示*/}
                     <Tips />
+                    <FooterComponent />
                 </div>
             </div> 
         );

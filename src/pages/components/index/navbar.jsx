@@ -20,7 +20,7 @@ export default class NavbarIndex extends Component {
     _generateLeftEle() {
         //生成主页left dom
         return (
-            <a href="#" className="open-panel" onClick={this._openPanel}>
+            <a href="javascript:void(0);" className="open-panel" onClick={this._openPanel}>
                 <img className="menu" src={menuPng} alt="菜单"/>
             </a>
         );
