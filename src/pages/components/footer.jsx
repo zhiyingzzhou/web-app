@@ -7,8 +7,9 @@ import letterPng from 'images/letter.png';
 export default class Footer  extends Component {
 
     render() {
+        const {isHidden=false} = this.props;
         return (
-            <div className="footer">
+            <div className="footer" style={{display: `${isHidden ? "none" : "block"}`}}>
                 <div className="table">
                     <div className="table-cell">
                         <img src={phonePng} alt="电话"/>

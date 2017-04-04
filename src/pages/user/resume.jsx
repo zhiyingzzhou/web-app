@@ -28,8 +28,7 @@ class ResumePage extends Component {
     }
 
     render() {
-        const {state} = this.props,
-            {myResume={}} = state.user,
+        const {myResume={}} = this.props,
             {datanum=0,data} = myResume;
         return (
             <div className='page' data-page='resume'>
@@ -78,9 +77,7 @@ class ResumePage extends Component {
 }
 
 const mapStateToProps = state => ({
-  state: {
-        user: state.User
-    }
+    myResume: state.User.myResume
 })
 
 const mapDispatchToProps = dispatch => ({

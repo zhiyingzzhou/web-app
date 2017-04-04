@@ -33,6 +33,8 @@ class LoginPage extends Component {
     toLogin = this._toLogin.bind(this);
     inputUserName = this._inputUserName.bind(this);
     inputPassword = this._inputPassword.bind(this);
+    onFocus = this._onFocus.bind(this);
+    onBlur = this._onBlur.bind(this);
 
     _toLogin() {
         // 点击登录按钮
@@ -54,16 +56,19 @@ class LoginPage extends Component {
         });
     }
 
-    shouldComponentUpdate(nextProps,nextState){
-        const {baseInfo} = nextProps.state.user;
-        if(baseInfo && typeof baseInfo === 'object'){
-            J.jumpByLoginSuccess.bind(this)();
-        }
-        return true;
+    _onFocus(){
+        this.setState({
+            footerHidden: true
+        });
+    }
+    _onBlur() {
+        this.setState({
+            footerHidden: false
+        });
     }
 
     render() {
-        const {userName,passWord} = this.state;
+        const {userName,passWord,footerHidden} = this.state;
         return (
             <div className='page' data-page='login'>
                 <NavbarBack title="登陆51金融圈" right={<a className="link" onClick={J.jumpToLoginOrRegister.bind(this,'register')}>注册</a>} />
@@ -76,6 +81,8 @@ class LoginPage extends Component {
                                 placeholder="请输入用户名" 
                                 onChange={this.inputUserName} 
                                 value={userName} 
+                                onFocus={this.onFocus} 
+                                onBlur={this.onBlur}
                             />
                             <ListItem 
                                 inputType="password" 
@@ -83,6 +90,8 @@ class LoginPage extends Component {
                                 placeholder="请输入密码" 
                                 onChange={this.inputPassword} 
                                 value={passWord} 
+                                onFocus={this.onFocus} 
+                                onBlur={this.onBlur}
                             />
                         </ul>
                     </div>
@@ -96,7 +105,7 @@ class LoginPage extends Component {
                     </div>
                     {/*提示*/}
                     <Tips />
-                    <FooterComponent />
+                    <FooterComponent isHidden={footerHidden} />
                 </div>
             </div> 
         );
@@ -104,14 +113,13 @@ class LoginPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  state: {
-        user:state.User,
-        history:state.History
-    }
+    History:state.History
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators({...Actions.userActions,...Actions.historyActions}, dispatch)
+    pushHistory: bindActionCreators(Actions.historyActions.pushHistory, dispatch),
+    popHistory: bindActionCreators(Actions.historyActions.popHistory, dispatch),
+    userLoginPost: bindActionCreators(Actions.userActions.userLoginPost, dispatch),
 })
 
 export default connect(

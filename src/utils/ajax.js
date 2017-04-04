@@ -1,3 +1,4 @@
+import store from 'store';
 export const ajaxPost = (url,data,callback) => {
     data.head.type = 'h';
     $.ajax({
@@ -16,11 +17,11 @@ export const ajaxPost = (url,data,callback) => {
     })
 };
 
-export const ajaxPostByToken = (url,data,getState,callback) => {
-    const {User} = getState();
+export const ajaxPostByToken = (url,data,callback) => {
+    const user = store.get('user');
     data.head.type = 'h';
     data.data = data.data || {};
-    data.data.token = User.baseInfo.token;
-    data.data.tokenKey = User.baseInfo.tokenKey;
+    data.data.token = user.token;
+    data.data.tokenKey = user.tokenKey;
     ajaxPost(url,data,callback);
 };

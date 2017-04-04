@@ -10,12 +10,11 @@ module.exports = (function() {
     }
 
     Jump.prototype.jumpByLoginSuccess = function(){
-        const {state,location,actions} = this.props,
-            {history} = state;
-        let lastPath = history[history.length - 1] || '/';
+        const {History,location,popHistory} = this.props;
+        let lastPath = History[History.length - 1] || '/';
             // 如果从注册页面进来直接返回首页,并且将注册页面从history中删除
             if(lastPath === '/user/register'){
-                actions.popHistory();
+                popHistory();
                 lastPath = '/';
             }
             this.context.router.push({
@@ -24,10 +23,10 @@ module.exports = (function() {
             });
     }
 
-    Jump.prototype.jumpPage = function(pathname){
+    Jump.prototype.jumpPage = function(pathname,root){
         let transitionType = TransitionPages.getState('right');
         const {actions,location} = this.props;
-        actions.pushHistory(location.pathname);
+        actions.pushHistory(root ? root : location.pathname);
         this.context.router.push({
             pathname: pathname,
             state: transitionType
@@ -37,18 +36,17 @@ module.exports = (function() {
     // login and register Jump
     Jump.prototype.jumpToLoginOrRegister = function(pathname){
         let transitionType = TransitionPages.getState();
-        const {actions,location,state} = this.props,
+        const {pushHistory,location,History} = this.props,
             {router} = this.context,
-            {history} = state,
         //获取history数组中的最后一个路径
-            lastPath = history[history.length-1],
+            lastPath = History[History.length-1],
         // 拼接要跳转页面的url
             jumpPathname = `${pathOptions().user}${pathname}`;
         // 判断history数组中最后一个路径是否为要跳转到的页面
-        if(history.length === 0 || `${lastPath}` !== jumpPathname){
+        if(History.length === 0 || `${lastPath}` !== jumpPathname){
             // 如果不是说明上一个页面并不是要跳转到的页面
             if(lastPath !== location.pathname){
-                actions.pushHistory(location.pathname);
+                pushHistory(location.pathname);
             }
             transitionType = TransitionPages.getState('right');
         }

@@ -25,10 +25,6 @@ class PanelComponent extends Component {
         router: PropTypes.object
     };
 
-    state = {
-        recordNumber: 9
-    }
-
     listData = [
         {
             img: personalCenterPng,
@@ -57,26 +53,32 @@ class PanelComponent extends Component {
     ];
 
     componentDidMount() {
-        const user = store.get('user');
-        if(user){
-            this.props.actions.getUserInfo(user);
-        }
-        console.log('componentDidMount');
+        setTimeout(()=>{
+            const user = store.get('user');
+            if(user){
+                this.props.actions.getUserInfo(user);
+                this.props.actions.getPersonalStatistics();
+            }
+        },400);
     }
 
-    generateRecordNumber() {
+    generateRecordNumber(num) {
         // 申请记录个数
-        const {recordNumber = 0} = this.state;
-        if(recordNumber === 0) return null;
         return (
             <div className="record-number">
-                {recordNumber}
+                {num}
             </div>
         )
     }
 
     generateFeatureList() {
-        const listEle = [];
+        const {state} = this.props,
+            {personalStatistics={}} = state.user,
+            {favnum=0,resumenum=0,applynum=0} = personalStatistics,
+            listEle = [];
+            this.listData[1].num = resumenum;
+            this.listData[2].num = applynum;
+            this.listData[3].num = favnum;
         this.listData.forEach((item,index)=>{
             listEle.push(
                 <a key={`panel_item_${index}`} href="javascript:void(0);" onClick={this._jumpPage.bind(this,item.pathname)}>
@@ -84,7 +86,7 @@ class PanelComponent extends Component {
                         <div className="table-cell">
                             <img src={item.img} alt={item.text} />
                             <p>{item.text}</p>
-                            {item.text === '申请记录' ? this.generateRecordNumber() : null}
+                            {item.num && item.num > 0 ? this.generateRecordNumber(item.num) : null}
                         </div>
                     </li>
                 </a>
@@ -93,17 +95,14 @@ class PanelComponent extends Component {
         return listEle;
     }
 
-    shouldComponentUpdate(nextProps,nextState) {
-        return nextProps.location.pathname === '/';
-    }
-
     _jumpPage(pathname) {
-        J.jumpPage.bind(this,`/user/${pathname}`)();
+        J.jumpPage.bind(this,`/user/${pathname}`,'/')();
     }
 
     render() {
-        const {state} = this.props;
-        const {baseInfo} = state.user;
+        const {state={user:{}}} = this.props,
+            {baseInfo,personalStatistics={}} = state.user,
+            {loginname=''} = personalStatistics;
         return (
             <div className="panel panel-left panel-reveal">
                 {!baseInfo && 
@@ -119,7 +118,7 @@ class PanelComponent extends Component {
                 {baseInfo &&
                     <div className="header-with-text">
                         <p className="login">欢迎您，</p>
-                        <p className="login">{baseInfo.username}</p>
+                        <p className="login">{loginname}</p>
                     </div>
                 }
                 <ul className="feature-list">

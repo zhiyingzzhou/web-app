@@ -38,6 +38,8 @@ class RegisterPage extends Component {
     inputPassWord = this._inputPassWord.bind(this);
     getCode = this._getCode.bind(this);
     toRegister = this._toRegister.bind(this);
+    onFocus = this._onFocus.bind(this);
+    onBlur = this._onBlur.bind(this);
 
     state = {
         isChecked: false, // checkbox 默认没有选中
@@ -93,8 +95,7 @@ class RegisterPage extends Component {
             Modal.openToast('请输入有效的手机号码！');
             return;
         }
-        const {userGetVerifyCode} = this.props.actions;
-        userGetVerifyCode(phoneNumber);
+        this.props.userGetVerifyCode(phoneNumber);
         countDown.bind(this)({
             codeText: codeText
         });
@@ -106,8 +107,19 @@ class RegisterPage extends Component {
         validateRegisterForm();
     } 
 
+     _onFocus(){
+        this.setState({
+            footerHidden: true
+        });
+    }
+    _onBlur() {
+        this.setState({
+            footerHidden: false
+        });
+    }
+
     render() {
-        const {isChecked,phoneNumber,verifycode,passWord,codeText,getcodeDisabled} = this.state;
+        const {isChecked,phoneNumber,verifycode,passWord,codeText,getcodeDisabled,footerHidden} = this.state;
         return (
             <div className="page" data-page="register">
                 <NavbarBack title="新用户注册" right={<a className="link" onClick={J.jumpToLoginOrRegister.bind(this,'login')}>登录</a>} />
@@ -120,7 +132,9 @@ class RegisterPage extends Component {
                                 title="手机" 
                                 placeholder="请输入手机号码" 
                                 value={phoneNumber} 
-                                onChange={this.inputPhoneNumber} 
+                                onChange={this.inputPhoneNumber}
+                                onFocus={this.onFocus} 
+                                onBlur={this.onBlur}
                             />
                             <ListItem 
                                 title="验证码" 
@@ -128,13 +142,17 @@ class RegisterPage extends Component {
                                 after={<a className={`get-code ${getcodeDisabled ? 'disabled' : ''}`} onClick={this.getCode}>{codeText}</a>} 
                                 value={verifycode} 
                                 onChange={this.inputCode} 
+                                onFocus={this.onFocus} 
+                                onBlur={this.onBlur}
                             />
                             <ListItem 
                                 inputType="password" 
                                 title="密码" 
                                 placeholder="请输入密码" 
                                 value={passWord} 
-                                onChange={this.inputPassWord} 
+                                onChange={this.inputPassWord}
+                                onFocus={this.onFocus} 
+                                onBlur={this.onBlur} 
                             />
                         </ul>
                     </div>
@@ -156,7 +174,7 @@ class RegisterPage extends Component {
                     </a>
                     {/*提示*/}
                     <Tips />
-                    <FooterComponent />
+                    <FooterComponent isHidden={footerHidden} />
                 </div>
             </div>
         );
@@ -164,14 +182,13 @@ class RegisterPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  state: {
-        user:state.User,
-        history:state.History
-    }
+    History:state.History
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators({...Actions.userActions,...Actions.historyActions}, dispatch)
+    pushHistory: bindActionCreators(Actions.historyActions.pushHistory, dispatch),
+    userRegisterPost: bindActionCreators(Actions.userActions.userRegisterPost, dispatch),
+    userGetVerifyCode: bindActionCreators(Actions.userActions.userGetVerifyCode, dispatch)
 })
 
 export default connect(

@@ -3,7 +3,7 @@ import TransitionPages from 'app/components/TransitionPages';
 
 import Panel from 'utils/panel';
 import Modal from 'utils/modal';
-import Methods from 'utils/methods';
+
 export default class Framework extends React.Component {
     
     componentDidMount() {
@@ -44,8 +44,8 @@ export default class Framework extends React.Component {
         const {location} = this.props;
         return (
             <div id="content-inner">
-                {/*<div onClick={this._closePanel} className="panel-overlay">
-                </div>*/}
+                <div onClick={this._closePanel} className="panel-overlay">
+                </div>
                 <div className="views">
                     <div className="view">
                         <TransitionPages location={location}>

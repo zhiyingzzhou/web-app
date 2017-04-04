@@ -1,0 +1,147 @@
+[data-page="personal"] {
+    background-color: $page-background-color !important;
+    .list-block:first-child {
+        ul {
+            background-color: $page-background-color;
+            &:after {
+                height: 0 !important;
+            }
+        }
+        .item-content {
+            padding: 0 px2rem(35px) 0 px2rem(35px);
+        }
+        .item-inner {
+            padding-top: px2rem(32px);
+            padding-bottom: px2rem(30px);
+            color: $standard-color;
+            font-weight: bold;
+        }
+    }
+    .list-block {
+        color: $standard-color;
+        .item-content {
+            padding-left: px2rem(36px);
+            padding-right: px2rem(55px);
+        }
+        .item-inner {
+            padding-top: px2rem(23px);
+            padding-bottom: px2rem(27px);
+            &:after {
+                height: 0 !important;
+            }
+            span {
+                color: $theme-color;
+            }
+        }
+        li:last-child {
+            .item-inner:after {
+                height: 0 !important;
+            }
+        }
+    }
+    .list-block:nth-child(3) {
+        margin-top: px2rem(17px);
+    }
+
+    // 退出登录按钮
+    .logout {
+        width: px2rem(681px);
+        height: px2rem(95px);
+        background-color: $theme-color;
+        color: #FFF;
+        // text-align: center;
+        // line-height: px2rem(95px);
+        // display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: px2rem(107px);
+        margin: 0 auto;
+    }
+
+    //创建简历按钮
+    .create-resume {
+        width: px2rem(146px);
+        height: px2rem(53px);
+        background-color: $theme-color;
+        // display: inline-block;
+        // text-align: center;
+        // line-height: px2rem(53px);
+        border-radius: px2rem(10px);
+        color: #FFF;
+    }
+
+    // 箭头
+    .item-after img {
+        width: px2rem(21px);
+        height: px2rem(39px);
+    }
+
+    .my-info {
+        li:last-child {
+            .item-content:after {
+                height: 0px !important;
+            }
+        }
+        .item-content:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: auto;
+            top: auto;
+            height: 1px;
+            width: 100%;
+            background-color: $border-color;
+            display: block;
+            z-index: 15;
+            -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+        }
+    }
+}
+
+[data-dpr="1"] [data-page="personal"] {
+    .item-title {
+        font-size: 15px;
+    }
+    .create-resume {
+        font-size: 14px;
+    }
+    .logout {
+        font-size: 21px;
+    }
+    .item-content:after {
+        transform: scaleY(.33);
+    }
+}
+
+[data-dpr="2"] [data-page="personal"] {
+    .item-title {
+        font-size: 30px;
+    }
+    .create-resume {
+        font-size: 26px;
+    }
+    .logout {
+        font-size: 42px;
+    }
+    .item-content:after {
+        transform: scaleY(.5);
+    }
+}
+
+[data-dpr="3"] [data-page="personal"] {
+    .item-title {
+        font-size: 45px;
+    }
+    .create-resume {
+        font-size: 42px;
+    }
+    .logout {
+        font-size: 63px;
+    }
+    .item-content:after {
+        transform: scaleY(.33);
+    }
+}

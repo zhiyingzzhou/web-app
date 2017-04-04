@@ -17,7 +17,6 @@ module.exports = (function() {
 
     //验证注册表单
     validete.prototype.validateRegisterForm = function() {
-        const {userRegisterPost} = this.props.actions;
         const {isChecked,phoneNumber,verifycode,passWord} = this.state;
         if(phoneNumber.length === 0 ){
             Modal.openToast('请输入您的手机号码！');
@@ -39,7 +38,7 @@ module.exports = (function() {
             Modal.openToast('51金融圈协议务必同意!');
             return;
         }
-        userRegisterPost({
+        this.props.userRegisterPost({
             ...this.state
         });
     }
@@ -56,10 +55,9 @@ module.exports = (function() {
             Modal.openToast('请输入密码！');
             return;
         }
-        const {userLoginPost} = this.props.actions;
-        userLoginPost({
+        this.props.userLoginPost({
             ...this.state
-        });
+        },this);
     }
     return new validete();
 })();

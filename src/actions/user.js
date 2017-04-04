@@ -6,6 +6,9 @@ import {ajaxPost,ajaxPostByToken} from 'utils/ajax';
 import md5 from 'md5';
 import store from 'store';
 
+//跳转页面
+import J from 'utils/jump';
+
 const userLogin = {
     type: types.USER_LOGIN
 };
@@ -16,6 +19,14 @@ const userRegister = {
 
 const getMyResume = {
     type: types.MY_RESUME
+};
+
+const personalStatistics = {
+    type: types.PERSONAL_STATISTICS
+}
+
+const applyRecord = {
+    type: types.APPLY_RECORD
 }
 
 export const getUserInfo = userInfo => (dispatch,getStat) => {
@@ -23,7 +34,7 @@ export const getUserInfo = userInfo => (dispatch,getStat) => {
 }
 
 // 用户登录
-export const userLoginPost = userInputInfo => (dispatch,getState) => {
+export const userLoginPost = (userInputInfo,loginContext) => (dispatch,getState) => {
     const {userName,passWord} = userInputInfo;
     ajaxPost(`${prefixUrl}/login`,{
             "head": {
@@ -37,7 +48,8 @@ export const userLoginPost = userInputInfo => (dispatch,getState) => {
         const userInfo = $.extend(res.data,{token:res.token,tokenKey:res.tokenKey});
         //本地保存用户信息
         store.set('user',userInfo);
-        dispatch($.extend(userLogin,{user:userInfo}));
+        // dispatch($.extend(userLogin,{user:userInfo}));
+        J.jumpByLoginSuccess.bind(loginContext)();
     })
 }
 
@@ -51,6 +63,7 @@ export const userGetVerifyCode = phoneNumber => (dispatch,getState) => {
                 "phone": $.trim(phoneNumber)
             }
     },(res)=>{
+        dispatch();
     });
 }
 
@@ -77,7 +90,7 @@ export const getPersonalStatistics = () => (dispatch,getState) => {
             "transcode": "I0001"
         }
     },(res)=>{
-        console.log(res);
+        dispatch($.extend(personalStatistics,{personalStatistics:$.parseJSON(res.data)}));
     })
 }
 
@@ -87,7 +100,7 @@ export const getResumeList = () => (dispatch,getState) => {
         "head": {
             "transcode": "P0001"
         }
-    },getState,res=>{
+    },res=>{
         dispatch(
             $.extend(
                 getMyResume,
@@ -100,6 +113,17 @@ export const getResumeList = () => (dispatch,getState) => {
             )
         );
     });
+}
+
+//获取职位申请记录
+export const getApplyRecord = () => (dispatch,getState) => {
+    ajaxPostByToken(`${prefixUrl}/persoanl`,{
+        "head": {
+            "transcode": "P0004"
+        }
+    },(res)=>{
+        dispatch($.extend(applyRecord,{applyRecord:$.parseJSON(res.data)}));
+    })
 }
 
 //删除个人简历

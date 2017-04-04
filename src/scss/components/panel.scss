@@ -4,16 +4,18 @@
     background: $panel-background-color;
     padding: px2rem(19px) px2rem(9px) 0 px2rem(10px);
     z-index: $panel-z-index;
-    display: none;
+    display: block;
     box-sizing: border-box;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     position: absolute;
     top: 0;
     height: 100%;
-    left: 0;
+    left: -(px2rem($panel-width) + 0.1rem);
+    transition-duration: .4s;
+    transition-property: left;
     &.active {
-        display: block;
+        left: 0;
     }
     // 头像区域
     .header-with-image {
@@ -63,6 +65,9 @@
         color: #FFF;
         line-height: px2rem(31px);
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     // 功能列表
@@ -100,23 +105,7 @@
     display: none;
     &.active {
         display: block;
-    }
-}
-
-.views {
-    transition-duration: .4s;
-    transition-property: transform;
-}
-
-#content-inner.with-panel-left-reveal {
-    .views,.panel-overlay {
-        transform: translate3d($panel-width,0,0);
-    }
-}
-
-#content-inner.with-panel-left-reveal-out {
-    .views,.panel-overlay {
-        transform: translate3d(0,0,0);
+        left: $panel-width;
     }
 }
 

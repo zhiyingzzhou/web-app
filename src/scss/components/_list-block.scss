@@ -118,10 +118,20 @@
     }
 }
 
-[data-dpr="2"] .item-inner:after {
-    transform: scaleY(.5);
+[data-dpr="1"] .list-block {
+    ul:before , ul:after , .item-inner:after {
+        transform: scaleY(.33) !important;
+    }
 }
 
-[data-dpr="3"] .item-inner:after {
-    transform: scaleY(.33);
+[data-dpr="2"] .list-block {
+    ul:before , ul:after , .item-inner:after {
+        transform: scaleY(.5) !important;
+    }
+}
+
+[data-dpr="3"] .list-block {
+    ul:before , ul:after , .item-inner:after {
+        transform: scaleY(.33) !important;
+    }
 }
