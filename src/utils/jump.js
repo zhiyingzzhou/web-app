@@ -23,10 +23,15 @@ module.exports = (function() {
             });
     }
 
-    Jump.prototype.jumpPage = function(pathname,root){
+    Jump.prototype.jumpPage = function(pathname){
         let transitionType = TransitionPages.getState('right');
         const {actions,location} = this.props;
-        actions.pushHistory(root ? root : location.pathname);
+        var pattern = /\.html$/ig;
+        if(pattern.test(location.pathname)){
+            actions.pushHistory('/');
+        }else{
+            actions.pushHistory(location.pathname);
+        }
         this.context.router.push({
             pathname: pathname,
             state: transitionType

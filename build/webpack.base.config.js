@@ -57,7 +57,8 @@ module.exports = {
             'actions': resolve('src/actions'),
             'app': resolve('app'),
             'TransitionPages': resolve('app/components/TransitionPages'),
-            'utils': resolve('src/utils')
+            'utils': resolve('src/utils'),
+            'data': resolve('src/data')
             // 'react': resolve('node_modules/react/dist/react.min.js'),
             // 'react-dom': resolve('node_modules/react-dom/dist/react-dom.min.js')
         },

@@ -2,6 +2,9 @@
     .list-block ul:after {
         height: 0px !important;
     }
+    .item-title {
+        font-size: px2rem(30px);
+    }
     .item-inner {
         padding: px2rem(18px) px2rem(55px) px2rem(19px) px2rem(36px);
     }
@@ -32,21 +35,5 @@
         vertical-align: middle;
         width: px2rem(53px);
         height: px2rem(52px);
-    }
-}
-
-[data-dpr="1"] [data-page="resume"] {
-    .item-title {
-        font-size: 15px;
-    }
-}
-[data-dpr="2"] [data-page="resume"] {
-    .item-title {
-        font-size: 30px;
-    }
-}
-[data-dpr="3"] [data-page="resume"] {
-    .item-title {
-        font-size: 45px;
     }
 }

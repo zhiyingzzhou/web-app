@@ -8,6 +8,7 @@ div.feature {
     padding: px2rem(17px) px2rem(18px) px2rem(35px);
     box-shadow: 3px 3px 10px $border-color;
     p.title {
+        font-size: px2rem(30px);
         color: $assist-color;
         span {
             color: $theme-color;
@@ -16,7 +17,7 @@ div.feature {
         padding-bottom: px2rem(13px);
         position: relative;
         &:after {
-            @include borderAfter;
+            @include border-bottom;
         }
     }
     // 功能列表 
@@ -38,45 +39,10 @@ div.feature {
             margin: px2rem(18px) 0 0;
             text-align: center;
             color: #a9a9a9;
+            font-size: px2rem(26px);
         }
         &:nth-child(2),&:nth-child(3),&:nth-child(4) {
             margin-left: px2rem(71px);
         }
-    }
-}
-[data-dpr="1"] .feature {
-    p.title {
-        font-size: 15px;
-        line-height: 15px;
-    }
-    li p {
-        font-size: 13px;
-        line-height: 12px;
-    }
-}
-[data-dpr="2"] .feature {
-    p.title {
-        font-size: 30px;
-        line-height: 30px;
-        &:after {
-            transform: scaleY(.5);
-        }
-    }
-    li p {
-        font-size: 26px;
-        line-height: 25px;
-    }
-}
-[data-dpr="3"] .feature {
-    p.title {
-        font-size: 45px;
-        line-height: 45px;
-        &:after {
-            transform: scaleY(.33);
-        }
-    }
-    li p {
-        font-size: 39px;
-        line-height: 38px;
     }
 }

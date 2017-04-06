@@ -6,34 +6,10 @@
         margin: 0;
         position: relative;
         &:before{
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: auto;
-            right: auto;
-            height: 1px;
-            width: 100%;
-            background-color: #c8c7cc;
-            display: block;
-            z-index: 15;
-            -webkit-transform-origin: 50% 0;
-            transform-origin: 50% 0;
+            @include border-top;
         }
         &:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            right: auto;
-            top: auto;
-            height: 1px;
-            width: 100%;
-            background-color: #c8c7cc;
-            display: block;
-            z-index: 15;
-            -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
+            @include border-bottom;
         }
     }
     li {
@@ -42,7 +18,6 @@
     }
     .item-content {
         box-sizing: border-box;
-        min-height: 44px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -59,7 +34,6 @@
     .item-inner {
         position: relative;
         width: 100%;
-        min-height: 44px;
         box-sizing: border-box;
         display: -webkit-box;
         display: -ms-flexbox;
@@ -80,19 +54,7 @@
         -webkit-align-self: stretch;
         align-self: stretch;
         &:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            right: auto;
-            top: auto;
-            height: 1px;
-            width: 100%;
-            background-color: #c8c7cc;
-            display: block;
-            z-index: 15;
-            -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
+            @include border-bottom;
         }
     }
     .item-title {
@@ -115,23 +77,5 @@
         -webkit-flex-shrink: 1;
         -ms-flex: 0 1 auto;
         flex-shrink: 1;
-    }
-}
-
-[data-dpr="1"] .list-block {
-    ul:before , ul:after , .item-inner:after {
-        transform: scaleY(.33) !important;
-    }
-}
-
-[data-dpr="2"] .list-block {
-    ul:before , ul:after , .item-inner:after {
-        transform: scaleY(.5) !important;
-    }
-}
-
-[data-dpr="3"] .list-block {
-    ul:before , ul:after , .item-inner:after {
-        transform: scaleY(.33) !important;
     }
 }

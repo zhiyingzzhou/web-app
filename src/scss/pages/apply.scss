@@ -10,6 +10,7 @@
         padding: px2rem(43px) 0 px2rem(25px);
     }
     .top {
+        font-size: px2rem(30px);
         color: $standard-color;
         margin-bottom: px2rem(13px);
     }
@@ -17,38 +18,11 @@
         margin-bottom: px2rem(17px);
     }
     .middle,.bottom {
-        line-height: px2rem(26px);
+        font-size: px2rem(26px);
         color: $assist-color;
     }
     img {
         width: px2rem(21px);
         height: px2rem(39px);
-    }
-}
-
-[data-dpr="1"] [data-page="apply"] {
-    .top {
-        font-size: 16px;
-    }
-    .middle,.bottom {
-        font-size: 14px;
-    }
-}
-
-[data-dpr="2"] [data-page="apply"] {
-    .top {
-        font-size: 30px;
-    }
-    .middle,.bottom {
-        font-size: 26px;
-    }
-}
-
-[data-dpr="3"] [data-page="apply"] {
-    .top {
-        font-size: 46px;
-    }
-    .middle,.bottom {
-        font-size: 40px;
     }
 }

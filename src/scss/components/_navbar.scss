@@ -85,6 +85,7 @@
         }
         //登陆页和注册页
         a {
+            font-size: px2rem(42px);
             color: #FFF;
         }
     }
@@ -96,48 +97,12 @@
         }
         //登陆页和注册页
         a {
+            font-size: px2rem(36px);
             color: #FFF;
         }
     }
     .empty {
         color: $theme-color !important;
         visibility: hidden;
-    }
-}
-
-[data-dpr="1"] .navbar {
-    .center {
-        a {
-            font-size: 21px;
-        }
-    }
-    .right {
-        a {
-            font-size: 18px;
-        }
-    }
-}
-[data-dpr="2"] .navbar {
-    .center {
-        a {
-            font-size: 42px;
-        }
-    }
-    .right {
-        a {
-            font-size: 36px;
-        }
-    }
-}
-[data-dpr="3"] .navbar {
-    .center {
-        a {
-            font-size: 63px;
-        }
-    }
-    .right {
-        a {
-            font-size: 54px;
-        }
     }
 }

@@ -1,0 +1,58 @@
+[data-page="createResume"] {
+    .header {
+        padding: px2rem(42px) 0 px2rem(39px) px2rem(36px);
+        h3 {
+            font-size: px2rem(30px);
+        }
+    }
+    ul {
+        &:before,&:after {
+            height: 0;
+        }
+    }
+    li {
+        &:before {
+            @include border-top;
+        }
+    }
+    li:last-child {
+        &:after {
+            @include border-bottom;
+        }
+    }
+    .item-inner {
+        justify-content: flex-start;
+        &:before,&:after {
+            height: 0;
+        }
+    }
+    .item-content {
+        padding-left: px2rem(36px);
+        padding-right: px2rem(40px);
+        font-size: 0px;
+    }
+    .item-inner {
+        padding-top: px2rem(30px);
+        padding-bottom: px2rem(33px);
+    }
+    .item-title,input {
+        font-size: px2rem(30px) !important;
+    }
+    .item-title {
+        width: px2rem(136px);
+        text-overflow: initial;
+        &.letter-spacing {
+            letter-spacing: 2em;
+        }
+    }
+    .item-input {
+        font-size: px2rem(30px);
+        width: px2rem(454px);
+        margin-left: px2rem(53px);
+    }
+    img {
+        width: px2rem(31px);
+        height: px2rem(31px);
+    }
+}
+

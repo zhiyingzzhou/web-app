@@ -1,5 +1,9 @@
-[data-page="login"], [data-page="register"] {
+[data-page="login"], [data-page="register"],[data-page="change-passwd"] {
     background: #FFF !important;
+    .item-content {
+        padding-left: px2rem(32px);
+        padding-right: px2rem(34px);
+    }
     // 除去边框
     ul {
         &:before {
@@ -10,19 +14,18 @@
         }
     }
     .item-title {
+        font-size: px2rem(30px);
         font-weight: bold;
         color: $standard-color;
-        width: px2rem(150px);
         // line-height: px2rem(30px);
     }
     .item-input {
         margin: 0px;
+        width: 79%;
         input {
-            height: px2rem(43px);
-            line-height: px2rem(43px);
+            font-size: px2rem(30px);
         }
     }
-
     .item-inner {
         &:after {
             background-color: $border-color !important;
@@ -33,11 +36,13 @@
     li:last-child {
         .item-inner {
             &:after {
-                @include borderAfter;
+                @include border-bottom;
             }
         }
     }
-
+    .forget-passwd a {
+        font-size: px2rem(30px);
+    }
     //登陆按钮
     .button,.forget-passwd {
         width: px2rem(681px);
@@ -45,6 +50,7 @@
         overflow: hidden;
     }
     a.button {
+        font-size: px2rem(42px);
         background-color: $theme-color;
         height: px2rem(95px);
         line-height: px2rem(95px);
@@ -52,9 +58,9 @@
         color: #FFF;
         border-radius: 0px;
     }
-
     // 提示
     .tips {
+        font-size: px2rem(26px);
         text-align: center;
         color: $assist-color;
         line-height: px2rem(29px);
@@ -63,67 +69,17 @@
             color: $theme-color;
         }
     }
-}
 
-[data-dpr="1"] {
-    [data-page="login"],[data-page='register'] {
-        .list-block,input,.forget-passwd a {
-            font-size: 15px;
-        }
-        .button {
-            font-size: 21px;
-        }
-        .tips,.get-code {
-            font-size: 13px;
-        }
-        // 注册中的协议
-        .protocal {
-            font-size: 15px;
-            a {
-                font-size: 15px;
-            }
-        }
+    // 获取验证码
+    .get-code {
+        font-size: px2rem(26px);
     }
-}
 
-[data-dpr="2"] {
-    [data-page="login"],[data-page='register'] {
-        .list-block,input,.forget-passwd a {
-            font-size: 30px;
-        }
-        .button {
-            font-size: 42px;
-        }
-        .tips,.get-code {
-            font-size: 26px;
-        }
-        // 注册中的协议
-        .protocal {
-            font-size: 30px;
-            a {
-                font-size: 30px;
-            }
-        }
-    }
-}
-
-[data-dpr="3"] {
-    [data-page="login"],[data-page='register'] {
-        .list-block,input,.forget-passwd a {
-            font-size: 45px;
-        }
-        .button {
-            font-size: 63px;
-        }
-        .tips,.get-code {
-            font-size: 39px;
-        }
-        // 注册中的协议
-        .protocal {
-            font-size: 45px;
-            a {
-                font-size: 45px;
-            }
+    // 注册中的协议
+    .protocal {
+        font-size: px2rem(30px);
+        a {
+            font-size: px2rem(30px);
         }
     }
 }

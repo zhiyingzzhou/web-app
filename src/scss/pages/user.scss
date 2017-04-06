@@ -1,5 +1,6 @@
 [data-page="personal"] {
     background-color: $page-background-color !important;
+    // 第一个list-block
     .list-block:first-child {
         ul {
             background-color: $page-background-color;
@@ -15,6 +16,9 @@
             padding-bottom: px2rem(30px);
             color: $standard-color;
             font-weight: bold;
+        }
+        .create-resume {
+            font-size: px2rem(26px);
         }
     }
     .list-block {
@@ -33,6 +37,9 @@
                 color: $theme-color;
             }
         }
+        .item-title {
+            font-size: px2rem(30px);
+        }
         li:last-child {
             .item-inner:after {
                 height: 0 !important;
@@ -42,16 +49,13 @@
     .list-block:nth-child(3) {
         margin-top: px2rem(17px);
     }
-
     // 退出登录按钮
     .logout {
+        font-size: px2rem(42px);
         width: px2rem(681px);
         height: px2rem(95px);
         background-color: $theme-color;
         color: #FFF;
-        // text-align: center;
-        // line-height: px2rem(95px);
-        // display: block;
         position: absolute;
         left: 0;
         right: 0;
@@ -64,9 +68,6 @@
         width: px2rem(146px);
         height: px2rem(53px);
         background-color: $theme-color;
-        // display: inline-block;
-        // text-align: center;
-        // line-height: px2rem(53px);
         border-radius: px2rem(10px);
         color: #FFF;
     }
@@ -84,64 +85,7 @@
             }
         }
         .item-content:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            right: auto;
-            top: auto;
-            height: 1px;
-            width: 100%;
-            background-color: $border-color;
-            display: block;
-            z-index: 15;
-            -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
+            @include border-bottom;
         }
-    }
-}
-
-[data-dpr="1"] [data-page="personal"] {
-    .item-title {
-        font-size: 15px;
-    }
-    .create-resume {
-        font-size: 14px;
-    }
-    .logout {
-        font-size: 21px;
-    }
-    .item-content:after {
-        transform: scaleY(.33);
-    }
-}
-
-[data-dpr="2"] [data-page="personal"] {
-    .item-title {
-        font-size: 30px;
-    }
-    .create-resume {
-        font-size: 26px;
-    }
-    .logout {
-        font-size: 42px;
-    }
-    .item-content:after {
-        transform: scaleY(.5);
-    }
-}
-
-[data-dpr="3"] [data-page="personal"] {
-    .item-title {
-        font-size: 45px;
-    }
-    .create-resume {
-        font-size: 42px;
-    }
-    .logout {
-        font-size: 63px;
-    }
-    .item-content:after {
-        transform: scaleY(.33);
     }
 }

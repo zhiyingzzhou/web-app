@@ -5,6 +5,8 @@ import NavbarBack from 'components/navbar-back';
 
 // footer component
 import FooterComponent from 'components/footer';
+// linkitem component
+import LinkItem from 'components/List/LinkItem';
 
 // png
 import deletePng from 'images/resume/delete.png';

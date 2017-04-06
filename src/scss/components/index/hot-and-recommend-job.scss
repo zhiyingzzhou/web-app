@@ -15,7 +15,7 @@ div.recommend-job,div.hot-job {
         }
         padding-bottom: px2rem(13px);
         &:after {
-            @include borderAfter;
+            @include border-bottom;
         }
     }
     // 列表

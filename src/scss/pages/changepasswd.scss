@@ -1,0 +1,17 @@
+[data-page="change-passwd"] {
+    .list-block {
+        margin-top: px2rem(19px);
+    }
+    .item-inner {
+        padding-top: px2rem(39px);
+        padding-bottom: px2rem(38px);
+    }
+    .item-input {
+        width: 76% !important;
+    }
+
+    // 保存按钮
+    .button {
+        margin-top: px2rem(40px);
+    }
+}

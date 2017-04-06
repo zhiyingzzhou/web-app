@@ -17,6 +17,14 @@
     &.active {
         left: 0;
     }
+    p {
+        font-size: px2rem(26px);
+        &.login {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
     // 头像区域
     .header-with-image {
         display: flex;
@@ -28,6 +36,7 @@
             border-radius: px2rem(56px);
         }
         p.user {
+            font-size: px2rem(26px);
             white-space: nowrap;
             margin-left: px2rem(8px);
             // width: px2rem(115px);
@@ -52,6 +61,7 @@
 
     //申请记录
     .record-number {
+        font-size: px2rem(26px);
         width: px2rem(31px);
         height: px2rem(31px);
         background: $record-background-color;
@@ -106,33 +116,5 @@
     &.active {
         display: block;
         left: $panel-width;
-    }
-}
-
-
-[data-dpr="1"] .panel {
-    p {
-        font-size: 14px;
-    }
-    .record-number,p.user {
-        font-size: 13px;
-    }
-}
-
-[data-dpr="2"] .panel {
-    p {
-        font-size: 28px;
-    }
-    .record-number,p.login {
-        font-size: 26px;
-    }
-}
-
-[data-dpr="3"] .panel {
-    p {
-        font-size: 42px;
-    }
-    .record-number,p.login {
-        font-size: 39px;
     }
 }

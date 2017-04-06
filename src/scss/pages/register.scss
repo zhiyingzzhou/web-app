@@ -2,19 +2,15 @@
     .list-block:first-child {
         margin: px2rem(19px) 0 px2rem(33px);
     }
-    .item-content {
-        padding-left: px2rem(32px);
-        padding-right: px2rem(34px);
-    }
     li:nth-child(2) {
-        input {
-            width: px2rem(386px);
+        .item-input {
+            width: px2rem(387px);
         }
         .get-code {
-            width:px2rem(167px);
-            height: px2rem(60.62px);
-            line-height: px2rem(60.62px);
-            border-radius: 5px;
+            width:px2rem(147px);
+            height: px2rem(53px);
+            line-height: px2rem(53px);
+            border-radius: px2rem(5px);
             background-color: $theme-color;
             color: #FFF;
             position: absolute;
@@ -27,8 +23,14 @@
     }
     .item-inner {
         padding: px2rem(40px) 0 px2rem(37px);
+        justify-content: flex-start;
     }
-
+    .item-input {
+        margin-left: px2rem(61px) !important;
+    }
+    .item-title {
+        width: px2rem(90px);
+    }
     //协议
     .protocal {
         color: $standard-color;

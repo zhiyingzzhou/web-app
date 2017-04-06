@@ -1,11 +1,6 @@
 import React,{Component,PropTypes} from 'react';
 // 图片png
 import personalPng from 'images/panel/personal.png';
-import personalCenterPng from 'images/panel/personal-center.png';
-import myResumePng from 'images/panel/my-resume.png';
-import applyRecordPng from 'images/panel/apply-record.png';
-import myCollectionPng from 'images/panel/my-collection.png';
-import importResumePng from 'images/panel/import-resume.png';
 
 //跳转页面
 import J from 'utils/jump';
@@ -19,38 +14,14 @@ import store from 'store';
 
 import Panel from 'utils/panel';
 
+// panel data
+import panelData from 'data/panel';
+
 class PanelComponent extends Component {
 
     static contextTypes = {
         router: PropTypes.object
     };
-
-    listData = [
-        {
-            img: personalCenterPng,
-            text: '个人中心',
-            pathname: 'personal'
-        },
-        {
-            img: myResumePng,
-            text: '我的简历',
-            pathname: 'resume'
-        },
-        {
-            img: applyRecordPng,
-            text: '申请记录',
-            pathname: 'apply'
-        },
-        {
-            img: myCollectionPng,
-            text: '我的收藏',
-            pathname: 'collection'
-        },
-        {
-            img: importResumePng,
-            text: '导入简历'
-        },
-    ];
 
     componentDidMount() {
         setTimeout(()=>{
@@ -76,10 +47,10 @@ class PanelComponent extends Component {
             {personalStatistics={}} = state.user,
             {favnum=0,resumenum=0,applynum=0} = personalStatistics,
             listEle = [];
-            this.listData[1].num = resumenum;
-            this.listData[2].num = applynum;
-            this.listData[3].num = favnum;
-        this.listData.forEach((item,index)=>{
+            panelData[1].num = resumenum;
+            panelData[2].num = applynum;
+            panelData[3].num = favnum;
+        panelData.forEach((item,index)=>{
             listEle.push(
                 <a key={`panel_item_${index}`} href="javascript:void(0);" onClick={this._jumpPage.bind(this,item.pathname)}>
                     <li className="table" key={`item_${index}`}>
@@ -96,7 +67,7 @@ class PanelComponent extends Component {
     }
 
     _jumpPage(pathname) {
-        J.jumpPage.bind(this,`/user/${pathname}`,'/')();
+        J.jumpPage.bind(this,`/user/${pathname}`)();
     }
 
     render() {
