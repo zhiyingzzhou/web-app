@@ -12,8 +12,9 @@ module.exports = (function(){
     }
 
     Modal.prototype.openDialog = function(text = 'm(-_-)m'){
-        $('.modal-text').text(text);
+        $('.modal .modal-text').text(text);
         $('.modal').css('display','block');
+        this.openOverlay();
         setTimeout(()=>{
             $('.modal').addClass('modal-in');
         },100);
@@ -21,12 +22,23 @@ module.exports = (function(){
 
     Modal.prototype.closeDialog = function() {
         $('.modal').removeClass('modal-in').css('display','none');
-        $('.modal-text').text('');
+        this.closeOverlay();
+        $('.modal .modal-text').text('');
     }
 
-    Modal.prototype.openPreloader = function() {
-        $().addClass();
-        $().addClass();
+    Modal.prototype.openPreloader = function(text = 'm(-_-)m') {
+        $('.modal-preloader .modal-title').text(text);
+        $('.modal-preloader').css('display','block');
+        this.openOverlay();
+        setTimeout(()=>{
+             $('.modal-preloader').addClass('modal-in');
+        });
+    }
+
+    Modal.prototype.closePreloader = function() {
+        $('.modal-preloader').removeClass('modal-in').css('display','none');
+        this.closeOverlay();
+        $('.modal-preloader .modal-title').text('');
     }
 
     return new Modal();

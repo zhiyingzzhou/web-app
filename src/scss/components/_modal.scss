@@ -18,11 +18,6 @@
 .modal {
     width: px2rem(600px);
     height: px2rem(250px);
-    &.modal-in {
-        opacity: 1;
-        transition-duration: .4s;
-        transform: translate3d(0,0,0) scale(1);
-    }
     .modal-inner {
         padding: px2rem(43px) 0 px2rem(38px);
         position: relative;
@@ -67,6 +62,11 @@
     color: #000;
     display: none;
     background-color: #FFF;
+    &.modal-in {
+        opacity: 1;
+        transition-duration: .4s;
+        transform: translate3d(0,0,0) scale(1);
+    }
 }
 
 // preloader
@@ -75,7 +75,7 @@
     height: px2rem(198px);
     border-radius: px2rem(13px);
     .modal-text {
-        margin-top: px2rem(20px);
+        margin-top: px2rem(25px);
     }
     .modal-inner {
         padding: px2rem(30px);

@@ -40,10 +40,6 @@ class CreateResumePage  extends Component {
         pickerMethods.show(item.key,tempData);
     }
 
-    save() {
-        
-    }
-
     render() {
         return (
             <div className='page' data-page='createResume'>
@@ -82,7 +78,7 @@ class CreateResumePage  extends Component {
                             }
                         </ul>
                     </div>
-                    <a href="javascript:void(0);" className="button" onClick={this.save}>保存</a>
+                    <a href="javascript:void(0);" className="button">保存</a>
                     <FooterComponent location={this.props.location} />
                 </div>
             </div>
