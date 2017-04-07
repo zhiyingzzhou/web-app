@@ -54,5 +54,16 @@
         width: px2rem(31px);
         height: px2rem(31px);
     }
+    .button {
+        margin-top: px2rem(40px) !important;
+    }
+
+    // 底部
+    .footer {
+        position: static !important;
+        display: block;
+        margin-top: 1.2rem;
+        margin-bottom: 0.48rem;
+    }
 }
 

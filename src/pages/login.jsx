@@ -68,6 +68,7 @@ class LoginPage extends Component {
     }
 
     render() {
+        const {location} = this.props;
         const {userName,passWord,footerHidden} = this.state;
         return (
             <div className='page' data-page='login'>
@@ -105,7 +106,7 @@ class LoginPage extends Component {
                     </div>
                     {/*提示*/}
                     <Tips />
-                    <FooterComponent isHidden={footerHidden} />
+                    <FooterComponent location={location} isHidden={footerHidden} />
                 </div>
             </div> 
         );

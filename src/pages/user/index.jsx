@@ -30,7 +30,7 @@ class UserIndexPage  extends Component {
         }
     }
     render() {
-        const {personalStatistics} = this.props;
+        const {personalStatistics,location} = this.props;
         const {loginname='',resumenum=0,applynum=0,favnum=0} = personalStatistics;
         return (
             <div className='page' data-page='personal'>
@@ -74,7 +74,7 @@ class UserIndexPage  extends Component {
                     <a href="javascript:void(0);" className="logout center">
                         退出登录
                     </a>
-                    <FooterComponent />
+                    <FooterComponent location={location} />
                 </div>
             </div>
         );

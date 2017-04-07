@@ -9,18 +9,16 @@ import ListItem from 'components/List/ListItem';
 import FooterComponent from 'components/footer';
 
 // redux
-// import {bindActionCreators} from 'redux';
-// import { connect } from 'react-redux';
-// import * as Actions from 'actions';
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import * as Actions from 'actions';
 
 export default class ChangePasswdPage  extends Component {
 
     state = {}
 
-    componentDidMount() {
-    }
-
     render() {
+        const {location,actions} = this.props;
         const {footerHidden=false} = this.state;
         return (
             <div className='page' data-page='change-passwd'>
@@ -47,7 +45,7 @@ export default class ChangePasswdPage  extends Component {
                     <a href="javascript:void(0);" className="button">
                         保存
                     </a>
-                    <FooterComponent isHidden={footerHidden} />
+                    <FooterComponent location={location} isHidden={footerHidden} />
                 </div>
             </div>
         );
@@ -61,10 +59,10 @@ export default class ChangePasswdPage  extends Component {
 // })
 
 // const mapDispatchToProps = dispatch => ({
-//     actions: bindActionCreators(Actions.userActions, dispatch)
+//     actions: bindActionCreators(Actions.historyActions, dispatch)
 // })
 
 // export default connect(
-//     mapStateToProps,
+//     // mapStateToProps,
 //     mapDispatchToProps
-// )();
+// )(ChangePasswdPage);

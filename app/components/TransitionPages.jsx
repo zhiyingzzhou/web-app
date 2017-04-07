@@ -15,7 +15,7 @@ export default class TransitionPages extends Component {
   };
 
   render () {
-    const { location } = this.props
+    const { location } = this.props;
     let transition = 'sfr';
     if (location.state && location.state.transition) {
       switch (location.state.transition) {

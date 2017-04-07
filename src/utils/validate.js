@@ -19,23 +19,23 @@ module.exports = (function() {
     validete.prototype.validateRegisterForm = function() {
         const {isChecked,phoneNumber,verifycode,passWord} = this.state;
         if(phoneNumber.length === 0 ){
-            Modal.openToast('请输入您的手机号码！');
+            Modal.openDialog('请输入您的手机号码！');
             return;
         }
         if (!validatePhoneNumber(phoneNumber)) {
-            Modal.openToast('请输入有效的手机号码！');
+            Modal.openDialog('请输入有效的手机号码！');
             return;
         }
         if(verifycode.length === 0 ) {
-            Modal.openToast('验证码不能为空！');
+            Modal.openDialog('验证码不能为空！');
             return;
         }
         if(passWord.length === 0) {
-            Modal.openToast('密码不能为空！');
+            Modal.openDialog('密码不能为空！');
             return;
         }
         if(!isChecked) {
-            Modal.openToast('51金融圈协议务必同意!');
+            Modal.openDialog('51金融圈协议务必同意!');
             return;
         }
         this.props.userRegisterPost({
@@ -48,11 +48,11 @@ module.exports = (function() {
         // 点击登录
         const {userName,passWord} = this.state;
         if(userName.length === 0){
-            Modal.openToast('请输入用户名！');
+            Modal.openDialog('请输入用户名！');
             return;
         }
         if(passWord.length === 0) {
-            Modal.openToast('请输入密码！');
+            Modal.openDialog('请输入密码！');
             return;
         }
         this.props.userLoginPost({

@@ -44,7 +44,7 @@
         font-size: px2rem(30px);
     }
     //登陆按钮
-    .button,.forget-passwd {
+    .forget-passwd {
         width: px2rem(681px);
         margin: 0 auto;
         overflow: hidden;
@@ -81,5 +81,20 @@
         a {
             font-size: px2rem(30px);
         }
+    }
+}
+
+[data-page="login"], [data-page="register"],[data-page="change-passwd"],[data-page="createResume"] {
+    a.button {
+        width: px2rem(681px);
+        margin: 0 auto;
+        overflow: hidden;
+        font-size: px2rem(42px);
+        background-color: $theme-color;
+        height: px2rem(95px);
+        line-height: px2rem(95px);
+        border: 0;
+        color: #FFF;
+        border-radius: 0px;
     }
 }

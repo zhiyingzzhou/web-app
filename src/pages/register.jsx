@@ -88,11 +88,11 @@ class RegisterPage extends Component {
         // 判断是否为数字,如果为数字说明倒计时直接return false
         if(U.isNum(codeText)) return false;
         if(phoneNumber.length === 0 ){
-            Modal.openToast('请输入您的手机号码！');
+            Modal.openDialog('请输入您的手机号码！');
             return;
         }
         if(!V.validatePhoneNumber(phoneNumber)){
-            Modal.openToast('请输入有效的手机号码！');
+            Modal.openDialog('请输入有效的手机号码！');
             return;
         }
         this.props.userGetVerifyCode(phoneNumber);
@@ -174,7 +174,7 @@ class RegisterPage extends Component {
                     </a>
                     {/*提示*/}
                     <Tips />
-                    <FooterComponent isHidden={footerHidden} />
+                    <FooterComponent location={this.props.location} isHidden={footerHidden} />
                 </div>
             </div>
         );

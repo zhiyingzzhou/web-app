@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 
 // navbar components
 import NavbarBack from 'components/navbar-back';
+// footer component
+import FooterComponent from 'components/footer';
 
 // redux
 import {bindActionCreators} from 'redux';
@@ -15,23 +17,31 @@ import morePng from 'images/create-resume/more.png';
 import data from 'data/create-resume';
 
 // picker 组件
-import Picker from 'utils/picker';
+import pickerMethods from 'utils/picker';
 
 class CreateResumePage  extends Component {
-
-    // bind event
-    getInput = this._getInput.bind(this);
-
+    
     componentDidMount() {
     }
 
     _getInput(item,index) {
-        const data = [
-            {text:'男',value:0},
-           {text:'女',value:1}
-        ];
-        return item.readonly ? <input type={`${index === 3 ? 'number' : 'text'}`} readOnly /> 
-        : <input type={`${index === 3 ? 'number' : 'text'}`} onClick={Picker.show.bind(this,data)} />;
+        return item.readonly ? <input type={item.inputType} readOnly /> 
+        : <input type={item.inputType}/>;
+    }
+
+    _showPicker(item) {
+        let tempData = [];
+        item.data.forEach((item,index)=>{
+            tempData.push({
+                text: item,
+                value: item
+            });
+        });
+        pickerMethods.show(item.key,tempData);
+    }
+
+    save() {
+        
     }
 
     render() {
@@ -47,14 +57,17 @@ class CreateResumePage  extends Component {
                             {
                                 data.map( (item,index) => {
                                     return (
-                                        <li key={`list_${index}`}>
+                                        <li 
+                                            key={`list_${index}`}
+                                            onClick={item.readonly ? this._showPicker.bind(this,item) : null}
+                                        >
                                             <div className="item-content">
                                                 <div className="item-inner">
                                                     <div className={`item-title ${item.name.length === 2 ? 'letter-spacing' : ''}`}>
                                                         {item.name}
                                                     </div>
                                                     <div className="item-input">
-                                                        {this.getInput(item,index)}
+                                                        {this._getInput(item,index)}
                                                     </div>
                                                 </div>
                                                 { item.multi &&
@@ -69,6 +82,8 @@ class CreateResumePage  extends Component {
                             }
                         </ul>
                     </div>
+                    <a href="javascript:void(0);" className="button" onClick={this.save}>保存</a>
+                    <FooterComponent location={this.props.location} />
                 </div>
             </div>
         );

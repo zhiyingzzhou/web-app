@@ -34,7 +34,3 @@ module.exports = merge(baseWebpackConfig,{
     })
   ]
 });
-
-debugger
-
-

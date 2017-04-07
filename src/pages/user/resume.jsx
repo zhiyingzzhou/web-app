@@ -71,7 +71,7 @@ class ResumePage extends Component {
                             }
                         </ul>
                     </div>
-                    <FooterComponent />
+                    <FooterComponent location={this.props.location} />
                 </div>
             </div>
         );

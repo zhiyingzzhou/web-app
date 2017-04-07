@@ -41,7 +41,7 @@ module.exports = {
         pathinfo: true,
         filename: 'js/bundle.js', //指定打包生成文件的名字
         path: join(config.srcPath, 'www'), // 指定打包生成的文件所在的目录,
-        publicPath: '/www'
+        publicPath: '/www/'
     },
     devtool: 'source-map',
     resolve: {
@@ -50,6 +50,7 @@ module.exports = {
             'store': resolve('node_modules/store/dist/store.legacy.min.js'),
             'pages': resolve('src/pages'),
             'views': resolve('src/views'),
+            'js': resolve('src/www/js'),
             'images': resolve('src/www/images'),
             'components': resolve('src/pages/components'),
             'config': resolve('config'),
