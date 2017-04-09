@@ -16,6 +16,9 @@
             position: absolute;
             text-align: center;
             right: 0;
+            &:hover {
+                cursor: pointer;
+            }
             &.disabled {
                 background-color: $assist-color;
             }
@@ -39,6 +42,9 @@
         .table-row {
             line-height: px2rem(32px);
             text-align: center;
+            &:first-child:hover {
+                cursor: pointer;
+            }
         }
         .checkbox {
             position: relative;

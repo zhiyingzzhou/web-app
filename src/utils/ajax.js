@@ -1,4 +1,6 @@
 import store from 'store';
+import Modal from 'utils/modal';
+
 export const ajaxPost = (url,data,callback) => {
     data.head.type = 'h';
     $.ajax({
@@ -10,11 +12,26 @@ export const ajaxPost = (url,data,callback) => {
         data: JSON.stringify(data)
     })
     .done((response)=>{
+         // 关闭preloader
+        if($('.modal-preloader').hasClass('modal-in')){
+            Modal.closePreloader();
+        }
         const {returnCode,returnMsg} = JSON.parse(response);
         if(returnCode === 'AAAAAAA'){
             callback($.parseJSON(response));
+        }else{
+            Modal.openDialog(returnMsg);
         }
     })
+    .fail(err=>{
+         // 关闭preloader
+         setTimeout(()=>{
+            if($('.modal-preloader').hasClass('modal-in')){
+                Modal.closePreloader();
+            }
+            Modal.openDialog('抱歉！请求失败，请稍后重试！');
+         },500);
+    }) 
 };
 
 export const ajaxPostByToken = (url,data,callback) => {

@@ -1,9 +1,10 @@
-div.recommend-job,div.hot-job {
+div.recommend-job,div.hot-job,.famous-company {
     width: px2rem(721px);
     background-color: #FFF;
     margin: px2rem(15px) auto 0;
     box-sizing: border-box;
     box-shadow: 3px 3px 10px $border-color;
+    padding: px2rem(18px) px2rem(21px) px2rem(21px) px2rem(18px);
     p.title {
         font-weight: bold;
         color: $theme-color;
@@ -20,25 +21,18 @@ div.recommend-job,div.hot-job {
     }
     // 列表
     ul {
-        // margin-top: px2rem(13px);
         box-sizing: border-box;
     }
-}
-[data-dpr="2"] {
-    div.recommend-job,div.hot-job {
-        p.title {
-            &:after {
-                transform: scaleY(.5);
-            }
-        }
+
+    p.title,.top,.more {
+        font-size: px2rem(30px);
     }
-}
-[data-dpr="3"] {
-    div.recommend-job,div.hot-job {
-        p.title {
-            &:after {
-                transform: scaleY(.33);
-            }
-        }
+
+    //更多
+    .more {
+        color: $theme-color;
+        text-align: center;
+        margin-top: px2rem(12px);
+        display: block;
     }
 }

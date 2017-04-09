@@ -7,6 +7,9 @@ html,body {
 html {
     line-height: 1.15;
 }
+a,div,span,p {
+    -webkit-user-select:none;
+}
 body {
     padding: 0px;
     max-width: ceil(750rem/75);

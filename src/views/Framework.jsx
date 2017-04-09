@@ -10,22 +10,8 @@ export default class Framework extends React.Component {
     
     componentDidMount() {
         $.extend($.ajaxSettings,{
-            global: false,
-            complete(xhr) {
-                const {status=404,response} = xhr;
-                if(status !== 200){
-                    Modal.openDialog('抱歉！请求失败，请稍后重试！');
-                }
-                if(status === 200){
-                    // 请求成功,判断是否返回正确的结果
-                    const {returnCode,returnMsg} = JSON.parse(response);
-                    if(returnCode !== 'AAAAAAA') {
-                        Modal.openDialog(returnMsg);
-                    }
-                }
-            }
+            global: false
         });
-
         // 关闭弹窗
         $('.close-toast').on('click',()=>{
             Modal.closeDialog();

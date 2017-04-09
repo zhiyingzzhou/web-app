@@ -1,0 +1,28 @@
+.famous-company {
+    li {
+        height: px2rem(140px);
+        width: 50%;
+        display: inline-block;
+        background-color: #FFF;
+        box-sizing: border-box;
+        position: relative;
+        &:nth-child(1),&:nth-child(3) {
+            &:before {
+                @include border-left;
+            }
+        }
+        &:after {
+            @include border-bottom;
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        img {
+            width: px2rem(202px);
+            height: px2rem(108px);
+        }
+    }
+}

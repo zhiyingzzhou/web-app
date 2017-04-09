@@ -28,6 +28,7 @@ module.exports = [
     },
     {
         img: importResumePng,
-        text: '导入简历'
+        text: '导入简历',
+        pathname: 'importResume'
     },
 ];

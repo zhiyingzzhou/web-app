@@ -1,13 +1,10 @@
 import React,{Component} from 'react';
 
-// 图片
-import iconPng from 'images/homepage/icon.png';
+import TitleComponent from './title';
+
 import arrowRightPng from 'images/arrow-right.png';
 
 export default class IndexPage extends Component {
-    constructor() {
-        super();
-    }   
 
     generateJobList() {
         let listEle = [];
@@ -38,14 +35,11 @@ export default class IndexPage extends Component {
     render() {
         return (
             <div className="recommend-job">
-                <p className="title">
-                    <img className="icon" src={iconPng} alt="icon"/>
-                    职位推荐
-                </p>
+                <TitleComponent title="职位推荐" />
                 <ul>
                     {this.generateJobList()}
                 </ul>
-                <a href="#" className="more">
+                <a href="javascript:void(0);" className="more">
                     查看更多
                 </a>
             </div>

@@ -16,11 +16,21 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from 'actions';
 
+//Modal
+import Modal from 'utils/modal';
+
 class UserIndexPage  extends Component {
+
+    // bind event
+    logout = this._logout.bind(this);
 
     static contextTypes = {
         router: PropTypes.object
     };
+
+    _logout() {
+        Modal.openDialog('是否退出登录！');
+    }
 
     componentDidMount() {
         const {personalStatistics,actions} = this.props;
@@ -54,12 +64,15 @@ class UserIndexPage  extends Component {
                         <ul>
                             <LinkItem 
                                 title={`我的简历 <span>(${resumenum})</span>`}
+                                onClick={J.jumpPage.bind(this,'/user/resume')}
                             />
                             <LinkItem 
                                 title={`申请记录 <span>(${applynum})</span>`}
+                                onClick={J.jumpPage.bind(this,'/user/apply')}
                             />
                             <LinkItem 
                                 title={`职位收藏 <span>(${favnum})</span>`}
+                                onClick={J.jumpPage.bind(this,'/user/collection')}
                             />
                         </ul>
                     </div>
@@ -71,7 +84,7 @@ class UserIndexPage  extends Component {
                             />
                         </ul>
                     </div>
-                    <a href="javascript:void(0);" className="logout center">
+                    <a href="javascript:void(0);" onClick={this.logout.bind(this)} className="logout center">
                         退出登录
                     </a>
                     <FooterComponent location={location} />

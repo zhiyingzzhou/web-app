@@ -62,7 +62,7 @@ class NavbarBack extends Component {
             //生成right dom
             return right;
         }else{
-            return <a className="empty" href="javascript:void(0);">个</a>;
+            return <a className="empty" href="javascript:void(0);">右</a>;
         }
     }
 

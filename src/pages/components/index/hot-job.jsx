@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
 
-// 图片 png
-import iconPng from 'images/homepage/icon.png';
+import TitleComponent from './title';
+
+// data
+import data from 'data/hot-job';
 
 export default class HotJob extends Component {
     state = {  }
+
+    generateJobList() {
+        return (
+            <li>
+               <div>银行职位</div>
+               <ul>
+                   
+               </ul>
+            </li>
+        )
+    }
     render() {
         return (
             <div className="hot-job">
-                <p className="title">
-                    <img className="icon" src={iconPng} alt="icon"/>
-                    职位推荐
-                </p>
+                <TitleComponent title="热门职位" />
                 <ul>
-                    
+                    {this.generateJobList()}
                 </ul>
-            </div>
+                <a href="javascript:void(0);" className="more">
+                    查看更多
+                </a>
+            </div> 
         );
     }
 }

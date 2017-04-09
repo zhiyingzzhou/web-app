@@ -8,6 +8,10 @@ import Navbar from 'components/index/navbar';
 import Feature from 'components/index/feature';
 import RecommendJob from 'components/index/recommend-job';
 import HotJob from 'components/index/hot-job';
+import FamousCompany from 'components/index/famous-company';
+
+// footer component
+import FooterComponent from 'components/footer';
 
 export default class IndexPage extends Component {
 
@@ -21,6 +25,8 @@ export default class IndexPage extends Component {
                     <Feature />
                     <RecommendJob />
                     <HotJob />
+                    <FamousCompany />
+                    <FooterComponent location={location} />
                  </div>
              </div>
         );

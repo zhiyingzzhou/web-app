@@ -1,0 +1,214 @@
+[data-page="company-job-info"] {
+    .page-content {
+        padding-bottom: px2rem(36px);
+    }
+    //导航栏
+    .navbar {
+        .right {
+            margin-left: 0px !important;
+            img {
+                width: px2rem(47px);
+                height: px2rem(45px);
+            }
+        }
+    }
+    .list-block {
+        width: px2rem(721px);
+        margin: 0 auto;
+        background-color: #FFF;
+        margin-top: px2rem(16px);
+        box-sizing: border-box;
+    }
+    ul {
+        &:before {
+            height: 0px !important;
+        }
+    }
+    .job-info {
+        ul {
+            padding-left: px2rem(19px);
+            padding-right: px2rem(19px);
+            box-sizing: border-box;
+            &:after {
+                height: 0px !important;
+            }
+        }
+        ul:first-child {
+            padding-top: px2rem(27px);
+            .item-inner {
+                padding-bottom: px2rem(19px);
+            }
+        }
+        .top {
+            font-size: px2rem(30px);
+            font-weight: bold;
+            color: $standard-color;
+        }
+        .bottom {
+            margin-top: px2rem(14px);
+            font-size: px2rem(25px);
+            color: $assist-color;
+        }
+        .after {
+            font-size: px2rem(30px);
+            color: $theme-color;
+            font-weight: bold;
+        }
+        ul:last-child {
+            padding-top: px2rem(15px);
+            padding-bottom: px2rem(21px);
+            display: flex;
+            .square {
+                width: px2rem(22px);
+                height: px2rem(22px);
+                display: inline-block;
+                background-color: $theme-color;
+                border-radius: px2rem(5px);
+                margin-right: px2rem(10px);
+            }
+            li {
+                display: flex;
+                align-items: center;
+                font-size: px2rem(26px);
+                margin-right: px2rem(30px);
+            }
+        }
+    }
+    .company-info {
+        padding: px2rem(27px) px2rem(18px) px2rem(23px);
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: px2rem(30px);
+            font-weight: bold;
+            color: $standard-color;
+            position: relative;
+            img {
+                width: px2rem(21px);
+                height: px2rem(39px);
+            }
+            padding-bottom: px2rem(23px);
+            &:after {
+                @include border-bottom;
+            }
+        }
+        ul {
+            padding: px2rem(23px) 0;
+            font-size: px2rem(30px);
+            span:first-child {
+                color: $standard-color;
+                width: px2rem(122px);
+                display: inline-block;
+                white-space: nowrap;
+            }
+            span:last-child {
+                color: $assist-color;
+                margin-left: px2rem(56px);
+            }
+            li {
+                &:first-child {
+                    margin-top: 0 !important;
+                }
+                margin-top: px2rem(17px);
+            }
+            &:after {
+                @include border-bottom;
+            }
+        }
+        //地图定位
+        .address {
+            display: flex;
+            align-items: center;
+            padding-top: px2rem(14px);
+            font-size: px2rem(30px);
+            color: $standard-color;
+            img {
+                width: px2rem(23px);
+                height: px2rem(33px);
+                margin-right: px2rem(14px);
+            }
+        }
+    }
+    .job-description,.related-job {
+        padding: px2rem(20px) px2rem(18px) px2rem(45px);
+        p.title {
+            font-size: px2rem(30px);
+            color: $theme-color;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-bottom: px2rem(15px);
+            &:after {
+                @include border-bottom;
+            }
+            img {
+                margin-right: px2rem(10px);
+            }
+        }
+    }
+    .job-description {
+        .content {
+            padding: px2rem(32px) px2rem(14px) px2rem(16px) 0;
+            font-size: px2rem(30px);
+            color: $standard-color;
+        }
+    }
+    .related-job {
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding-top: px2rem(24px);
+            padding-bottom: px2rem(21px);
+            box-sizing: border-box;
+            position: relative;
+            align-items: center;
+            &:after {
+                @include border-bottom;
+            }
+            .top {
+                font-size: px2rem(30px);
+                font-weight: bold;
+                color: $standard-color;
+            }
+            .bottom {
+                margin-top: px2rem(14px);
+                font-size: px2rem(26px);
+                color: $assist-color;
+            }
+            // 箭头
+            img {
+                width: px2rem(21px);
+                height: px2rem(39px);
+            }
+        }
+    }
+    .button {
+        width: px2rem(721px);
+        height: px2rem(95px);
+        font-size: px2rem(42px);
+        background-color: $theme-color;
+        color: #FFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.active {
+            position: fixed;
+            bottom: 0px;
+            right: 0;
+            left: 0;
+            margin: auto;
+            z-index: $navbar-z-index;
+        }
+        &.static {
+           margin: px2rem(16px) auto 0; 
+        }
+        &.disabled {
+            background-color: $assist-color !important;
+        }
+    }
+    .footer {
+        margin-top: px2rem(46px);
+        position: static !important;
+    }
+}

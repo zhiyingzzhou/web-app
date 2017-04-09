@@ -23,6 +23,8 @@
 @import 'pages/apply';
 @import 'pages/changepasswd';
 @import 'pages/create-resume';
+@import 'pages/about-us';
+@import 'pages/company-job-info';
 
 // components
 @import 'components/navbar';
@@ -34,4 +36,6 @@
 @import 'components/index/feature';
 @import 'components/index/recommend-job';
 @import 'components/index/hot-job';
+@import 'components/index/famous-company';
 @import 'components/index/hot-and-recommend-job';
+@import 'components/index/footer';

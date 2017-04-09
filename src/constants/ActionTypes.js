@@ -14,3 +14,6 @@ export const PERSONAL_STATISTICS = "PERSONAL_STATISTICS";
 
 // 职位申请记录
 export const APPLY_RECORD = "APPLY_RECORD";
+
+// 获取企业职位详情
+export const COMPANY_JOB_INFO = "COMPANY_JOB_INFO";

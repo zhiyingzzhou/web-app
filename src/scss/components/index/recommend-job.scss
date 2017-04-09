@@ -1,19 +1,14 @@
 div.recommend-job {
-    padding: px2rem(16px) px2rem(19px) px2rem(17px) px2rem(15px);
+    padding: px2rem(16px) px2rem(19px) px2rem(17px) px2rem(15px) !important;
     .item {
         display: flex;
-        // border-top: 1px solid $border-color;
         padding: px2rem(22px) 0px px2rem(18px) 0px;
         position: relative;
         &:after {
             @include border-bottom;
         }
     }
-    p.title {
-        font-size: px2rem(30px);
-        width: px2rem(680px);
-    }
-    .title {
+    div.title {
         width: px2rem(639px);
     }
     .top {
@@ -31,14 +26,5 @@ div.recommend-job {
             width: px2rem(21px);
             height: px2rem(39px);
         }
-    }
-    .more {
-        color: $theme-color;
-        text-align: center;
-        margin-top: px2rem(12px);
-        display: block;
-    }
-    p.title,.top,.more {
-        font-size: px2rem(30px);
     }
 }

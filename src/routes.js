@@ -24,9 +24,13 @@ export default function getRoutes () {
         <Route path="changePasswd" component={require('./pages/user/changepasswd').default} onEnter={requireAuthHook} />
         // 创建简历
         <Route path='createResume' component={require('./pages/user/createResume').default} onEnter={requireAuthHook} />
-        // 关于我们
+        // 导入简历
+        <Route path='importResume' component={require('./pages/user/importResume').default} onEnter={requireAuthHook} />
       </Route>
+      // 关于我们
       <Route path='aboutus' component={require('./pages/about-us').default} />
+      // 企业职位详情
+      <Route path="companyJobInfo/:corpid/:jobid" component={require('./pages/company-job-info').default} />
     </Route>
   )
 }

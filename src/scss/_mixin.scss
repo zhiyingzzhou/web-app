@@ -10,7 +10,6 @@
   background-color: #c8c7cc;
   display: block;
   z-index: 15;
-  -webkit-transform-origin: 50% 0;
   transform-origin: 50% 0;
   transform: scaleY(.5);
 }
@@ -29,6 +28,21 @@
     z-index: 15;
     transform-origin: 50% 100%;
     transform: scaleY(.5);
+}
+
+@mixin border-left {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: auto;
+    left: auto;
+    height: 100%;
+    width: 1px;
+    background-color: $border-color;
+    z-index: 15;
+    display: block;
+    transform: scaleX(.5);
 }
 
 @mixin animation-name($a) {

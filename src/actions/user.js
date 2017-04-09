@@ -36,6 +36,9 @@ export const getUserInfo = userInfo => (dispatch,getStat) => {
 // 用户登录
 export const userLoginPost = (userInputInfo,loginContext) => (dispatch,getState) => {
     const {userName,passWord} = userInputInfo;
+    //打开preloader
+    Modal.openPreloader('登录中...');
+    
     ajaxPost(`${prefixUrl}/login`,{
             "head": {
                 "transcode": "D0001"

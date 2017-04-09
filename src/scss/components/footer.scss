@@ -13,6 +13,9 @@
         color: $assist-color;
         &.aboutus {
             color: $theme-color;
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
     img {

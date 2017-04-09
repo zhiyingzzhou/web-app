@@ -7,7 +7,10 @@ const getDate = () => {
     for(let i = 1;i<=12;i++){
         monthArr.push(i);
     }
-    return yearArr;
+    for(let i = 1;i<=31;i++) {
+        dayArr.push(i);
+    }
+    return [yearArr,monthArr,dayArr];
 };
 
 module.exports = [
@@ -19,7 +22,6 @@ module.exports = [
     {
         name: '性别',
         key: 'sex',
-        multi: true,
         readonly: true,
         inputType: 'text',
         data: ['男','女']
@@ -27,7 +29,6 @@ module.exports = [
     {
         name: '出生日期',
         key: 'borndate',
-        multi: true,
         readonly: true,
         inputType: 'text',
         data: getDate()
@@ -45,14 +46,12 @@ module.exports = [
     {
         name: '居住城市',
         key: 'livecityid',
-        multi: true,
         readonly: true,
         inputType: 'text'
     },
     {
         name: '婚姻状况',
         key: 'marital',
-        multi: true,
         readonly: true,
         inputType: 'text',
         data: ["未婚","已婚","保密"]
@@ -60,7 +59,6 @@ module.exports = [
     {
         name: '工作年限',
         key: 'workyears',
-        multi: true,
         readonly: true,
         inputType: 'text',
         data: ["不限","在读学生","应届毕业生","一年以上","二年以上","三年以上","五年以上","八年以上","十年以上"]
@@ -68,7 +66,6 @@ module.exports = [
     {
         name: '当前状态',
         key: 'jobstatus',
-        multi: true,
         readonly: true,
         inputType: 'text',
         data: ["目前正在找工作","半年内无换工作计划","一年内无换工作计划","观望有好的机会再考虑","我暂时不想找工作"]

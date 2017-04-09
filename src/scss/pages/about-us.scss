@@ -1,0 +1,48 @@
+[data-page="about-us"] {
+    .title {
+        padding: px2rem(43px) 0 px2rem(43px) px2rem(36px);
+        font-size: px2rem(30px);
+        color: $standard-color;
+        font-weight: bold;
+    }
+    .list-block {
+        background: #FFF;
+        padding: px2rem(30px) px2rem(34px) px2rem(63px);
+        p {
+            font-size: px2rem(26px);
+            color: $standard-color;
+            line-height: 1.5;
+            &:nth-child(2) {
+                margin-top: px2rem(36px);
+            }
+        }
+        .slogen {
+            height: px2rem(97px);
+            display: block;
+            margin: px2rem(33px) auto 0;
+        }
+        .intro {
+            display: flex;
+            justify-content: space-between;
+            margin-top: px2rem(13px);
+            div {
+                position: relative;
+                text-align: center;
+                &:first-child {
+                    p {
+                        position: absolute;
+                        left: px2rem(-8px);
+                        white-space: nowrap;
+                    }
+                }
+            }
+            img {
+                height: px2rem(210px);
+            }
+            p {
+                margin: px2rem(16px) 0 0 !important;
+                font-size: px2rem(22px);
+            }
+        }
+    }
+}

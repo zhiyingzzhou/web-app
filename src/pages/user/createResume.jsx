@@ -25,18 +25,31 @@ class CreateResumePage  extends Component {
     }
 
     _getInput(item,index) {
-        return item.readonly ? <input type={item.inputType} readOnly /> 
+        return item.readonly ? <input id={item.key} type={item.inputType} readOnly /> 
         : <input type={item.inputType}/>;
     }
 
     _showPicker(item) {
         let tempData = [];
-        item.data.forEach((item,index)=>{
-            tempData.push({
-                text: item,
-                value: item
+        if(item.key === "borndate"){
+            item.data.forEach( (item,index)=>{
+                let dimension = [];
+                item.forEach( (text,i)=>{
+                    dimension.push({
+                        text: text,
+                        value: text
+                    });
+                });    
+                tempData.push(dimension);            
             });
-        });
+        }else{
+            item.data.forEach((item,index)=>{
+                tempData.push({
+                    text: item,
+                    value: item
+                });
+            });
+        }
         pickerMethods.show(item.key,tempData);
     }
 
@@ -66,7 +79,7 @@ class CreateResumePage  extends Component {
                                                         {this._getInput(item,index)}
                                                     </div>
                                                 </div>
-                                                { item.multi &&
+                                                { item.readonly &&
                                                     <div className="item-after">
                                                         <img src={morePng} alt="查看更多"/>
                                                     </div>
