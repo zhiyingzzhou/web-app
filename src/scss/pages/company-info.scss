@@ -1,0 +1,163 @@
+[data-page="company-info"] {
+    .header {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: px2rem(178px);
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-left: px2rem(33px);
+        box-sizing: border-box;
+        img {
+            width: px2rem(106px);
+            height: px2rem(106px);
+            background-color: #FFF;
+            border-radius: px2rem(20px);
+        }
+        p {
+            font-size: px2rem(30px);
+            font-weight: bold;
+            color: #FFF;
+            margin-left: px2rem(24px);
+        }
+    }
+    .tabbar {
+        font-size: 0px;
+        background-color: $assist-color;
+        margin-bottom: px2rem(18px);
+        .tab-item {
+            display: inline-block;
+            width: 50%;
+            height: px2rem(73px);
+            background-color: $assist-color;
+            font-size: px2rem(29px);
+            text-align: center;
+            line-height: px2rem(73px);
+            color: #FFF;
+            &.active {
+                position: relative;
+                background-color: $theme-color !important;
+                &:after {
+                    position: absolute;
+                    content: '';
+                    width: px2rem(38px);
+                    height: px2rem(34px);
+                    box-sizing: border-box;
+                    border-bottom: px2rem(17px) solid transparent;
+                    border-top: px2rem(17px) solid $theme-color;
+                    border-left: px2rem(19px) solid transparent;
+                    border-right: px2rem(19px) solid transparent;
+                    bottom: -(px2rem(34px));
+                    right: 0;
+                    left: 0;
+                    margin: auto;
+                }
+            }
+        }
+    }
+    .list-block {
+        margin-top: px2rem(17px);
+        box-sizing: border-box;
+        font-size: px2rem(30px);
+        width: px2rem(721px);
+        margin: 0 auto;
+        padding: px2rem(25px) px2rem(21px) px2rem(21px) px2rem(19px);
+        background-color: #FFF;
+    }
+    ul:before {
+        height: 0px !important;
+    }
+    .company-info {
+        ul {
+            padding-bottom: px2rem(23px);
+        }
+        li {
+            margin-bottom: px2rem(16px);
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+        span:first-child {
+            width: px2rem(120px);
+            display: inline-block;
+            white-space: nowrap;
+            color: $standard-color;
+        }
+        span:last-child {
+            margin-left: px2rem(58px);
+            color: $assist-color;
+        }
+        .address {
+            margin-top: px2rem(14px);
+            color: $standard-color;
+            img {
+                margin-right: px2rem(14px);
+            }
+        }
+    }
+    .address,p.title {
+        display: flex;
+        align-items: center;
+        img {
+            width: px2rem(23px);
+            height: px2rem(33px);
+        }
+    }
+    .company-desc {
+        padding-top: px2rem(19px) !important;
+        margin-top: px2rem(16px);
+        font-size: px2rem(30px);
+        .title {
+            color: $theme-color;
+            padding-bottom: px2rem(15px);
+            position: relative;
+            img {
+                margin-right: px2rem(16px);
+            }
+            &:after {
+                @include border-bottom;
+            }
+        }
+        p:last-child {
+            margin-top: px2rem(31px);
+            font-size: px2rem(26px);
+            color: $standard-color;
+        }
+    }
+
+    // 职位列表
+    .related-job {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: px2rem(21px);
+            padding-bottom: px2rem(22px);
+            img {
+                width: px2rem(21px);
+                height: px2rem(39px);
+            }
+            &:after {
+                @include border-bottom;
+            }
+            .top {
+                font-size: px2rem(30px);
+                font-weight: bold;
+                color: $standard-color;
+            }
+            .bottom {
+                font-size: px2rem(26px);
+                margin-top: px2rem(14px);
+                color: $assist-color;
+                width: px2rem(640px);
+            }
+        }
+    }
+    .footer {
+        position: static !important;
+        margin-top: px2rem(101px);
+        margin-bottom: px2rem(36px);
+    }
+}

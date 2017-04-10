@@ -17,3 +17,9 @@ export const APPLY_RECORD = "APPLY_RECORD";
 
 // 获取企业职位详情
 export const COMPANY_JOB_INFO = "COMPANY_JOB_INFO";
+
+// 获取企业详情
+export const COMPANY_INFO = "COMPANY_INFO";
+
+// 获取职位列表
+export const GET_JOB_LIST = "GET_JOB_LIST";

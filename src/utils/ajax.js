@@ -14,7 +14,9 @@ export const ajaxPost = (url,data,callback) => {
     .done((response)=>{
          // 关闭preloader
         if($('.modal-preloader').hasClass('modal-in')){
-            Modal.closePreloader();
+            setTimeout(()=>{
+                Modal.closePreloader();
+            },500);
         }
         const {returnCode,returnMsg} = JSON.parse(response);
         if(returnCode === 'AAAAAAA'){

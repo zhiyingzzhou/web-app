@@ -14,5 +14,5 @@ require('./config/routes')(app);
 
 app.listen(port,err=>{
     if(err) throw new Error(err);
-    log(chalk.blue(`App server listen ${port}`))
+    log(chalk.green(`App server listen ${port}`))
 });

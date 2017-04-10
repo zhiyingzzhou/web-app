@@ -66,7 +66,7 @@ class CompanyJobInfoPage extends Component {
     }
 
     render() {
-        const {data,location,actions} = this.props;
+        const {data,location,pushHistory,popHistory} = this.props;
         const {isDown=false} = this.state;
         // isDelivery 是否投递简历
         const {jobInfo,corpInfo,relatedJobs=[],isDelivery=true} = data;
@@ -75,9 +75,12 @@ class CompanyJobInfoPage extends Component {
                 <NavbarBack title="职位详情" right={this._generateRight()} />
                 <div ref="PageContent" className="page-content" >
                     {jobInfo && <JobInfoComponents jobInfo={jobInfo} />}
-                    {corpInfo && <CompanyInfoComponent corpInfo={corpInfo} />}
+                    {corpInfo && <CompanyInfoComponent location={location} pushHistory={pushHistory} popHistory={popHistory} corpInfo={corpInfo} />}
                     {jobInfo && <JobDescriptionComponent jobInfo={jobInfo} />}
-                    {relatedJobs && relatedJobs.length > 0 ? <RelatedJobComponent relatedJobs={relatedJobs} location={location} actions={actions} /> : null}
+                    {relatedJobs && relatedJobs.length > 0 ? 
+                        <RelatedJobComponent location={location} pushHistory={pushHistory} popHistory={popHistory} relatedJobs={relatedJobs} /> 
+                        : null
+                    }
                     {jobInfo && 
                         <a href="javascript:void(0);" className={`button ${isDown ? 'static' : 'active'} ${isDelivery ? 'disabled' : ''}`}>
                             投递简历
@@ -101,7 +104,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getjobInfo: bindActionCreators(Actions.jobActions.getCompanyJobInfo, dispatch),
-    actions: bindActionCreators(Actions.historyActions, dispatch),
+    pushHistory: bindActionCreators(Actions.historyActions.pushHistory, dispatch),
+    popHistory: bindActionCreators(Actions.historyActions.popHistory, dispatch)
 })
 
 export default connect(

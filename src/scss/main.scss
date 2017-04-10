@@ -13,18 +13,34 @@
 @import 'components/input';
 @import 'components/button'; 
 @import 'components/modal';
+@import 'components/tips';
 
 // pages
+
+// 登陆
 @import 'pages/login';
+// 注册
 @import 'pages/register';
+
 @import 'pages/login-and-register';
+// 个人中心
 @import 'pages/user';
+// 简历列表
 @import 'pages/resume';
+// 申请记录
 @import 'pages/apply';
+// 更改密码
 @import 'pages/changepasswd';
+// 创建简历
 @import 'pages/create-resume';
+// 关于我们
 @import 'pages/about-us';
+// 公司职位详情
 @import 'pages/company-job-info';
+// 公司详情
+@import 'pages/company-info';
+// 找回密码
+@import 'pages/find-passwd';
 
 // components
 @import 'components/navbar';

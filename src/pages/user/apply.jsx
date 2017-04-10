@@ -77,7 +77,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getApplyRecord: bindActionCreators(Actions.userActions.getApplyRecord, dispatch),
-    actions: bindActionCreators(Actions.historyActions, dispatch)
+    pushHistory: bindActionCreators(Actions.historyActions.pushHistory, dispatch),
+    popHistory: bindActionCreators(Actions.historyActions.popHistory, dispatch)
 })
 
 export default connect(

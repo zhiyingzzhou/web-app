@@ -25,12 +25,12 @@ module.exports = (function() {
 
     Jump.prototype.jumpPage = function(pathname){
         let transitionType = TransitionPages.getState('right');
-        const {actions,location} = this.props;
+        const {pushHistory,location} = this.props;
         var pattern = /\.html$/ig;
         if(pattern.test(location.pathname)){
-            actions.pushHistory('/');
+            pushHistory('/');
         }else{
-            actions.pushHistory(location.pathname);
+            pushHistory(location.pathname);
         }
         this.context.router.push({
             pathname: pathname,

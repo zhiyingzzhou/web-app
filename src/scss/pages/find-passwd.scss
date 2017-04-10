@@ -1,0 +1,87 @@
+[data-page="find-passwd"] {
+    .page-content {
+        background-color: #FFF;
+    }
+    .content {
+        padding: px2rem(33px) px2rem(33px) 0;
+    }
+    // 进度条
+    .progress {
+        margin: 0 auto;
+        position: relative;
+        width: px2rem(638px);
+        .middle-line {
+            position: absolute;
+            width: 90%;
+            top: px2rem(40px);
+            height: px2rem(4px);
+            background-color: $assist-color;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        .progress-inner {
+            position: relative;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+        }
+        .progress-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            &.active {
+                .circle {
+                    background-color: $theme-color !important;
+                }
+                .text {
+                    color: $theme-color;
+                }
+            }
+        }
+        .circle {
+            width: px2rem(80px);
+            height: px2rem(80px);
+            text-align: center;
+            line-height: px2rem(80px);
+            font-size: px2rem(42px);
+            color: #FFF;
+            border-radius: 50%;
+            background-color: $assist-color;
+        }
+        .text {
+            color: $assist-color;
+            font-size: px2rem(26px);
+            margin-top: px2rem(19px);
+        }
+    }
+    //输入框
+    .list-block {
+        margin-top: px2rem(73px);
+        ul {
+            padding-top: px2rem(40px);
+            padding-bottom: px2rem(37px);
+            font-size: px2rem(30px);
+            .item-inner:after {
+                height: 0 !important;
+            }
+            .item-title {
+                color: $standard-color;
+                width: px2rem(149px);
+            }
+            input {
+                font-size: px2rem(30px);
+            }
+        }
+    }
+    // 按钮
+    .button {
+        width: px2rem(682px);
+        height: px2rem(95px);
+        color: #FFF;
+        background-color: $theme-color;
+        margin: px2rem(40px) auto 0;
+        font-size: px2rem(42px);
+        line-height: px2rem(95px);
+    }
+}

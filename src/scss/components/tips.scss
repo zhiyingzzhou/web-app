@@ -1,0 +1,11 @@
+// 提示
+.tips {
+    font-size: px2rem(26px);
+    text-align: center;
+    color: $assist-color;
+    line-height: px2rem(29px);
+    margin-top: px2rem(38px);
+    a {
+        color: $theme-color;
+    }
+}

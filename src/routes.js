@@ -26,11 +26,17 @@ export default function getRoutes () {
         <Route path='createResume' component={require('./pages/user/createResume').default} onEnter={requireAuthHook} />
         // 导入简历
         <Route path='importResume' component={require('./pages/user/importResume').default} onEnter={requireAuthHook} />
+        // 找回密码
+        <Route path='findPasswd/:step' component={require('./pages/user/find-passwd').default} />
       </Route>
       // 关于我们
       <Route path='aboutus' component={require('./pages/about-us').default} />
+      // 企业详情
+      <Route path="companyInfo/:corpid" component={require('./pages/company-info').default} />
       // 企业职位详情
       <Route path="companyJobInfo/:corpid/:jobid" component={require('./pages/company-job-info').default} />
+      // 职位列表
+      <Route path="jobList" component={require('./pages/job-list').default} />
     </Route>
   )
 }

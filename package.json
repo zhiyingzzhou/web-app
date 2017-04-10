@@ -17,7 +17,7 @@
       }
     },
     "dev": {
-      "command": "node server.js",
+      "command": "node networkinterfaces && node server.js",
       "env": {
         "NODE_ENV": "development"
       }

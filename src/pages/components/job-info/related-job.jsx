@@ -13,15 +13,16 @@ export default class RelatedJobComponent  extends Component {
     };
 
     _jumPage(item) {
-        const {corpid=0,id=0} = item;
-        J.jumpPage.bind(this,`/companyJobInfo/${corpid}/${id}`)();
+        const {isCompanyPage=false} = this.props;
+        const {corpid=0,id=0,jobid} = item;
+        J.jumpPage.bind(this,`/companyJobInfo/${corpid}/${isCompanyPage ? jobid : id}`)();
     }
 
     render() {
-        const {relatedJobs} = this.props;
+        const {relatedJobs,isCompanyPage=false,corpname=''} = this.props;
         return (
             <div className="list-block related-job">
-               <Title title="相关职位推荐" />
+               {!isCompanyPage && <Title title="相关职位推荐" />}
               <ul>
                   {
                       relatedJobs.map( (item,index)=>{
@@ -29,7 +30,7 @@ export default class RelatedJobComponent  extends Component {
                           // salary 薪资
                           // jobcity 工作城市
                           // corpname 公司名称
-                          const {jobname='',salary='',jobcity='',corpname=''} = item;
+                          const {jobname='',salary='',jobcity=''} = item;
                           return (
                                 <li key={index} className="item" onClick={this._jumPage.bind(this,item)}>
                                     <div className="title">
@@ -37,7 +38,7 @@ export default class RelatedJobComponent  extends Component {
                                             {item.jobname || ''}
                                         </div>
                                         <div className="bottom text-ellipsis">
-                                            {salary !== '面议' ? salary+'元/月' : salary} | {jobcity} | {corpname}
+                                            {salary !== '面议' ? salary+'元/月' : salary} | {jobcity} | {isCompanyPage ? corpname : item.corpname}
                                         </div>
                                     </div>
                                     <div className="after">

@@ -27,8 +27,8 @@ class PanelComponent extends Component {
         setTimeout(()=>{
             const user = store.get('user');
             if(user){
-                this.props.actions.getUserInfo(user);
-                this.props.actions.getPersonalStatistics();
+                this.props.getUserInfo(user);
+                this.props.getPersonalStatistics();
             }
         },400);
     }
@@ -108,7 +108,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators({...Actions.historyActions,...Actions.userActions}, dispatch)
+    pushHistory: bindActionCreators(Actions.historyActions.pushHistory, dispatch),
+    popHistory: bindActionCreators(Actions.historyActions.popHistory, dispatch),
+    getUserInfo: bindActionCreators(Actions.userActions.getUserInfo, dispatch),
+    getPersonalStatistics: bindActionCreators(Actions.userActions.getPersonalStatistics, dispatch)
 })
 
 export default connect(

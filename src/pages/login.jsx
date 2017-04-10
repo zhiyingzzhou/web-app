@@ -102,7 +102,7 @@ class LoginPage extends Component {
                     </a>
                     {/*忘记密码*/}
                     <div className="forget-passwd">
-                        <a>忘记密码</a>
+                        <a href="javascript:void(0);" onClick={J.jumpPage.bind(this,'/user/findPasswd/1')}>忘记密码</a>
                     </div>
                     {/*提示*/}
                     <Tips />
