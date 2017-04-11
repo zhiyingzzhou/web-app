@@ -6,10 +6,11 @@ import store from 'store';
 import {ajaxPost,ajaxPostByToken} from 'utils/ajax';
 
 const COMPANY_JOB_INFO = {type:types.COMPANY_JOB_INFO};
+const HUNTER_JOB_INFO = {type:types.HUNTER_JOB_INFO};
 const GET_JOB_LIST = {type:types.GET_JOB_LIST};
 
-export const getCompanyJobInfo = (corpid,jobid) => (dispatch,getState) => {
-
+export const getCompanyjobInfo = (corpid,jobid) => (dispatch,getState) => {
+    // 查看企业职位详细
     //打开preloader
     Modal.openPreloader('加载中...');
 
@@ -25,6 +26,27 @@ export const getCompanyJobInfo = (corpid,jobid) => (dispatch,getState) => {
             }
         },(res)=>{
             dispatch($.extend(COMPANY_JOB_INFO,{companyJobInfo:res.data}));
+        })
+    }
+}
+
+export const getHunterjobInfo = (corpid,jobid) => (dispatch,getState) => {
+    // 查看猎头职位详细
+    //打开preloader
+    Modal.openPreloader('加载中...');
+
+    const {token} = store.get('user') || {};
+    if(token){
+        ajaxPostByToken(`${prefixUrl}/hunterjob`,{
+            "head": {
+                "transcode": "L0002"
+            },
+            "data": {
+                corpid: corpid,
+                jobid: jobid
+            }
+        },(res)=>{
+            dispatch($.extend(HUNTER_JOB_INFO,{hunterJobInfo:res.data}));
         })
     }
 }

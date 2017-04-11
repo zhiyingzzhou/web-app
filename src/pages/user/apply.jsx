@@ -28,7 +28,7 @@ class ApplyPage  extends Component {
         if(!jobtype){
             J.jumpPage.bind(this,`/companyJobInfo/${companyid}/${jobid}`)();
         }else{
-            console.log(item);
+            J.jumpPage.bind(this,`/hunterJobInfo/${companyid}/${jobid}`)();
         }
     }
 
@@ -43,8 +43,15 @@ class ApplyPage  extends Component {
                             {
                                 applyRecord.length > 0 && 
                                 applyRecord.map( (item,index) => {
-                                    const {jobname='',jobcity='',corpname='',createdate='',hjobname='',husername='',jobtype=0} = item;
-                                    {/*jobtype 0为公司,1为猎头*/}
+                                    const {
+                                        jobname='', // 职位名称
+                                        jobcity='', // 工作城市
+                                        corpname='', // 公司名称
+                                        createdate='', // 创建时间
+                                        hjobname='', // 猎头职位名称
+                                        husername='', // 猎头名称
+                                        jobtype=0  //职位类型 0为公司 1为猎头
+                                    } = item;
                                     return (
                                         <li key={`apply_${index}`} onClick={this.jumpPage.bind(this,item)}>
                                             <div className="item-content">

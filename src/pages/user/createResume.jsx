@@ -18,15 +18,25 @@ import data from 'data/create-resume';
 
 // picker 组件
 import pickerMethods from 'utils/picker';
+import C from 'utils/city';
 
 class CreateResumePage  extends Component {
     
-    componentDidMount() {
+    // bind event
+    createResume = this._createResume.bind(this);
+
+    _createResume() {
+        $('input').forEach(item=>{
+            const {id,value} = item;
+            if(value.length === 0){
+            }
+        });
+        this.props.createResume({name:'zzy'});
     }
 
     _getInput(item,index) {
-        return item.readonly ? <input id={item.key} type={item.inputType} readOnly /> 
-        : <input type={item.inputType}/>;
+        return item.readonly ? <input id={item.key} defaultValue='' type={item.inputType} readOnly /> 
+        : <input id={item.key} defaultValue='' type={item.inputType}/>;
     }
 
     _showPicker(item) {
@@ -42,6 +52,9 @@ class CreateResumePage  extends Component {
                 });    
                 tempData.push(dimension);            
             });
+            pickerMethods.showDate(item.key,tempData);
+        }else if(item.key === 'livecityid') {
+            C.format(item.key);
         }else{
             item.data.forEach((item,index)=>{
                 tempData.push({
@@ -49,8 +62,8 @@ class CreateResumePage  extends Component {
                     value: item
                 });
             });
+            pickerMethods.show(item.key,tempData);
         }
-        pickerMethods.show(item.key,tempData);
     }
 
     render() {
@@ -91,7 +104,7 @@ class CreateResumePage  extends Component {
                             }
                         </ul>
                     </div>
-                    <a href="javascript:void(0);" className="button">保存</a>
+                    <a href="javascript:void(0);" className="button" onClick={this.createResume}>保存</a>
                     <FooterComponent location={this.props.location} />
                 </div>
             </div>
@@ -99,14 +112,12 @@ class CreateResumePage  extends Component {
     }
 }
 
-// const mapStateToProps = state => ({
-//     state: {
-//         user: state.User
-//     }
-// })
+const mapStateToProps = state => ({
+    state: {}
+})
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(Actions.userActions, dispatch)
+    createResume: bindActionCreators(Actions.resumeActions.createResume,dispatch)
 })
 
 export default connect(

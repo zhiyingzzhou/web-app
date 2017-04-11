@@ -10,7 +10,7 @@ export default class DialogComponent  extends Component {
                     </div>
                 </div>
                 <div className="modal-buttons">
-                    <span className="modal-button close-toast">
+                    <span className="modal-button close-dialog">
                         确定
                     </span>
                 </div>

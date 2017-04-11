@@ -1,0 +1,42 @@
+[data-page="job-list"] {
+    .page-content {
+        background-color: #FFF;
+    }
+    .list-block {
+        padding-left: px2rem(33px);
+        padding-right: px2rem(36px);
+        img {
+            width: px2rem(106px);
+            // height: px2rem(106px);
+        }
+        .top,.item-after {
+            font-size: px2rem(30px);
+            font-weight: bold;
+        }
+        .top {
+            color: $standard-color;
+        }
+        .item-after {
+            color: $theme-color;
+        }
+        .middle,.bottom {
+            margin-top: px2rem(14px);
+            font-size: px2rem(26px);
+            color: $assist-color;
+        }
+    }
+    .item-title {
+        width: 75%;
+    }
+    .item-inner {
+        padding: px2rem(24px) 0;
+        justify-content: flex-start;
+        >div {
+            display: flex;
+            width: px2rem(559px);
+            justify-content: space-between;
+            align-items: center;
+            margin-left: px2rem(16px);
+        }
+    }
+}

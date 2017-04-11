@@ -1,0 +1,37 @@
+[data-page="import-resume"] {
+    .page-content {
+        background-color: #FFF;
+    }
+    ul{
+        &:before,&:after {
+            height: 0px;
+        }
+    }
+    .list-block {
+        padding: px2rem(21px) px2rem(35px) 0 px2rem(33px);
+    }
+    .list-block,input {
+        font-size: px2rem(30px) !important;
+    }
+    .item-inner {
+        padding: px2rem(38px) 0;
+    }
+    .item-title {
+        width: px2rem(150px);
+        color: $standard-color;
+    }
+    // 更多图表
+    .item-after img {
+        height: px2rem(31px);
+    }
+    .button {
+        width: px2rem(682px);
+        height: px2rem(95px);
+        background-color: $theme-color;
+        color: #FFF;
+        font-size: px2rem(42px);
+        line-height: px2rem(95px);
+        text-align: center;
+        margin: px2rem(40px) auto 0;
+    }
+}

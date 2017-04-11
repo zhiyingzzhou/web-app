@@ -1,48 +1,56 @@
-import React,{Component} from 'react';
+import React,{Component,PropTypes} from 'react';
 
 // navbar components
 import NavbarBack from 'components/navbar-back';
+
+// png
+import ArrowRightPng from 'images/arrow-right.png';
 
 // redux
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from 'actions';
 
-class JobListPage  extends Component {
+import J from 'utils/jump';
 
-    componentDidMount() {
-        this.props.getJobList();
+class CompanyListPage  extends Component {
+
+    static contextTypes = {
+        router: PropTypes.object
     }
 
-    _generateList() {
-        const {jobList} = this.props,
-            {list=[]} = jobList;
+    componentDidMount() {
+        setTimeout(()=>{
+            this.props.getCompanyList();
+        },400);
+    }
+
+    _generateCompanyList() {
+        const {companyList} = this.props;
+        const {list=[]} = companyList;
+        if(!list || list.length === 0) return null;
         return (
             <div className="list-block">
                 <ul>
                     {
                         list.map((item,index)=>{
-                            console.log(item);
-                            const {mlogo,corpname='',jobname='',jobcity='',workyears='',ebid,salary} = item;
+                            const {logo,corpname,city,nature,scope,id} = item;
                             return (
-                                <li key={index}>
+                                <li key={index} onClick={J.jumpPage.bind(this,`/companyInfo/${id}`)}>
                                     <div className="item-content">
                                         <div className="item-inner">
-                                            <img src={mlogo} alt={corpname} />
+                                            <img src={logo} alt={corpname}/>
                                             <div>
                                                 <div className="item-title">
-                                                    <div className="top text-ellipsis">
-                                                        {jobname}
-                                                    </div>
-                                                    <div className="middle">
-                                                        {jobcity} | {workyears} | {ebid}
-                                                    </div>
-                                                    <div className="bottom">
+                                                    <div className="top">
                                                         {corpname}
+                                                    </div>
+                                                    <div className="bottom text-ellipsis">
+                                                        {city} | {nature} | {scope}
                                                     </div>
                                                 </div>
                                                 <div className="item-after">
-                                                    {salary}
+                                                    <img src={ArrowRightPng} alt="查看详情"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -57,15 +65,11 @@ class JobListPage  extends Component {
     }
 
     render() {
-        const {jobList} = this.props,
-            {list=[]} = jobList;
         return (
-            <div className='page' data-page='job-list'>
-                <NavbarBack title="职位列表" />
+            <div className='page' data-page='company-list'>
+                <NavbarBack title="公司列表" />
                 <div className="page-content">
-                    {
-                        list.length > 0 ? this._generateList() : null
-                    }
+                    {this._generateCompanyList()}
                 </div>
             </div>
         );
@@ -73,17 +77,17 @@ class JobListPage  extends Component {
 }
 
 const mapStateToProps = state => ({
-    jobList: state.Job.jobList
+    companyList: state.Company.companyList
 })
 
 const mapDispatchToProps = dispatch => ({
-    getJobList: bindActionCreators(Actions.jobActions.getJobList, dispatch),
     pushHistory: bindActionCreators(Actions.historyActions.pushHistory, dispatch),
-    popHistory: bindActionCreators(Actions.historyActions.popHistory, dispatch)
+    popHistory: bindActionCreators(Actions.historyActions.popHistory, dispatch),
+    getCompanyList: bindActionCreators(Actions.companyActions.getCompanyList, dispatch)
 })
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(JobListPage);
+)(CompanyListPage);
 

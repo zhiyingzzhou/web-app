@@ -25,7 +25,7 @@ export default function getRoutes () {
         // 创建简历
         <Route path='createResume' component={require('./pages/user/createResume').default} onEnter={requireAuthHook} />
         // 导入简历
-        <Route path='importResume' component={require('./pages/user/importResume').default} onEnter={requireAuthHook} />
+        <Route path='importResume' component={require('./pages/user/import-resume').default} onEnter={requireAuthHook} />
         // 找回密码
         <Route path='findPasswd/:step' component={require('./pages/user/find-passwd').default} />
       </Route>
@@ -34,9 +34,13 @@ export default function getRoutes () {
       // 企业详情
       <Route path="companyInfo/:corpid" component={require('./pages/company-info').default} />
       // 企业职位详情
-      <Route path="companyJobInfo/:corpid/:jobid" component={require('./pages/company-job-info').default} />
+      <Route path="companyJobInfo/:corpid/:jobid" component={require('./pages/job-info').default} />
+      // 猎头职位详情
+      <Route path="hunterJobInfo/:corpid/:jobid" component={require('./pages/job-info').default} />
       // 职位列表
       <Route path="jobList" component={require('./pages/job-list').default} />
+      // 公司列表
+      <Route path="companyList" component={require('./pages/company-list').default} />
     </Route>
   )
 }

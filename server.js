@@ -6,6 +6,8 @@ const chalk = require('chalk');
 const log = console.log;
 app = express();
 
+// process.env.NODE_ENV = 'development';
+
 // get port
 const port = process.env.port || 5000;
 

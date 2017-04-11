@@ -33,15 +33,15 @@ class UserIndexPage  extends Component {
     }
 
     componentDidMount() {
-        const {personalStatistics,actions} = this.props;
+        const {data,getPersonalStatistics} = this.props;
         // 判断store中是否已经有个人数据统计
-        if(JSON.stringify(personalStatistics) == '{}'){
-            actions.getPersonalStatistics();
+        if(JSON.stringify(data) == '{}'){
+            getPersonalStatistics();
         }
     }
     render() {
-        const {personalStatistics,location} = this.props;
-        const {loginname='',resumenum=0,applynum=0,favnum=0} = personalStatistics;
+        const {data,location} = this.props;
+        const {loginname='',resumenum=0,applynum=0,favnum=0} = data;
         return (
             <div className='page' data-page='personal'>
                 <NavbarBack title="个人中心" />
@@ -95,11 +95,13 @@ class UserIndexPage  extends Component {
 }
 
 const mapStateToProps = state => ({
-    personalStatistics: state.User.personalStatistics || {}
+    data: state.User.personalStatistics || {}
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators({...Actions.userActions,...Actions.historyActions}, dispatch),
+    getPersonalStatistics: bindActionCreators(Actions.userActions.getPersonalStatistics,dispatch),
+    pushHistory: bindActionCreators(Actions.historyActions.pushHistory, dispatch),
+    popHistory: bindActionCreators(Actions.historyActions.popHistory, dispatch)
 })
 
 export default connect(

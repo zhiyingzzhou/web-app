@@ -41,5 +41,20 @@ module.exports = (function(){
         $('.modal-preloader .modal-title').text('');
     }
 
+    Modal.prototype.openPrompt = function(text) {
+        $('.modal-prompt .modal-text').text(text);
+        $('.modal-prompt').css('display','block');
+        this.openOverlay();
+        setTimeout(()=>{
+            $('.modal-prompt').addClass('modal-in');
+        },100);
+    }
+
+    Modal.prototype.closePrompt = function() {
+        $('.modal-prompt').removeClass('modal-in').css('display','none');
+        this.closeOverlay();
+        $('.modal-prompt .modal-text').text('');
+    }
+
     return new Modal();
 })();

@@ -9,7 +9,7 @@ import FooterComponent from 'components/footer';
 import LinkItem from 'components/List/LinkItem';
 
 // png
-import deletePng from 'images/resume/delete.png';
+import deletePng from 'images/delete.png';
 import arrowRightPng from 'images/arrow-right.png';
 
 // redux
@@ -51,7 +51,7 @@ class ResumePage extends Component {
                             { typeof datanum === 'number' && datanum > 0 && 
                                 $.parseJSON(data).map( (item,index) => {
                                     return (
-                                        <li key={`resume_${index}`}>
+                                        <li key={index}>
                                             <div className="item-content">
                                                 <div className="item-inner">
                                                     <div className="item-title">

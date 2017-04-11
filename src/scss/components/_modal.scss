@@ -45,9 +45,20 @@
             line-height: px2rem(53px);
             color: #FFF;
             border-radius: px2rem(9px);
+            &.cancel-button {
+                background-color: $assist-color;
+            }
             &:hover {
                 cursor: pointer;
             }
+        }
+        // prompt
+        .button-inner {
+            display: flex;
+            width: 50%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
         }
     }
 }
@@ -102,6 +113,8 @@
         animation: preloader-spin 1s steps(12,end) infinite;
     }
 }
+
+
 
 @keyframes preloader-spin {
   100% {

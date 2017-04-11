@@ -1,0 +1,42 @@
+[data-page="company-list"] {
+    .page-content {
+        background-color: #FFF;
+    }
+    .list-block {
+        padding-left: px2rem(33px);
+        padding-right: px2rem(36px);
+        img {
+            width: px2rem(106px);
+        }
+        .top {
+            font-size: px2rem(30px);
+            font-weight: bold;
+            color: $standard-color;
+        }
+        .bottom {
+            font-size: px2rem(26px);
+            color: $assist-color;
+            margin-top: px2rem(14px);
+        }
+    }
+    .item-title {
+        width: 95%;
+    }
+    .item-inner {
+        padding: px2rem(28px) 0 px2rem(25px);
+        justify-content: flex-start;
+        >div {
+            margin-left: px2rem(16px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: px2rem(559px);
+        }
+    }
+    .item-after {
+        img {
+            width: px2rem(21px);
+            height: px2rem(39px);
+        }
+    }
+}

@@ -5,6 +5,7 @@ import Panel from 'utils/panel';
 import Modal from 'utils/modal';
 
 import DialogComponent from 'components/modal/dialog';
+import PromptComponent from 'components/modal/prompt';
 
 export default class Framework extends React.Component {
     
@@ -12,9 +13,14 @@ export default class Framework extends React.Component {
         $.extend($.ajaxSettings,{
             global: false
         });
-        // 关闭弹窗
-        $('.close-toast').on('click',()=>{
+        // 关闭dialog
+        $('.close-dialog').on('click',()=>{
             Modal.closeDialog();
+        });
+
+        // 关闭prompt
+        $('.cancel-button').on('click',()=>{
+            Modal.closePrompt();
         });
         
     }
@@ -44,6 +50,7 @@ export default class Framework extends React.Component {
                 <div className="modal-overlay">
                 </div>
                 <DialogComponent />
+                <PromptComponent />
                 <div className="modal-preloader">
                     <div className="modal-inner">
                         <div className="modal-title">数据加载中</div>

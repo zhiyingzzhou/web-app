@@ -6,6 +6,7 @@ export default class ListItem extends Component {
     onChange = this._onChange.bind(this);
     onFocus = this._onFocus.bind(this);
     onBlur = this._onBlur.bind(this);
+    onClick = this._onClick.bind(this);
 
     // static propTypes = {
     //     title: PropTypes.string,
@@ -34,8 +35,30 @@ export default class ListItem extends Component {
         }
     }
 
+    _onClick() {
+        const {onClick} = this.props;
+        if(onClick){
+            onClick();
+        }
+    }
+
+    shouldComponentUpdate(nextProps,nextState) {
+        if(nextProps.value !== this.props.value){
+            return true;
+        }
+        return false;
+    }
+
     render(){
-        const {title='',placeholder='',after,value='',inputType='text'} = this.props;
+        const {
+                title='',
+                placeholder='',
+                after,
+                value='',
+                inputType='text',
+                readOnly=false,
+                inputId=''
+        } = this.props;
 
         return (
             <li>
@@ -43,7 +66,17 @@ export default class ListItem extends Component {
                     <div className="item-inner">
                         <div className="item-title">{title}</div>
                         <div className="item-input">
-                            <input onFocus={this.onFocus} onBlur={this.onBlur} type={inputType} placeholder={placeholder} value={value} onChange={this.onChange} />
+                            <input 
+                                id={inputId}
+                                onFocus={this.onFocus} 
+                                onBlur={this.onBlur} 
+                                onChange={this.onChange}
+                                type={inputType} 
+                                placeholder={placeholder} 
+                                value={value} 
+                                readOnly={readOnly}
+                                onClick={this.onClick}
+                            />
                         </div>
                         {after && after}
                     </div>

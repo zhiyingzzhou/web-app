@@ -1,0 +1,45 @@
+[data-page="collection"] {
+    .page-content {
+        background-color: #FFF;
+    }
+    .list-block {
+        ul {
+            padding: px2rem(18px) px2rem(34px) 0;
+            &:before,&:after {
+                height: 0 !important;
+            }
+        }
+        .item-inner {
+            padding-top: px2rem(26px);
+            padding-bottom: px2rem(25px);
+        }
+        .top {
+            font-size: px2rem(30px);
+            color: $standard-color;
+            font-weight: bold;
+        }
+        .middle {
+            margin-top: px2rem(14px);
+        }
+        .bottom {
+            margin-top: px2rem(17px);
+        }
+        .middle,.bottom {
+            font-size: px2rem(26px);
+            color: $assist-color;
+        }
+        // 右边图表
+        .item-after {
+            display: flex;
+            align-items: center;
+            a img {
+                width: px2rem(53px);
+            }
+            .detail {
+                margin-left: px2rem(48px);
+                width: px2rem(21px);
+                height: px2rem(39px);
+            }
+        }
+    }
+}

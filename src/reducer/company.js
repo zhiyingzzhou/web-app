@@ -1,13 +1,16 @@
-import {COMPANY_INFO} from 'constants/ActionTypes';
+import {COMPANY_INFO,COMPANY_LIST} from 'constants/ActionTypes';
 
 const initialState = {
-    companyInfo: {}
+    companyInfo: {},
+    companyList: {}
 };
 
-export default function users(state = initialState,actions){
+export default function company(state = initialState,actions){
     switch(actions.type){
         case COMPANY_INFO: 
             return {...state,companyInfo:actions.companyInfo};
+        case COMPANY_LIST:
+            return {...state,companyList:actions.companyList};
         default: 
             return state;
     }
