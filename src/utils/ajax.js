@@ -14,9 +14,7 @@ export const ajaxPost = (url,data,callback) => {
     .done((response)=>{
          // 关闭preloader
         if($('.modal-preloader').hasClass('modal-in')){
-            setTimeout(()=>{
-                Modal.closePreloader();
-            },500);
+            Modal.closePreloader();
         }
         const {returnCode,returnMsg} = JSON.parse(response);
         if(returnCode === 'AAAAAAA'){
@@ -27,12 +25,10 @@ export const ajaxPost = (url,data,callback) => {
     })
     .fail(err=>{
          // 关闭preloader
-         setTimeout(()=>{
-            if($('.modal-preloader').hasClass('modal-in')){
-                Modal.closePreloader();
-            }
-            Modal.openDialog('抱歉！请求失败，请稍后重试！');
-         },500);
+        if($('.modal-preloader').hasClass('modal-in')){
+            Modal.closePreloader();
+        }
+        Modal.openDialog('抱歉！请求失败，请稍后重试！');
     }) 
 };
 

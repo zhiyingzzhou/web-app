@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{Component,PropTypes} from 'react';
 
 // navbar components
 import NavbarBack from 'components/navbar-back';
@@ -8,10 +8,21 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from 'actions';
 
+import J from 'utils/jump';
+import getTransition from 'utils/getTransition';
+
 class JobListPage  extends Component {
 
+    static contextTypes = {
+        router: PropTypes.object
+    };
+
     componentDidMount() {
-        this.props.getJobList();
+        setTimeout(()=>{
+            if(getTransition.bind(this)() === 'right'){
+                this.props.getJobList();
+            }
+        },400);
     }
 
     _generateList() {
@@ -22,10 +33,19 @@ class JobListPage  extends Component {
                 <ul>
                     {
                         list.map((item,index)=>{
-                            console.log(item);
-                            const {mlogo,corpname='',jobname='',jobcity='',workyears='',ebid,salary} = item;
+                            const {
+                                mlogo,
+                                corpname='',
+                                jobname='',
+                                jobcity='',
+                                workyears='',
+                                ebid,
+                                salary,
+                                corpid,
+                                id
+                            } = item;
                             return (
-                                <li key={index}>
+                                <li key={index} onClick={J.jumpPage.bind(this,`/companyJobInfo/${corpid}/${id}`)}>
                                     <div className="item-content">
                                         <div className="item-inner">
                                             <img src={mlogo} alt={corpname} />

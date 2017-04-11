@@ -26,10 +26,11 @@ class CollectionPage  extends Component {
     }
 
     jumpPage(item) {
-        console.log(item);
         const {jobtype,companyid,jobid} = item;
         if(!jobtype){
             J.jumpPage.bind(this,`/companyJobInfo/${companyid}/${jobid}`)();
+        }else{
+            J.jumpPage.bind(this,`/hunterJobInfo/${companyid}/${jobid}`)();
         }
     }
 

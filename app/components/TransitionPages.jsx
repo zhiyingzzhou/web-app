@@ -8,7 +8,7 @@ export default class TransitionPages extends Component {
     location: PropTypes.object
   };
 
-  static getState (type = 'left') {
+  static getState (type = 'right') {
     return {
       transition: type
     }

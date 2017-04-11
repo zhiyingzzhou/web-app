@@ -9,7 +9,9 @@ const initialState = {
 export default function job(state = initialState,actions){
     switch(actions.type){
         case COMPANY_JOB_INFO: 
-            return {...state,companyJobInfo:actions.companyJobInfo};
+            const {corpid,jobid,data} = actions;
+            state.companyJobInfo[corpid+jobid] = data;
+            return {...state};
         case HUNTER_JOB_INFO:
             return {...state,hunterJobInfo:actions.hunterJobInfo};
         case GET_JOB_LIST:

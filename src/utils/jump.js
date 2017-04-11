@@ -19,7 +19,7 @@ module.exports = (function() {
             }
             this.context.router.push({
                 pathname: lastPath,
-                state:TransitionPages.getState()
+                state:TransitionPages.getState('left')
             });
     }
 
@@ -40,7 +40,7 @@ module.exports = (function() {
 
     // login and register Jump
     Jump.prototype.jumpToLoginOrRegister = function(pathname){
-        let transitionType = TransitionPages.getState();
+        let transitionType = TransitionPages.getState('left');
         const {pushHistory,location,History} = this.props,
             {router} = this.context,
         //获取history数组中的最后一个路径

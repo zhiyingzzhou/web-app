@@ -12,18 +12,18 @@ module.exports = (function(){
     }
 
     Modal.prototype.openDialog = function(text = 'm(-_-)m'){
-        $('.modal .modal-text').text(text);
-        $('.modal').css('display','block');
+        $('.modal-dialog .modal-text').text(text);
+        $('.modal-dialog').css('display','block');
         this.openOverlay();
         setTimeout(()=>{
-            $('.modal').addClass('modal-in');
+            $('.modal-dialog').addClass('modal-in');
         },100);
     }
 
     Modal.prototype.closeDialog = function() {
-        $('.modal').removeClass('modal-in').css('display','none');
+        $('.modal-dialog').removeClass('modal-in').css('display','none');
         this.closeOverlay();
-        $('.modal .modal-text').text('');
+        $('.modal-dialog .modal-text').text('');
     }
 
     Modal.prototype.openPreloader = function(text = 'm(-_-)m') {

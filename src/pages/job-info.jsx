@@ -22,6 +22,8 @@ import JobDescriptionComponent from 'components/job-info/job-description';
 // 相关职位推荐
 import RelatedJobComponent from 'components/job-info/related-job';
 
+import getTransition from 'utils/getTransition';
+
 // footer component
 import FooterComponent from 'components/footer';
 
@@ -33,19 +35,20 @@ class CompanyJobInfoPage extends Component {
         setTimeout(()=>{
             const {getCompanyjobInfo,getHunterjobInfo,location,routeParams={}} = this.props;
             const {corpid=0,jobid=0} = routeParams;
-            // 判断是获取猎头职位详细还是企业职位详细
-            if(this._getPath() === 'companyJobInfo'){
-                getCompanyjobInfo(corpid,jobid);
-            }else if(this._getPath() === 'hunterJobInfo'){
-                getHunterjobInfo(corpid,jobid);
+            if(getTransition.bind(this)() === 'right'){
+                // 判断是获取猎头职位详细还是企业职位详细
+                if(this._getPath() === 'companyJobInfo'){
+                    getCompanyjobInfo(corpid,jobid);
+                }else if(this._getPath() === 'hunterJobInfo'){
+                    getHunterjobInfo(corpid,jobid);
+                }
             }
             // 添加debounce,防止滚动频繁
             $('.page-content').on('scroll',$.debounce(300,this._onscroll.bind(this)));
         },400);
     }
     _generateRight() {
-        const {data} = this.props;
-        const {isFav=false} = data;
+        const {isFav=false} = this._getData();
         return !isFav ? (
             <a href="javascript:void(0);">
                 <img src={CollectionPng} alt="收藏"/>
@@ -73,24 +76,29 @@ class CompanyJobInfoPage extends Component {
         const {pathname=''} = location;
         return pathname.split('/')[1] || '';
     }
+
+    _getData() {
+        const {companyJobInfo,hunterJobInfo} = this.props.data;
+        const {corpid,jobid} = this.props.routeParams;
+        if(this._getPath() === 'companyJobInfo'){
+            return companyJobInfo[corpid+jobid] || {};
+        }else if(this._getPath() === 'hunterJobInfo'){
+            return hunterJobInfo;
+        }
+        return {};
+    }
+
     render() {
-        let cacheData;
-        const {data,location,pushHistory,popHistory} = this.props,
-        {companyJobInfo,hunterJobInfo} = data,
+        const {location,pushHistory,popHistory} = this.props,
         {isDown=false} = this.state; // isDown 判断页面是否已经滚动到底部(true已经滚动到底部,false没有滚动到底部)
         // isDelivery 是否投递简历
-        if(this._getPath() === 'companyJobInfo'){
-            cacheData = companyJobInfo;
-        }else if(this._getPath() === 'hunterJobInfo'){
-            cacheData = hunterJobInfo;
-        }
         const {
             jobInfo,
             corpInfo,
             relatedJobs=[],
             isDelivery=true, //是否投递 true: 已投递 false: 未投递
             hunterInfo
-        } = cacheData;
+        } = this._getData();
         return (
             <div className="page" data-page="job-info">
                 <NavbarBack title="职位详情" right={this._generateRight()} />

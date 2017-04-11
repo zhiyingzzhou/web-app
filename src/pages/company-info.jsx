@@ -12,6 +12,8 @@ import * as Actions from 'actions';
 import CompanyInfoComponent from 'components/job-info/company-info';
 import CompanyDescriptionComponent from 'components/company-info/company-description';
 
+import getTransition from 'utils/getTransition';
+
 // 职位列表
 import RelatedJobComponent from 'components/job-info/related-job';
 
@@ -28,7 +30,9 @@ class CompanyInfoPage extends Component {
         setTimeout(()=>{
             const {getCompanyInfo,routeParams={}} = this.props;
             const {corpid=0} = routeParams;
-            getCompanyInfo(corpid);
+            if(getTransition.bind(this)() === 'right'){
+                getCompanyInfo(corpid);
+            }
         },400);
     }
 

@@ -11,6 +11,7 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from 'actions';
 
+import getTransition from 'utils/getTransition';
 import J from 'utils/jump';
 
 class CompanyListPage  extends Component {
@@ -21,7 +22,9 @@ class CompanyListPage  extends Component {
 
     componentDidMount() {
         setTimeout(()=>{
-            this.props.getCompanyList();
+            if(getTransition.bind(this)() === 'right'){
+                this.props.getCompanyList();
+            }
         },400);
     }
 

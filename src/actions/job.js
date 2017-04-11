@@ -11,22 +11,31 @@ const GET_JOB_LIST = {type:types.GET_JOB_LIST};
 
 export const getCompanyjobInfo = (corpid,jobid) => (dispatch,getState) => {
     // 查看企业职位详细
-    //打开preloader
-    Modal.openPreloader('加载中...');
-
-    const {token} = store.get('user') || {};
-    if(token){
-        ajaxPostByToken(`${prefixUrl}/companyjob`,{
-            "head": {
-                "transcode": "Q0002"
-            },
-            "data": {
-                corpid: corpid,
-                jobid: jobid
-            }
-        },(res)=>{
-            dispatch($.extend(COMPANY_JOB_INFO,{companyJobInfo:res.data}));
-        })
+    const {Job} = getState();
+    if(!Job.companyJobInfo[corpid+jobid]){
+        //打开preloader
+        Modal.openPreloader('加载中...');
+        const {token} = store.get('user') || {};
+        if(token){
+            ajaxPostByToken(`${prefixUrl}/companyjob`,{
+                "head": {
+                    "transcode": "Q0002"
+                },
+                "data": {
+                    corpid: corpid,
+                    jobid: jobid
+                }
+            },(res)=>{
+                dispatch($.extend(
+                    COMPANY_JOB_INFO,
+                    {
+                        data:res.data,
+                        corpid: corpid,
+                        jobid: jobid
+                    }
+                ));
+            })
+        }
     }
 }
 
@@ -52,6 +61,9 @@ export const getHunterjobInfo = (corpid,jobid) => (dispatch,getState) => {
 }
 
 export const getJobList = () => (dispatch,getState) => {
+    //打开preloader
+    Modal.openPreloader('加载中...');
+    
     ajaxPost(`${prefixUrl}/companyjob`,{
         "head": {
             "transcode": "Q0001"

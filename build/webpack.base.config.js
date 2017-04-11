@@ -19,7 +19,7 @@ function resolve(dir) {
 
 const extractSass = new ExtractTextPlugin({
     filename: "css/style.css",
-    disable: process.env.NODE_ENV === "development"
+    // disable: process.env.NODE_ENV === "development"
 });
 
 // 公共库
