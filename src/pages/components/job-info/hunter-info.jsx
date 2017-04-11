@@ -4,6 +4,8 @@ import React,{Component,PropTypes} from 'react';
 import ArrowRightPng from 'images/arrow-right.png';
 import MapIconPng from 'images/job-info/map-icon.png';
 
+import Title from 'components/index/title';
+
 import J from 'utils/jump';
 
 export default class HunterInfoComponent  extends Component {
@@ -41,16 +43,14 @@ export default class HunterInfoComponent  extends Component {
             }
         ];
         return (
-            <div className="list-block company-info">
-                <p className="title">
-                    猎头信息
-                </p>
+            <div className="list-block hunter-info">
+                <Title title="猎头信息" />
                 <ul>
                     {
                         list.map( (item,index)=> {
                             return (
                                 <li key={index}>
-                                    <span style={{letterSpacing: item.key.length === 2 ? '2em' : ''}}>{item.key}</span>
+                                    <span style={{letterSpacing: item.key.length === 3 ? '.5em' : ''}}>{item.key}</span>
                                     <span>{item.value}</span>
                                 </li>
                             )

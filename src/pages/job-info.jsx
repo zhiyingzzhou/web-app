@@ -84,7 +84,6 @@ class CompanyJobInfoPage extends Component {
         }else if(this._getPath() === 'hunterJobInfo'){
             cacheData = hunterJobInfo;
         }
-        console.log(cacheData);
         const {
             jobInfo,
             corpInfo,
@@ -93,7 +92,7 @@ class CompanyJobInfoPage extends Component {
             hunterInfo
         } = cacheData;
         return (
-            <div className="page" data-page="company-job-info">
+            <div className="page" data-page="job-info">
                 <NavbarBack title="职位详情" right={this._generateRight()} />
                 <div ref="PageContent" className="page-content" >
                     {/*职位信息*/}

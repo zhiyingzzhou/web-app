@@ -1,4 +1,4 @@
-[data-page="company-job-info"] {
+[data-page="job-info"] {
     .page-content {
         padding-bottom: px2rem(36px);
     }
@@ -74,7 +74,7 @@
             }
         }
     }
-    .company-info {
+    .company-info,.hunter-info {
         padding: px2rem(27px) px2rem(18px) px2rem(23px);
         .title {
             display: flex;
@@ -128,6 +128,18 @@
                 height: px2rem(33px);
                 margin-right: px2rem(14px);
             }
+        }
+    }
+    .hunter-info {
+        .title {
+            justify-content: flex-start !important;
+            img {
+                height: px2rem(28px);
+                margin-right: px2rem(10px);
+            }
+        }
+        ul:after {
+            height: 0 !important;
         }
     }
     .job-description,.related-job {
