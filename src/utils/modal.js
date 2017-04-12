@@ -56,5 +56,23 @@ module.exports = (function(){
         $('.modal-prompt .modal-text').text('');
     }
 
+    Modal.prototype.openMsg = function(type,text) {
+        $(`.modal-message .${type ? 'error' : 'success'}`).css('display','none');
+        $(`.modal-message .${type ? 'success' : 'error'}`).css('display','block');
+        $('.modal-message .modal-text').text(text);
+        $('.modal-message').css('display','block');
+        setTimeout(()=>{
+            $('.modal-message').addClass('modal-in');
+        },100);
+        setTimeout(()=>{
+            this.closeMsg();
+        },800);
+    }
+
+    Modal.prototype.closeMsg = function(text) {
+        $('.modal-message').removeClass('modal-in').css('display','none');
+        $('.modal-message .modal-text').text('');
+    }
+
     return new Modal();
 })();

@@ -11,6 +11,9 @@ import * as Actions from 'actions';
 import J from 'utils/jump';
 import getTransition from 'utils/getTransition';
 
+import SearchComponent from 'components/search';
+import SelectComponent from 'components/select';
+
 class JobListPage  extends Component {
 
     static contextTypes = {
@@ -82,6 +85,11 @@ class JobListPage  extends Component {
         return (
             <div className='page' data-page='job-list'>
                 <NavbarBack title="职位列表" />
+                <div className="search-area">
+                    <SearchComponent />
+                    {/*筛选条件*/}
+                    <SelectComponent />
+                </div>
                 <div className="page-content">
                     {
                         list.length > 0 ? this._generateList() : null

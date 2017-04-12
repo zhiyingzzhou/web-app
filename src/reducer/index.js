@@ -4,13 +4,15 @@ import History from './history';
 import Job from './job';
 import Company from './company';
 import Collection from './collection';
+import Resume from './resume';
 
 const rootReducer = combineReducers({
   User,
   History,
   Job,
   Company,
-  Collection
+  Collection,
+  Resume
 });
 
 export default rootReducer;

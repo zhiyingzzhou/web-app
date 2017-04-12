@@ -1,6 +1,8 @@
 [data-page="job-list"] {
     .page-content {
         background-color: #FFF;
+        padding-top: 0 !important;
+        padding-bottom: px2rem(286px);
     }
     .list-block {
         padding-left: px2rem(33px);

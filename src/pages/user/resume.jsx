@@ -26,7 +26,7 @@ class ResumePage extends Component {
     };
 
     componentDidMount() {
-        this.props.actions.getResumeList();
+        this.props.getResumeList();
     }
 
     render() {
@@ -51,7 +51,11 @@ class ResumePage extends Component {
                             { typeof datanum === 'number' && datanum > 0 && 
                                 $.parseJSON(data).map( (item,index) => {
                                     return (
-                                        <li key={index}>
+                                        <li 
+                                            key={index} 
+                                            // 跳转到我的简历
+                                            onClick={J.jumpPage.bind(this,`/user/myresume/${item.resumeid}`)}
+                                        >
                                             <div className="item-content">
                                                 <div className="item-inner">
                                                     <div className="item-title">
@@ -83,7 +87,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators({...Actions.historyActions,...Actions.userActions}, dispatch)
+    pushHistory: bindActionCreators(Actions.historyActions.pushHistory, dispatch),
+    popHistory: bindActionCreators(Actions.historyActions.popHistory, dispatch),
+    getResumeList: bindActionCreators(Actions.userActions.getResumeList, dispatch)
 })
 
 export default connect(

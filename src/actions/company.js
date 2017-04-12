@@ -27,6 +27,10 @@ export const getCompanyInfo = (corpid) => (dispatch,getState) => {
 }
 
 export const getCompanyList = () => (dispatch,getState) => {
+
+    //打开preloader
+    Modal.openPreloader('加载中...');
+    
     ajaxPost(`${prefixUrl}/company`,{
         "head": {
             "transcode": "CP001"

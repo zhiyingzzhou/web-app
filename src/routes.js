@@ -28,6 +28,8 @@ export default function getRoutes () {
         <Route path='importResume' component={require('./pages/user/import-resume').default} onEnter={requireAuthHook} />
         // 找回密码
         <Route path='findPasswd/:step' component={require('./pages/user/find-passwd').default} />
+        // 简历预览
+        <Route path='myresume/:resumeid' component={require('./pages/user/my-resume').default} onEnter={requireAuthHook} />
       </Route>
       // 关于我们
       <Route path='aboutus' component={require('./pages/about-us').default} />

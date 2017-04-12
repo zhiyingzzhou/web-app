@@ -24,12 +24,57 @@ import RelatedJobComponent from 'components/job-info/related-job';
 
 import getTransition from 'utils/getTransition';
 
+import Modal from 'utils/modal';
+
 // footer component
 import FooterComponent from 'components/footer';
 
+// 选择简历弹窗
+import SelectResumeComponent from 'components/select-resume';
+
 class CompanyJobInfoPage extends Component {
 
-    state ={};
+    state = {}
+
+    //bind event
+    collectionJob = this._collectionJob.bind(this);
+    applyJob = this._applyJob.bind(this);
+    closePrompt = this._closePrompt.bind(this);
+    sendResume = this._sendResume.bind(this);
+
+    _collectionJob() {
+        // 收藏职位
+        const {jobInfo,isLogin} = this._getData();
+        if(isLogin){
+            const {jobid,corpid} = jobInfo;
+            this.props.collectionJob(jobid,corpid,this._getPath());
+        }else{
+            Modal.openPrompt('你还没有登录,是否去登录？');
+        }
+    }
+
+    _applyJob() {
+        // 申请职位
+        const {isLogin} = this._getData();
+        if(isLogin){
+            // 显示弹窗
+            this.setState({
+                showModal: true
+            });
+        }else{
+            Modal.openPrompt('你还没有登录,是否去登录？');
+        }
+    }
+
+    _sendResume(resumeid) {
+        const {applyJob} = this.props,
+            {jobInfo} = this._getData(),
+            {jobid,corpid} = jobInfo;
+        this.setState({
+            showModal: false
+        });
+        applyJob(jobid,resumeid,corpid,this._getPath());
+    }
 
     componentDidMount() {
         setTimeout(()=>{
@@ -50,7 +95,7 @@ class CompanyJobInfoPage extends Component {
     _generateRight() {
         const {isFav=false} = this._getData();
         return !isFav ? (
-            <a href="javascript:void(0);">
+            <a href="javascript:void(0);" onClick={this.collectionJob}>
                 <img src={CollectionPng} alt="收藏"/>
             </a>
         ) : (
@@ -88,16 +133,24 @@ class CompanyJobInfoPage extends Component {
         return {};
     }
 
+    _closePrompt() {
+        this.setState({
+            showModal: false
+        });
+    }
+
     render() {
         const {location,pushHistory,popHistory} = this.props,
-        {isDown=false} = this.state; // isDown 判断页面是否已经滚动到底部(true已经滚动到底部,false没有滚动到底部)
+        {isDown=false,showModal=false} = this.state; // isDown 判断页面是否已经滚动到底部(true已经滚动到底部,false没有滚动到底部)
         // isDelivery 是否投递简历
         const {
             jobInfo,
             corpInfo,
             relatedJobs=[],
             isDelivery=true, //是否投递 true: 已投递 false: 未投递
-            hunterInfo
+            hunterInfo,
+            resumesList=[], //简历列表
+            isLogin //是否登录
         } = this._getData();
         return (
             <div className="page" data-page="job-info">
@@ -144,7 +197,9 @@ class CompanyJobInfoPage extends Component {
                     {jobInfo && 
                         <a 
                             href="javascript:void(0);" 
-                            className={`button ${isDown ? 'static' : 'active'} ${isDelivery ? 'disabled' : ''}`}>
+                            className={`button ${isDown ? 'static' : 'active'} ${isDelivery ? 'disabled' : ''}`}
+                            onClick={this.applyJob}
+                        >
                             投递简历
                         </a>
                     }
@@ -152,6 +207,20 @@ class CompanyJobInfoPage extends Component {
                         <FooterComponent location={location} />
                     }
                 </div>
+                <div 
+                    className="resume-overlay" 
+                    style={{opacity:`${showModal ? 1 : 0}`,visibility:`${showModal ? 'visible' : 'hidden'}`}}
+                ></div>
+                {isLogin && showModal  && 
+                    <SelectResumeComponent 
+                        resumesList={resumesList} 
+                        location={location}
+                        pushHistory={pushHistory} 
+                        popHistory={popHistory} 
+                        closePrompt={this.closePrompt} //关闭弹窗
+                        sendResume={this.sendResume}
+                    />
+                }
                 {/*{jobInfo && 
                     <a href="javascript:void(0);" className={`button active ${isDelivery ? 'disabled' : ''}`} style={{visibility: !isDown ? 'initial' : 'hidden' }}>
                         投递简历
@@ -172,6 +241,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     getCompanyjobInfo: bindActionCreators(Actions.jobActions.getCompanyjobInfo, dispatch),
     getHunterjobInfo: bindActionCreators(Actions.jobActions.getHunterjobInfo, dispatch),
+    collectionJob: bindActionCreators(Actions.jobActions.collectionJob, dispatch),
+    applyJob: bindActionCreators(Actions.jobActions.applyJob, dispatch),
     pushHistory: bindActionCreators(Actions.historyActions.pushHistory, dispatch),
     popHistory: bindActionCreators(Actions.historyActions.popHistory, dispatch)
 })

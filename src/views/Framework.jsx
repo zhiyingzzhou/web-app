@@ -6,6 +6,7 @@ import Modal from 'utils/modal';
 
 import DialogComponent from 'components/modal/dialog';
 import PromptComponent from 'components/modal/prompt';
+import MessageComponent from 'components/modal/msg';
 
 export default class Framework extends React.Component {
     
@@ -51,6 +52,7 @@ export default class Framework extends React.Component {
                 </div>
                 <DialogComponent />
                 <PromptComponent />
+                <MessageComponent />
                 <div className="modal-preloader">
                     <div className="modal-inner">
                         <div className="modal-title">数据加载中</div>

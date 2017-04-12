@@ -37,7 +37,7 @@
         height: px2rem(139px);
         font-size: px2rem(26px);
         .modal-button {
-            width: px2rem(146px);
+            width: px2rem(186px);
             height: px2rem(53px);
             display: inline-block;
             background-color: $theme-color;
@@ -63,7 +63,7 @@
     }
 }
 
-.modal,.modal-preloader {
+.modal,.modal-preloader,.modal-message {
     position: absolute;
     z-index: 13500;
     font-size: px2rem(30px);
@@ -114,7 +114,26 @@
     }
 }
 
-
+// modal-message
+.modal-message {
+    width: px2rem(200px);
+    height: px2rem(200px);
+    background-color: rgba(0,0,0,.5);
+    padding-top: px2rem(40px);
+    padding-bottom: px2rem(29px);
+    box-sizing: border-box;
+    font-size: 0px;
+    border-radius: px2rem(10px);
+    img {
+        height: px2rem(65px);
+        margin: 0 auto;
+    }
+    .modal-text {
+        color: #FFF;
+        font-size: px2rem(28px);
+        margin-top: px2rem(30px);
+    }
+}
 
 @keyframes preloader-spin {
   100% {

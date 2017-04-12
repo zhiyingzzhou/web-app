@@ -25,9 +25,7 @@ export const ajaxPost = (url,data,callback) => {
     })
     .fail(err=>{
          // 关闭preloader
-        if($('.modal-preloader').hasClass('modal-in')){
-            Modal.closePreloader();
-        }
+        Modal.closePreloader();
         Modal.openDialog('抱歉！请求失败，请稍后重试！');
     }) 
 };

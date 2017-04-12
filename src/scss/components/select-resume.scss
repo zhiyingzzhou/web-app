@@ -1,0 +1,96 @@
+[data-page="job-info"] {
+    // 遮罩层
+    .resume-overlay,.select-resume {
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    .resume-overlay {
+        background: rgba(0,0,0,.5);
+        z-index: 999;
+        top: 0;
+        bottom: 0;
+        transition: opacity .4s;
+        opacity: 0;
+        visibility: hidden;
+    }
+    .select-resume {
+        top: 50%;
+        transform: translateY(-50%);
+        margin: auto;
+        width: px2rem(600px);
+        padding: px2rem(43px) px2rem(20px) px2rem(42px);
+        box-sizing: border-box;
+        background: #FFF;
+        z-index: $select-resume-z-index;
+        .title {
+            text-align: center;
+            font-size: px2rem(30px);
+            color: $standard-color;
+        }
+        ul {
+            margin-top: px2rem(38px);
+        }
+        li {
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding: px2rem(19px) 0;
+            position: relative;
+            &:first-child:before {
+                @include border-top;
+            }
+            &:after {
+                @include border-bottom;
+            }
+            .item-title {
+                font-size: px2rem(29px);
+                color: $standard-color;
+            }
+            // 去创建简历
+            a {
+                color: $theme-color;
+                font-size: px2rem(30px);
+            }
+        }
+        // 单选按钮
+        .radio {
+            width: px2rem(32px);
+            height: px2rem(32px);
+            border: px2rem(1px) solid $border-color;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            &.active {
+                border: 0;
+                background-color: $theme-color;
+            }
+            img {
+                width: px2rem(28px);
+                height: px2rem(20px);
+            }
+        }
+        // 按钮组
+        .buttons {
+            margin-top: px2rem(35px);
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            width: px2rem(186px);
+            height: px2rem(53px);
+            color: #FFF;
+            font-size: px2rem(30px);
+            text-align:center;
+            line-height: px2rem(53px);
+            border-radius: px2rem(9px);
+            &:first-child {
+                background-color: $assist-color;
+            }
+            &:last-child {
+                background-color: $theme-color;
+                margin-left: px2rem(70px);
+            }
+        }
+    }
+}
