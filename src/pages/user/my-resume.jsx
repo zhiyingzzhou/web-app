@@ -25,12 +25,14 @@ class MyResumePage  extends Component {
     }
 
     render() {
+        const {resume} = this.props;
+        const {baseinfo} = resume;
         console.log(this.props.resume);
         return (
             <div className='page' data-page='my-resume'>
                 <NavbarBack title="我的简历1" />
                 <div className="page-content">
-                    <ProgressComponent />
+                    <ProgressComponent baseinfo={baseinfo} />
                     <BaseInfoComponent />
                 </div>
             </div>
