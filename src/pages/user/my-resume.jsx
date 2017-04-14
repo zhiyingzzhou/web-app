@@ -13,6 +13,10 @@ import * as Actions from 'actions';
 import ProgressComponent from 'components/resume/progress';
 // 基本信息区域
 import BaseInfoComponent from 'components/resume/baseinfo';
+// 工作经历区域
+import WorkComponent from 'components/resume/work';
+// 教育经历区域
+import EducationComponent from 'components/resume/education';
 
 class MyResumePage  extends Component {
 
@@ -27,13 +31,14 @@ class MyResumePage  extends Component {
     render() {
         const {resume} = this.props;
         const {baseinfo} = resume;
-        console.log(this.props.resume);
         return (
             <div className='page' data-page='my-resume'>
                 <NavbarBack title="我的简历1" />
                 <div className="page-content">
                     <ProgressComponent baseinfo={baseinfo} />
-                    <BaseInfoComponent />
+                    <BaseInfoComponent baseinfo={baseinfo} />
+                    <WorkComponent />
+                    <EducationComponent />
                 </div>
             </div>
         );

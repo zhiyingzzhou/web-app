@@ -1,9 +1,84 @@
 [data-page="my-resume"] {
     .list-block {
+        padding: px2rem(19px) px2rem(33px) px2rem(21px) px2rem(35px);
         background-color: #FFF;
+    }
+    // title
+    .resume-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: px2rem(30px);
+        color: $theme-color;
+        .item-title {
+            font-weight: bold;
+        }
+        .after {
+            display: flex;
+            align-items: center;
+            font-size: px2rem(26px);
+        }
+        img.edit {
+            height: px2rem(31px);
+        }
+        img.plus {
+            margin-right: px2rem(10px);
+            height: px2rem(32px);
+        }
+    }
+    .info-item {
+        margin-top: px2rem(16px);
     }
     // 进度条
     .progress {
-        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: px2rem(26px);
+        .progress-bar {
+            width: px2rem(340px);
+            height: px2rem(20px);
+            background-color: $page-background-color;
+        }
+        .progress-bar-inner {
+            width: px2rem(100px);
+            height: 100%;
+            background-color: $theme-color;
+        }
+        .button {
+            width: px2rem(146px);
+            height: px2rem(53px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FFF;
+            background-color: $theme-color;
+            border-radius: px2rem(8px);
+        }
+    }
+
+    //基本信息
+    .baseinfo {
+        ul {
+            margin-top: px2rem(14px);
+            font-size: px2rem(26px);
+            padding-top: px2rem(28px);
+            &:after {
+                height: 0 !important;
+            }
+            li {
+                margin-bottom: px2rem(36px);
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+            span:first-child {
+                color: $standard-color;
+            }
+            span:last-child {
+                margin-left: px2rem(89px);
+                color: $assist-color;
+            }
+        }
     }
 }
