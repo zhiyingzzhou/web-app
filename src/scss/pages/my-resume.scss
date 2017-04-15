@@ -45,7 +45,7 @@
             height: 100%;
             background-color: $theme-color;
         }
-        .button {
+        .btn {
             width: px2rem(146px);
             height: px2rem(53px);
             display: flex;
@@ -58,7 +58,7 @@
     }
 
     //基本信息
-    .baseinfo {
+    .baseinfo,.workinfo,.profession,.talent {
         ul {
             margin-top: px2rem(14px);
             font-size: px2rem(26px);
@@ -76,9 +76,47 @@
                 color: $standard-color;
             }
             span:last-child {
-                margin-left: px2rem(89px);
+                margin-left: px2rem(40px);
                 color: $assist-color;
             }
         }
+    }
+    // 职业意向
+    .workinfo,.profession {
+        ul {
+            li:last-child {
+                margin-bottom: px2rem(34px) !important;
+            }
+        }
+        .text-area {
+            position: relative;
+            color: $assist-color;
+            padding-top: px2rem(34px) !important;
+            font-size: px2rem(26px);
+            box-sizing: border-box;
+            min-height: px2rem(164px);
+            &:before {
+                @include border-top;
+            }
+        }
+    }
+
+    //保存按钮
+    a.button {
+        width: px2rem(721px);
+        height: px2rem(95px);
+        margin: px2rem(16px) auto 0;
+        background-color: $theme-color;
+        color: #FFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: px2rem(42px);
+    }
+
+    .footer {
+        position: static;
+        margin-top: px2rem(46px);
+        margin-bottom: px2rem(36px);
     }
 }

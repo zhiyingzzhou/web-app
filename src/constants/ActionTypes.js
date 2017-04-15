@@ -49,3 +49,7 @@ export const CRESTE_RESUME = "CRESTE_RESUME";
 
 // 简历基本信息查询
 export const RESUME_BASE_INFO = "RESUME_BASE_INFO";
+// 简历工作经历查询
+export const RESUME_WORK = "RESUME_WORK";
+// 简历求职意向信息
+export const RESUME_PROFESSION = "RESUME_PROFESSION";

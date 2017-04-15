@@ -18,7 +18,7 @@ export default class TitleComponent  extends Component {
                         </a>
                     }
                     {type == 'plus' && 
-                        <a className="after">
+                        <a className="after" style={{letterSpacing: `${title.length === 2 ? '.5em' : ''}`}}>
                             <img className="plus" src={plusPng} />
                             添加{title}
                         </a>

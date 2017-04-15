@@ -14,7 +14,7 @@ export default class ProgressComponent  extends Component {
                 <div className="progress-text">
                     完整度 : {percent || 0}%
                 </div>
-                <a href="javascript:void(0);" className="button">预览简历</a>
+                <a href="javascript:void(0);" className="btn">预览简历</a>
             </div>
         );
     }
